@@ -159,12 +159,14 @@ HTTP 客户端示例：
     "http_code": 429,
     "message": "The service returned HTTP 429. …",
     "retryable": true,
-    "retry_after_seconds": 30
+    "retry_after_seconds": 30,
+    "attempts": 1,
+    "elapsed_ms": 240
   }
 }
 ```
 
-`http_code` 在无上游 HTTP 状态时为 null。`retry_after_seconds` 只在上游返回有效 `Retry-After` 时出现。`retryable` 表示相同请求稍后可能成功。错误结果不要求匹配成功响应的 `outputSchema`；未知工具、协议错误及意外内部异常由 MCP 框架处理，内部异常详情对客户端隐藏。
+`http_code` 在无上游 HTTP 状态时为 null。`retry_after_seconds` 只在上游返回有效 `Retry-After` 时出现。`retryable` 表示相同请求稍后可能成功。HTTP 请求或重试过程失败时，`attempts` 记录已发起的请求次数，`elapsed_ms` 记录包含退避的总耗时；本地参数校验等错误不含这两个字段。超时消息区分单次 HTTP 操作超时与总预算耗尽，并说明配置的时限。错误结果不要求匹配成功响应的 `outputSchema`；未知工具、协议错误及意外内部异常由 MCP 框架处理，内部异常详情对客户端隐藏。
 
 | status | 原因 | 可重试 |
 |---|---|---|
@@ -181,7 +183,7 @@ HTTP 客户端示例：
 | `network_error` | 连接或传输错误 | 是 |
 | `invalid_response` | 200 响应不是合法 JSON，或内容结构不符合契约 | 否 |
 
-仅重试 408、429、5xx 和网络错误，默认最多重试 2 次。退避从 0.5 秒开始翻倍；有效 `Retry-After` 优先。若要求等待超过 10 秒，直接返回错误及等待时长，避免过早重试。取消调用会停止请求和后续重试。网络超时可能发生在服务端已经处理请求之后，不承诺重试绝无额外计费。
+仅重试 408、429、5xx 和网络错误，默认最多重试 2 次。全部 HTTP 请求、响应正文读取和退避等待共用默认 45 秒的总预算，重试不会重置预算。退避从 0.5 秒开始翻倍；有效 `Retry-After` 优先。若要求等待超过 10 秒，或剩余总预算不足以完成等待，直接返回错误；有效的上游等待时长仍随错误返回，不会提前重试。总预算耗尽会取消当前请求或等待，外部取消调用也会停止请求和后续重试。网络超时可能发生在服务端已经处理请求之后，不承诺重试绝无额外计费。
 
 参数类型严格校验：例如 `need_content: "false"`、`count: true`、`max_chars: 1.5` 都会报错。密钥不作为参数暴露；上游错误中的当前密钥、`sk-…` 和 Bearer token 会被脱敏。参数校验错误不会回显输入值。
 
@@ -200,6 +202,7 @@ HTTP 客户端示例：
   "api": {
     "base_url": "https://api.deepseek.com",
     "timeout_seconds": 30,
+    "total_timeout_seconds": 45,
     "max_retries": 2
   },
   "search": {
@@ -211,7 +214,7 @@ HTTP 客户端示例：
 }
 ```
 
-工具可单独改名或禁用，名称为 1–64 位字母、数字、下划线或连字符；启用的工具不能重名。`api.base_url` 可含网关路径前缀，不接受凭据、查询串或 fragment。`timeout_seconds` 是单次 HTTP 操作超时，大于 0 且不超过 300；`max_retries` 为 0–5。增加它们后，应相应提高客户端的工具超时。
+工具可单独改名或禁用，名称为 1–64 位字母、数字、下划线或连字符；启用的工具不能重名。`api.base_url` 可含网关路径前缀，不接受凭据、查询串或 fragment。`timeout_seconds` 是单次 HTTP 操作（连接、读取、写入、连接池等待）的超时，默认 30 秒，大于 0 且不超过 300；`total_timeout_seconds` 是包含所有尝试和退避的总预算，默认 45 秒，大于 0 且不超过 600；`max_retries` 为 0–5。旧配置省略 `total_timeout_seconds` 时直接使用默认值。提高总预算时，应让客户端工具超时留出相应余量。
 
 `search.localization` 为 IPv4/IPv6 地址或空字符串，只用于部署配置，不交给模型猜测。两个 `max_content_chars` 均为非负整数，0 不截断。
 

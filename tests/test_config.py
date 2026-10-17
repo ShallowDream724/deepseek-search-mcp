@@ -36,6 +36,7 @@ def test_defaults_without_any_config(tmp_path: Path) -> None:
     assert config.tools.fetch.name == "fetch"
     assert config.api.base_url == "https://api.deepseek.com"
     assert config.api.timeout_seconds == 30.0
+    assert config.api.total_timeout_seconds == 45.0
     assert config.api.max_retries == 2
     assert config.search.default_count == 10
 
@@ -174,6 +175,11 @@ def test_invalid_base_url_is_rejected(tmp_path: Path, base_url: str) -> None:
     [
         ("timeout_seconds", 0),
         ("timeout_seconds", 301),
+        ("total_timeout_seconds", 0),
+        ("total_timeout_seconds", -1),
+        ("total_timeout_seconds", 601),
+        ("total_timeout_seconds", float("inf")),
+        ("total_timeout_seconds", float("nan")),
         ("max_retries", -1),
         ("max_retries", 6),
     ],
@@ -183,6 +189,21 @@ def test_api_bounds_are_enforced(tmp_path: Path, section: str, value: float) -> 
 
     with pytest.raises(ConfigError):
         load_config(str(path))
+
+
+def test_existing_api_config_gets_default_total_budget(tmp_path: Path) -> None:
+    path = write_json(tmp_path / "config.json", {"api": {"timeout_seconds": 20, "max_retries": 1}})
+
+    config, _ = load_config(str(path))
+
+    assert config.api.timeout_seconds == 20
+    assert config.api.total_timeout_seconds == 45
+
+
+def test_total_budget_accepts_upper_bound(tmp_path: Path) -> None:
+    path = write_json(tmp_path / "config.json", {"api": {"total_timeout_seconds": 600}})
+    config, _ = load_config(str(path))
+    assert config.api.total_timeout_seconds == 600
 
 
 @pytest.mark.parametrize("count", [0, 51])

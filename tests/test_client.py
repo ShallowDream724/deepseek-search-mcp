@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import asyncio
 import json
+from time import monotonic
 
 import httpx
 import pytest
@@ -271,6 +273,8 @@ async def test_client_errors_are_not_retried() -> None:
 
     assert len(h.upstream.requests) == 1
     assert result["error"]["status"] == "unauthorized"
+    assert result["error"]["attempts"] == 1
+    assert result["error"]["elapsed_ms"] >= 0
 
 
 async def test_network_error_is_retried_then_reported() -> None:
@@ -410,6 +414,151 @@ async def test_timeout_is_reported_after_retries() -> None:
     assert len(h.upstream.requests) == 3
     assert result["error"]["status"] == "upstream_timeout"
     assert result["error"]["retryable"] is True
+    assert result["error"]["attempts"] == 3
+
+
+@pytest.mark.parametrize("streaming", [False, True])
+async def test_total_budget_cancels_slow_response_without_retrying(streaming: bool) -> None:
+    requests = 0
+    cancelled = asyncio.Event()
+
+    class SlowStream(httpx.AsyncByteStream):
+        async def __aiter__(self):
+            try:
+                while True:
+                    await asyncio.sleep(0.005)
+                    yield b" "
+            finally:
+                cancelled.set()
+
+    async def slow(request: httpx.Request) -> httpx.Response:
+        nonlocal requests
+        requests += 1
+        if streaming:
+            return httpx.Response(200, stream=SlowStream())
+        try:
+            await asyncio.sleep(10)
+        finally:
+            cancelled.set()
+        return search_ok()
+
+    config = config_with(api__total_timeout_seconds=0.04)
+    async with DeepSeekClient(config, transport=httpx.MockTransport(slow)) as client:
+        started = monotonic()
+        result = await asyncio.wait_for(
+            client.fetch(api_key=API_KEY, url="https://example.com"), timeout=0.5,
+        )
+
+    assert monotonic() - started < 0.5
+    assert cancelled.is_set()
+    assert requests == 1
+    assert result["error"]["status"] == "upstream_timeout"
+    assert result["error"]["attempts"] == 1
+    assert result["error"]["elapsed_ms"] >= 30
+    assert "total timeout budget of 0.04s" in result["error"]["message"]
+
+
+async def test_total_budget_is_shared_across_attempts(monkeypatch: pytest.MonkeyPatch) -> None:
+    requests = 0
+    cancelled = asyncio.Event()
+    monkeypatch.setattr("deepseek_search_mcp.client._backoff_seconds", lambda attempt: 0.005)
+
+    async def slow(request: httpx.Request) -> httpx.Response:
+        nonlocal requests
+        requests += 1
+        if requests == 1:
+            await asyncio.sleep(0.06)
+            return httpx.Response(503)
+        try:
+            # Fits a fresh budget but not what remains after the first attempt.
+            await asyncio.sleep(0.08)
+        finally:
+            cancelled.set()
+        return search_ok()
+
+    config = config_with(api__total_timeout_seconds=0.11)
+    async with DeepSeekClient(config, transport=httpx.MockTransport(slow)) as client:
+        result = await asyncio.wait_for(client.search(api_key=API_KEY, query="q"), timeout=0.5)
+
+    assert requests == 2
+    assert cancelled.is_set()
+    assert result["error"]["attempts"] == 2
+    assert result["error"]["status"] == "upstream_timeout"
+    assert 80 <= result["error"]["elapsed_ms"] < 500
+
+
+@pytest.mark.parametrize("retry_after", [None, "0.2"])
+async def test_retry_delay_must_fit_remaining_budget(retry_after: str | None) -> None:
+    headers = {} if retry_after is None else {"Retry-After": retry_after}
+    config = config_with(api__total_timeout_seconds=0.1)
+    async with harness(config, httpx.Response(429, headers=headers)) as h:
+        result = await h.client.search(api_key=API_KEY, query="q")
+
+    assert len(h.upstream.requests) == 1
+    assert h.sleeps == []
+    assert result["error"]["status"] == "rate_limited"
+    assert result["error"]["attempts"] == 1
+    assert "remaining total timeout budget" in result["error"]["message"]
+    if retry_after is not None:
+        assert result["error"]["retry_after_seconds"] == 0.2
+
+
+async def test_total_budget_also_cancels_retry_sleep(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr("deepseek_search_mcp.client._backoff_seconds", lambda attempt: 0.005)
+    cancelled = asyncio.Event()
+
+    async def slow_sleep(delay: float) -> None:
+        try:
+            await asyncio.sleep(10)
+        finally:
+            cancelled.set()
+
+    config = config_with(api__total_timeout_seconds=0.04)
+    async with harness(config, httpx.Response(503)) as h:
+        h.client._sleep = slow_sleep
+        result = await asyncio.wait_for(h.client.search(api_key=API_KEY, query="q"), timeout=0.5)
+
+    assert cancelled.is_set()
+    assert len(h.upstream.requests) == 1
+    assert result["error"]["status"] == "upstream_timeout"
+
+
+@pytest.mark.parametrize("exception", [httpx.ReadTimeout(""), httpx.ConnectError("")])
+async def test_empty_transport_exception_has_readable_diagnostics(exception: httpx.HTTPError) -> None:
+    config = config_with(api__max_retries=0)
+    async with harness(config, exception) as h:
+        result = await h.client.search(api_key=API_KEY, query="q")
+
+    assert type(exception).__name__ in result["error"]["message"]
+    assert result["error"]["attempts"] == 1
+    assert isinstance(result["error"]["elapsed_ms"], int)
+    assert API_KEY not in str(result)
+
+
+async def test_caller_cancellation_propagates_without_retrying() -> None:
+    started = asyncio.Event()
+    cancelled = asyncio.Event()
+    requests = 0
+
+    async def slow(request: httpx.Request) -> httpx.Response:
+        nonlocal requests
+        requests += 1
+        started.set()
+        try:
+            await asyncio.sleep(10)
+        finally:
+            cancelled.set()
+        return search_ok()
+
+    async with DeepSeekClient(AppConfig(), transport=httpx.MockTransport(slow)) as client:
+        task = asyncio.create_task(client.search(api_key=API_KEY, query="q"))
+        await asyncio.wait_for(started.wait(), timeout=0.5)
+        task.cancel()
+        with pytest.raises(asyncio.CancelledError):
+            await task
+
+    assert cancelled.is_set()
+    assert requests == 1
 
 
 async def test_missing_api_key_short_circuits_without_request() -> None:

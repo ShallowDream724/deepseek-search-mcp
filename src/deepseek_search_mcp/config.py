@@ -93,6 +93,7 @@ class ApiConfig(BaseModel):
 
     base_url: str = DEFAULT_BASE_URL
     timeout_seconds: float = Field(default=30.0, gt=0, le=300)
+    total_timeout_seconds: float = Field(default=45.0, gt=0, le=600)
     max_retries: int = Field(default=2, ge=0, le=5)
 
     @field_validator("base_url")

@@ -18,6 +18,7 @@ import math
 from collections.abc import Awaitable, Callable
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
+from time import monotonic
 from typing import Any
 from urllib.parse import urlsplit
 
@@ -344,47 +345,85 @@ class DeepSeekClient:
         payload: dict[str, Any],
         api_key: str,
     ) -> tuple[httpx.Response | None, dict[str, Any] | None]:
-        """POST with bounded retries; returns ``(response, None)`` or ``(None, error)``."""
+        """POST with one deadline covering all requests and retry delays."""
         headers = {"Authorization": f"Bearer {api_key}"}
-        attempts = self.config.api.max_retries + 1
-        last_failure: dict[str, Any] | None = None
+        started = monotonic()
+        budget = self.config.api.total_timeout_seconds
+        deadline = started + budget
+        attempts_made = 0
 
-        for attempt in range(attempts):
-            retry_after: float | None = None
-            try:
-                response = await self._http.post(path, json=payload, headers=headers)
-            except httpx.TimeoutException as exc:
-                last_failure = error_response(
-                    "upstream_timeout",
-                    redact(f"Request timed out: {exc}", api_key),
-                    retryable=True,
-                )
-            except httpx.HTTPError as exc:
-                last_failure = error_response(
-                    "network_error",
-                    redact(f"Could not reach the search service: {exc}", api_key),
-                    retryable=True,
-                )
-            else:
-                if response.status_code == 200:
-                    return response, None
+        async def request_with_retries() -> tuple[httpx.Response | None, dict[str, Any] | None]:
+            nonlocal attempts_made
+            max_attempts = self.config.api.max_retries + 1
+            last_failure: dict[str, Any] | None = None
+            for attempt in range(max_attempts):
+                if monotonic() >= deadline:
+                    raise asyncio.TimeoutError
+                retry_after: float | None = None
+                attempts_made += 1
+                try:
+                    response = await self._http.post(path, json=payload, headers=headers)
+                except httpx.TimeoutException as exc:
+                    detail = str(exc).strip() or type(exc).__name__
+                    last_failure = error_response(
+                        "upstream_timeout",
+                        redact(
+                            f"An HTTP operation timed out (configured timeout: "
+                            f"{self.config.api.timeout_seconds:g}s): {detail}", api_key,
+                        ),
+                        retryable=True,
+                    )
+                except httpx.HTTPError as exc:
+                    detail = str(exc).strip() or type(exc).__name__
+                    last_failure = error_response(
+                        "network_error",
+                        redact(f"Could not reach the search service: {detail}", api_key),
+                        retryable=True,
+                    )
+                else:
+                    if response.status_code == 200:
+                        return response, None
+                    last_failure = self._failure_from_response(response, api_key)
+                    if response.status_code not in RETRYABLE_STATUS_CODES:
+                        return None, last_failure
+                    retry_after = _retry_after_seconds(response)
 
-                failure = self._failure_from_response(response, api_key)
-                if response.status_code not in RETRYABLE_STATUS_CODES:
-                    return None, failure
-                last_failure = failure
-                retry_after = _retry_after_seconds(response)
+                if attempt + 1 >= max_attempts:
+                    break
+                delay = retry_after if retry_after is not None else _backoff_seconds(attempt)
+                if delay > MAX_BACKOFF_SECONDS:
+                    # Do not retry earlier than allowed, or hold a tool call for hours.
+                    break
+                if delay >= deadline - monotonic():
+                    last_failure["error"]["message"] += (
+                        f" No further retry was attempted: the required {delay:g}s delay "
+                        "does not fit within the remaining total timeout budget."
+                    )
+                    break
+                logger.debug("retrying %s after %.2fs (attempt %s)", path, delay, attempt + 1)
+                await self._sleep(delay)
+            return None, last_failure
 
-            if attempt + 1 >= attempts:
-                break
-            delay = retry_after if retry_after is not None else _backoff_seconds(attempt)
-            if delay > MAX_BACKOFF_SECONDS:
-                # Do not retry earlier than allowed, or hold a tool call for hours.
-                break
-            logger.debug("retrying %s after %.2fs (attempt %s)", path, delay, attempt + 1)
-            await self._sleep(delay)
-
-        return None, last_failure
+        try:
+            response, failure = await asyncio.wait_for(
+                request_with_retries(), timeout=max(0.0, deadline - monotonic()),
+            )
+        except asyncio.TimeoutError:
+            response = None
+            failure = error_response(
+                "upstream_timeout",
+                f"The request exceeded the total timeout budget of {budget:g}s "
+                f"after {attempts_made} attempt(s). This budget includes all HTTP requests "
+                f"and retry delays; the per-operation timeout is "
+                f"{self.config.api.timeout_seconds:g}s.",
+                retryable=True,
+            )
+        if failure is not None:
+            failure["error"].update(
+                attempts=attempts_made,
+                elapsed_ms=max(0, round((monotonic() - started) * 1000)),
+            )
+        return response, failure
 
     def _failure_from_response(self, response: httpx.Response, api_key: str) -> dict[str, Any]:
         status = _status_for_code(response.status_code)
