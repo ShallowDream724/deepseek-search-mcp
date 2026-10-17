@@ -14,7 +14,7 @@ DeepSeek 接口契约以官方文档为准：<https://api-docs.deepseek.com/zh-c
 
 ## 1. 安装
 
-在 Conda 中安装：
+## Conda
 
 ```bash
 conda create -n deepseek-search python=3.13
@@ -22,6 +22,16 @@ conda activate deepseek-search
 git clone https://github.com/eggylan/deepseek-search-mcp.git
 cd deepseek-search-mcp
 pip install -e .
+```
+
+## uv
+
+```bash
+git clone https://github.com/eggylan/deepseek-search-mcp.git
+cd deepseek-search-mcp
+uv venv --python 3.13
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+uv pip install -e .
 ```
 
 安装完成后会得到两个等价入口：
