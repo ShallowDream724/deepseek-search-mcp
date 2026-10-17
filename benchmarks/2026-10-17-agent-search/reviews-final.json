@@ -1,0 +1,8282 @@
+[
+  {
+    "id": "A01",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "1948年7月与10月的两部分均属于香农同一原始论文，不能因与锚点DOI不同而排除第二部分。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 2848,
+    "text_chars": 24296,
+    "error": false
+  },
+  {
+    "id": "A01",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "书目记录中7月与10月部分均匹配原始工作；第4项仍是后来的引用记录。",
+    "provider": "deepseek",
+    "score": 80.25,
+    "elapsed_ms": 1335,
+    "text_chars": 3632,
+    "error": false
+  },
+  {
+    "id": "A01",
+    "label": "C",
+    "r": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "五条均为无关主题，即使其中部分使用DOI或期刊域名，也未提供Shannon原始论文记录。",
+    "provider": "anysearch",
+    "score": 20.0,
+    "elapsed_ms": 4353,
+    "text_chars": 3078,
+    "error": false
+  },
+  {
+    "id": "A01",
+    "label": "D",
+    "r": [
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      1,
+      3,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "第2项是香农原文，证据注明1948年7月与10月两部分；其余多为背景转述。",
+    "provider": "anysearch_general",
+    "score": 65.75,
+    "elapsed_ms": 4220,
+    "text_chars": 1251,
+    "error": false
+  },
+  {
+    "id": "A02",
+    "label": "A",
+    "r": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "五篇均是标题相似但主题或年份不同的论文；所列学术来源可信，内容没有满足指定论文条件。",
+    "provider": "anysearch",
+    "score": 30.0,
+    "elapsed_ms": 2462,
+    "text_chars": 6010,
+    "error": false
+  },
+  {
+    "id": "A02",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      0,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "ACM会议记录、Google作者介绍、DBLP及论文引文均能定位2017年论文；第3条只是后续论文参考文献片段。",
+    "provider": "deepseek",
+    "score": 87.0,
+    "elapsed_ms": 519,
+    "text_chars": 6205,
+    "error": false
+  },
+  {
+    "id": "A02",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "arXiv原文及Google研究页直接列出作者、标题和年份；其余DBLP记录也提供可追溯的2017论文元数据。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 3287,
+    "text_chars": 31455,
+    "error": false
+  },
+  {
+    "id": "A02",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "NeurIPS原文、Google Research记录和arXiv原文均匹配论文及年份，证据可追溯。",
+    "provider": "anysearch_general",
+    "score": 85.0,
+    "elapsed_ms": 3322,
+    "text_chars": 1440,
+    "error": false
+  },
+  {
+    "id": "A03",
+    "label": "A",
+    "r": [
+      2
+    ],
+    "q": [
+      3
+    ],
+    "u": [
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "DOI直达PLOS原文，摘要匹配；可见摘录没有作者，作者核验仍需读取原页。",
+    "provider": "anysearch",
+    "score": 93.75,
+    "elapsed_ms": 2358,
+    "text_chars": 1321,
+    "error": false
+  },
+  {
+    "id": "A03",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "q": [
+      1,
+      2,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "导出记录与大学文献库均给出作者、年份、摘要和DOI；第3、4条是勘误记录，第5条为可核对的引文数据。",
+    "provider": "deepseek",
+    "score": 85.0,
+    "elapsed_ms": 432,
+    "text_chars": 8441,
+    "error": false
+  },
+  {
+    "id": "A03",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      0,
+      0,
+      0
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "PLOS引文页和OpenAIRE记录匹配指定论文；其余是检索工具或管理帮助页，不能直接提供论文正文。",
+    "provider": "native",
+    "score": 68.75,
+    "elapsed_ms": 3759,
+    "text_chars": 26253,
+    "error": false
+  },
+  {
+    "id": "A03",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      0
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      2,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      0
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "PLOS原文与PubMed均给出作者、年份及完全匹配DOI，另有可读PDF。",
+    "provider": "anysearch_general",
+    "score": 83.0,
+    "elapsed_ms": 2370,
+    "text_chars": 1571,
+    "error": false
+  },
+  {
+    "id": "A04",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Nature原始记录、PubMed及Crossmark摘录均核对作者与2015年信息；RePEc和CiNii提供对应元数据。",
+    "provider": "native",
+    "score": 96.0,
+    "elapsed_ms": 3342,
+    "text_chars": 29434,
+    "error": false
+  },
+  {
+    "id": "A04",
+    "label": "B",
+    "r": [
+      0,
+      2,
+      0,
+      1,
+      1
+    ],
+    "q": [
+      1,
+      2,
+      1,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      2,
+      0,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "EBSCO记录完整对应论文；其余多为工具介绍、引用该文的文章或聚合记录，直接证据有限。",
+    "provider": "deepseek",
+    "score": 52.5,
+    "elapsed_ms": 407,
+    "text_chars": 6545,
+    "error": false
+  },
+  {
+    "id": "A04",
+    "label": "C",
+    "r": [
+      2
+    ],
+    "q": [
+      2
+    ],
+    "u": [
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "DOI就在结果URL中，题名、三位作者、2015年和Nature均可见，满足本题书目定位。",
+    "provider": "anysearch",
+    "score": 90.0,
+    "elapsed_ms": 9481,
+    "text_chars": 205,
+    "error": false
+  },
+  {
+    "id": "A04",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      0
+    ],
+    "q": [
+      3,
+      2,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      0
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "PubMed记录和原文PDF核对题名、三位作者、Nature 2015及DOI，余项多为转载。",
+    "provider": "anysearch_general",
+    "score": 75.5,
+    "elapsed_ms": 2569,
+    "text_chars": 1421,
+    "error": false
+  },
+  {
+    "id": "A05",
+    "label": "A",
+    "r": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      1,
+      3,
+      2,
+      1
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "第2条综述直接比较错位DID的异质性稳健方法；第3条归纳偏误与替代法。其他结果虽相关，但非原始方法论文。",
+    "provider": "native",
+    "score": 71.25,
+    "elapsed_ms": 4427,
+    "text_chars": 17035,
+    "error": false
+  },
+  {
+    "id": "A05",
+    "label": "B",
+    "r": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "结果涉及作文、城乡研究、光弹性、遥感和护理，均未讨论错位DID方法。",
+    "provider": "anysearch",
+    "score": 20.0,
+    "elapsed_ms": 3577,
+    "text_chars": 2120,
+    "error": false
+  },
+  {
+    "id": "A05",
+    "label": "C",
+    "r": [
+      0,
+      2,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      2,
+      2,
+      3,
+      1
+    ],
+    "u": [
+      0,
+      2,
+      1,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "第2、4条综述异质性处理效应下的多期DID方法；第3条仅有实证应用，第1条涉及DID但主题偏离。",
+    "provider": "deepseek",
+    "score": 71.75,
+    "elapsed_ms": 553,
+    "text_chars": 15347,
+    "error": false
+  },
+  {
+    "id": "A05",
+    "label": "D",
+    "r": [
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "只泛述错位DID与异质性问题，未给出可核对的原始方法论文或替代估计。",
+    "provider": "anysearch_general",
+    "score": 42.25,
+    "elapsed_ms": 3575,
+    "text_chars": 1041,
+    "error": false
+  },
+  {
+    "id": "A06",
+    "label": "A",
+    "r": [
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      3,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "arXiv原始论文直接匹配Callaway与Sant’Anna；首条为方法指南，其他为相邻主题论文或代码资料。",
+    "provider": "native",
+    "score": 67.75,
+    "elapsed_ms": 2424,
+    "text_chars": 35871,
+    "error": false
+  },
+  {
+    "id": "A06",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      3,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "多条讨论或应用CS估计量，但只有arXiv全文链接明确指向原始方法论文；其余是相关研究和应用材料。",
+    "provider": "deepseek",
+    "score": 62.0,
+    "elapsed_ms": 523,
+    "text_chars": 17564,
+    "error": false
+  },
+  {
+    "id": "A06",
+    "label": "C",
+    "r": [
+      0,
+      1,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      2,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "调查综述与设计分析涉及异质性DID，但直接匹配Callaway/Sant’Anna原始方法的证据较少。",
+    "provider": "anysearch",
+    "score": 68.0,
+    "elapsed_ms": 2996,
+    "text_chars": 3618,
+    "error": false
+  },
+  {
+    "id": "A06",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      2,
+      2,
+      2,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "第1项为Callaway与Sant’Anna多期DID论文记录，明确处理时点变化及作者证据。",
+    "provider": "anysearch_general",
+    "score": 73.25,
+    "elapsed_ms": 1529,
+    "text_chars": 1625,
+    "error": false
+  },
+  {
+    "id": "A07",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多篇论文讨论Cas9脱靶与PAM机制，包含学术综述和原始研究；第2条摘录较偏治疗安全应用。",
+    "provider": "deepseek",
+    "score": 90.5,
+    "elapsed_ms": 549,
+    "text_chars": 18182,
+    "error": false
+  },
+  {
+    "id": "A07",
+    "label": "B",
+    "r": [
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      0,
+      1,
+      0,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "仅Cas9竞争抑制研究稍有关联，其余聚焦其他疾病或基因编辑议题，未提供PAM与脱靶机制综述。",
+    "provider": "anysearch",
+    "score": 51.75,
+    "elapsed_ms": 1491,
+    "text_chars": 16353,
+    "error": false
+  },
+  {
+    "id": "A07",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "结果覆盖PAM识别、脱靶因素及综述策略，期刊论文和专业数据库记录均可追溯。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 2588,
+    "text_chars": 22320,
+    "error": false
+  },
+  {
+    "id": "A07",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      2,
+      2,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "前两项综述讨论脱靶因素及检测，含sgRNA和PAM识别；商业手册也涉及机制。",
+    "provider": "anysearch_general",
+    "score": 76.75,
+    "elapsed_ms": 1149,
+    "text_chars": 11658,
+    "error": false
+  },
+  {
+    "id": "A08",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "系统综述及多篇脱靶综述与主题吻合；PMC、PubMed和期刊页提供可核对的论文证据。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 2479,
+    "text_chars": 37847,
+    "error": false
+  },
+  {
+    "id": "A08",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多条对应脱靶评估综述或治疗安全综述，内容切题；第5条聚合页主要提供引用线索。",
+    "provider": "deepseek",
+    "score": 98.0,
+    "elapsed_ms": 506,
+    "text_chars": 21077,
+    "error": false
+  },
+  {
+    "id": "A08",
+    "label": "C",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "记录多谈特定疾病中的CRISPR治疗或系统综述，脱靶主题仅是可能的次要内容，摘录不足以确认。",
+    "provider": "anysearch",
+    "score": 65.0,
+    "elapsed_ms": 1064,
+    "text_chars": 7865,
+    "error": false
+  },
+  {
+    "id": "A08",
+    "label": "D",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "PMC综述直述脱靶定义，Dove文章讨论降低脱靶；另有系统综述标题但证据较薄。",
+    "provider": "anysearch_general",
+    "score": 74.75,
+    "elapsed_ms": 4292,
+    "text_chars": 1634,
+    "error": false
+  },
+  {
+    "id": "A09",
+    "label": "A",
+    "r": [
+      0,
+      1,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      0,
+      2,
+      2,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "第3、5条明确说明PhysioNet凭证访问和使用协议；第2条含数据与代码链接，其余是引用或无关材料。",
+    "provider": "deepseek",
+    "score": 75.75,
+    "elapsed_ms": 495,
+    "text_chars": 5918,
+    "error": false
+  },
+  {
+    "id": "A09",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "PhysioNet版本页覆盖数据与访问入口，MIT-LCP仓库提供代码；旧版本或归档仓库略有过时。",
+    "provider": "native",
+    "score": 96.5,
+    "elapsed_ms": 2669,
+    "text_chars": 24790,
+    "error": false
+  },
+  {
+    "id": "A09",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      1,
+      0,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      0,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "PhysioNet、MIT站点及论文记录提供数据与访问线索；第三方教程较弱，MIMIC-III页面实体错误。",
+    "provider": "anysearch",
+    "score": 85.5,
+    "elapsed_ms": 2962,
+    "text_chars": 1229,
+    "error": false
+  },
+  {
+    "id": "A09",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      1,
+      1,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "PhysioNet数据页及MIT-LCP介绍命中数据集，结果摘录未呈现访问许可或代码细节。",
+    "provider": "anysearch_general",
+    "score": 71.75,
+    "elapsed_ms": 1520,
+    "text_chars": 1261,
+    "error": false
+  },
+  {
+    "id": "A10",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "MIT-LCP代码仓库与PhysioNet页面均给出数据和访问信息，摘录含凭证访问或许可线索。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 2203,
+    "text_chars": 29210,
+    "error": false
+  },
+  {
+    "id": "A10",
+    "label": "B",
+    "r": [
+      0
+    ],
+    "q": [
+      1
+    ],
+    "u": [
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "唯一结果为无关的技术白皮书，未涉及MIMIC-IV数据、访问许可或代码仓库。",
+    "provider": "anysearch",
+    "score": 10.0,
+    "elapsed_ms": 1640,
+    "text_chars": 101201,
+    "error": false
+  },
+  {
+    "id": "A10",
+    "label": "C",
+    "r": [
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "多条能说明PhysioNet访问限制或MIT云端访问；代码仓库证据不足，部分结果只是论文引用数据集。",
+    "provider": "deepseek",
+    "score": 77.75,
+    "elapsed_ms": 464,
+    "text_chars": 7982,
+    "error": false
+  },
+  {
+    "id": "A10",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "PhysioNet与MIT-LCP官方代码仓库均命中，但摘录未显示数据访问限制或许可条款。",
+    "provider": "anysearch_general",
+    "score": 75.75,
+    "elapsed_ms": 4953,
+    "text_chars": 1379,
+    "error": false
+  },
+  {
+    "id": "A11",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "PubMed记录明确标注原论文Retracted并列出2010撤稿DOI；卫生委与科学网说明背景和撤稿声明，维基仅作补充。",
+    "provider": "native",
+    "score": 85.0,
+    "elapsed_ms": 2207,
+    "text_chars": 19505,
+    "error": false
+  },
+  {
+    "id": "A11",
+    "label": "B",
+    "r": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      3
+    ],
+    "u": [
+      0,
+      0,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 0,
+    "note": "前两项为皮肤库评论及无关Dummheit；其余讨论疫苗争议或偏见，虽有可追溯论文记录，未给出撤稿声明。",
+    "provider": "anysearch",
+    "score": 44.75,
+    "elapsed_ms": 1567,
+    "text_chars": 5297,
+    "error": false
+  },
+  {
+    "id": "A11",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "CMAJ报道2004部分撤回及2010正式撤稿，PubMed摘要和精神科新闻也述及正式撤稿；BMJ结果摘录明显错页混入无关内容。",
+    "provider": "deepseek",
+    "score": 90.0,
+    "elapsed_ms": 506,
+    "text_chars": 16982,
+    "error": false
+  },
+  {
+    "id": "A11",
+    "label": "D",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "疾控转述明确说2010年论文撤稿，科学网报道撤稿；未检出原始撤稿声明记录。",
+    "provider": "anysearch_general",
+    "score": 65.75,
+    "elapsed_ms": 2999,
+    "text_chars": 1156,
+    "error": false
+  },
+  {
+    "id": "A12",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "2010 CMAJ和Psychiatric News明确写正式撤稿，PubMed检索记录仅显示被撤稿关联，后两条综述也明确提及撤稿。",
+    "provider": "deepseek",
+    "score": 82.25,
+    "elapsed_ms": 491,
+    "text_chars": 19823,
+    "error": false
+  },
+  {
+    "id": "A12",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "JAMA论文直接研究撤稿后引用情况并称文章已撤稿，但未提供2010撤稿声明或原始记录；其他文章仅背景相关。",
+    "provider": "anysearch",
+    "score": 73.5,
+    "elapsed_ms": 1152,
+    "text_chars": 15666,
+    "error": false
+  },
+  {
+    "id": "A12",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "第三条为Lancet撤稿声明原文，PubMed记录列明Retracted状态；其余记录显示撤稿相关文献或明确讨论2010撤稿。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 3571,
+    "text_chars": 34296,
+    "error": false
+  },
+  {
+    "id": "A12",
+    "label": "D",
+    "r": [
+      1,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "结果报道撤稿事实但没有原始声明摘录，也未显示原论文记录的RETRACTED标记。",
+    "provider": "anysearch_general",
+    "score": 58.0,
+    "elapsed_ms": 2055,
+    "text_chars": 1408,
+    "error": false
+  },
+  {
+    "id": "A13",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      2,
+      2,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Science原文完整给出100项及2015结果；MTA和爱丁堡机构库摘要可核验研究，PubMed为检索页，末项是第三方镜像。",
+    "provider": "deepseek",
+    "score": 90.0,
+    "elapsed_ms": 493,
+    "text_chars": 9825,
+    "error": false
+  },
+  {
+    "id": "A13",
+    "label": "B",
+    "r": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "五条均与心理学可重复性100项研究无关，涵盖半导体、医学教育、汉语词义及人力资源综述。",
+    "provider": "anysearch",
+    "score": 10.0,
+    "elapsed_ms": 3512,
+    "text_chars": 3873,
+    "error": false
+  },
+  {
+    "id": "A13",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      2,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "PubMed记录和Science DOI页直接匹配论文及2015年份；机构库摘要支持结果，NSTL聚合检索页和PubMed搜索页较弱。",
+    "provider": "native",
+    "score": 86.5,
+    "elapsed_ms": 3828,
+    "text_chars": 27466,
+    "error": false
+  },
+  {
+    "id": "A13",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "多项材料提及OSC百项研究及约39%可重复，但没有原始Science论文或记录。",
+    "provider": "anysearch_general",
+    "score": 61.5,
+    "elapsed_ms": 1739,
+    "text_chars": 1087,
+    "error": false
+  },
+  {
+    "id": "A14",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "首条Science DOI原文包含作者群体与主要结果；其余为评论、综述或其他可重复性研究，不能替代目标原始研究。",
+    "provider": "anysearch",
+    "score": 67.5,
+    "elapsed_ms": 3550,
+    "text_chars": 6415,
+    "error": false
+  },
+  {
+    "id": "A14",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Science原文、PubMed及机构库均对应2015论文；摘要证据充分，排名第二PubMed摘录较少，机构库与Edinburgh记录可核查。",
+    "provider": "native",
+    "score": 96.0,
+    "elapsed_ms": 2250,
+    "text_chars": 34060,
+    "error": false
+  },
+  {
+    "id": "A14",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多条结果匹配Open Science Collaboration的2015论文及100项研究；含PubMed搜索页、机构库及国家科技文献中心聚合记录。",
+    "provider": "deepseek",
+    "score": 84.5,
+    "elapsed_ms": 489,
+    "text_chars": 5963,
+    "error": false
+  },
+  {
+    "id": "A14",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Science原文、APA记录和PubMed条目均匹配题名、百项研究及研究摘要。",
+    "provider": "anysearch_general",
+    "score": 94.0,
+    "elapsed_ms": 3143,
+    "text_chars": 2344,
+    "error": false
+  },
+  {
+    "id": "A15",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      0,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      0,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "牛津期刊原文、Princeton作者机构库和EMBL记录均给出肯尼亚RCT、作者与干预；世界银行PDF仅引文相关，BioStudies记录可核验摘要。",
+    "provider": "deepseek",
+    "score": 87.0,
+    "elapsed_ms": 458,
+    "text_chars": 14865,
+    "error": false
+  },
+  {
+    "id": "A15",
+    "label": "B",
+    "r": [
+      1,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "首条是2018长期随访，PubMed及Princeton结果指向2016原论文；其余多为引文或相关实验，摘录可用信息较少。",
+    "provider": "anysearch",
+    "score": 79.75,
+    "elapsed_ms": 6514,
+    "text_chars": 4613,
+    "error": false
+  },
+  {
+    "id": "A15",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "牛津原刊、PubMed、JSTOR及PMC均匹配Haushofer与Shapiro 2016肯尼亚RCT，提供题录和随机设计摘要。",
+    "provider": "native",
+    "score": 98.0,
+    "elapsed_ms": 5976,
+    "text_chars": 32306,
+    "error": false
+  },
+  {
+    "id": "A15",
+    "label": "D",
+    "r": [
+      1,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "PubMed及RePEc记录命中Haushofer与Shapiro的肯尼亚现金转移研究；首项为后续研究。",
+    "provider": "anysearch_general",
+    "score": 73.75,
+    "elapsed_ms": 535,
+    "text_chars": 4594,
+    "error": false
+  },
+  {
+    "id": "A16",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "牛津原刊、PubMed、JSTOR及PMC均准确匹配2016肯尼亚现金转移RCT；题录、作者和随机分配方式均可核对。",
+    "provider": "native",
+    "score": 98.0,
+    "elapsed_ms": 3860,
+    "text_chars": 35034,
+    "error": false
+  },
+  {
+    "id": "A16",
+    "label": "B",
+    "r": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "结果涉及肯尼亚现金转移或引用目标研究，但均非Haushofer与Shapiro 2016短期RCT；第3条仅提供引文。",
+    "provider": "anysearch",
+    "score": 40.75,
+    "elapsed_ms": 2559,
+    "text_chars": 5199,
+    "error": false
+  },
+  {
+    "id": "A16",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "前五条均指向目标论文，含牛津原刊、PubMed、Princeton及PMC；题录和RCT干预证据具体，JSTOR为辅助记录。",
+    "provider": "deepseek",
+    "score": 96.0,
+    "elapsed_ms": 494,
+    "text_chars": 12440,
+    "error": false
+  },
+  {
+    "id": "A16",
+    "label": "D",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "首条为Haushofer与Shapiro 2016肯尼亚无条件现金RCT原文PDF；PMC亦给出同文摘要。",
+    "provider": "anysearch_general",
+    "score": 94.5,
+    "elapsed_ms": 2119,
+    "text_chars": 1737,
+    "error": false
+  },
+  {
+    "id": "A17",
+    "label": "A",
+    "r": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      0,
+      0,
+      0,
+      0,
+      1
+    ],
+    "coverage": 0,
+    "constraint": 1,
+    "note": "前四项分别涉及交通核算、道路减排、海外园区及出口贸易；末项农业碳交易相关但非碳交易试点政策评估目标。",
+    "provider": "anysearch",
+    "score": 36.5,
+    "elapsed_ms": 3215,
+    "text_chars": 2118,
+    "error": false
+  },
+  {
+    "id": "A17",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "2025碳排放权与用能权试点DID研究及其他碳交易政策评估论文均可追溯；年份在范围内，主题和方法匹配。",
+    "provider": "native",
+    "score": 96.0,
+    "elapsed_ms": 2660,
+    "text_chars": 14425,
+    "error": false
+  },
+  {
+    "id": "A17",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "五条均为2025年中国碳交易试点政策实证研究，摘录明确DID或合成DID；个别结果来自商业摘要或转载。",
+    "provider": "deepseek",
+    "score": 86.0,
+    "elapsed_ms": 530,
+    "text_chars": 17008,
+    "error": false
+  },
+  {
+    "id": "A17",
+    "label": "D",
+    "r": [
+      1,
+      2,
+      1,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "2024省域公平论文与2025供应链论文均报告DID；其他结果为概述或年度报告。",
+    "provider": "anysearch_general",
+    "score": 69.0,
+    "elapsed_ms": 2464,
+    "text_chars": 1068,
+    "error": false
+  },
+  {
+    "id": "A18",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      0,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "前两条为2025 GLP-1心血管结局RCT荟萃分析，第三条为更新荟萃回归；后两条分别是评论及血压综述，不满足结局要求。",
+    "provider": "anysearch",
+    "score": 82.75,
+    "elapsed_ms": 1226,
+    "text_chars": 13071,
+    "error": false
+  },
+  {
+    "id": "A18",
+    "label": "B",
+    "r": [
+      2,
+      0,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "JACC 2025荟萃分析和EHJ 2025摘要符合年份与RCT荟萃分析；第二项为2026记录，末项聚焦心衰亚组。",
+    "provider": "native",
+    "score": 76.25,
+    "elapsed_ms": 3222,
+    "text_chars": 33898,
+    "error": false
+  },
+  {
+    "id": "A18",
+    "label": "C",
+    "r": [
+      0,
+      2,
+      0,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "首项为氯吡格雷与阿司匹林分析，非GLP-1；第二及末项为2025会议摘要或RCT荟萃分析，另有2026记录及证据映射综述。",
+    "provider": "deepseek",
+    "score": 60.5,
+    "elapsed_ms": 540,
+    "text_chars": 13542,
+    "error": false
+  },
+  {
+    "id": "A18",
+    "label": "D",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      0
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "Badve条目为2025年RCT荟萃分析且含心血管结局；末条明确为2026年。",
+    "provider": "anysearch_general",
+    "score": 73.75,
+    "elapsed_ms": 2232,
+    "text_chars": 1641,
+    "error": false
+  },
+  {
+    "id": "A19",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "敦煌遗书数据库介绍和上线报道提供馆藏信息、图像及全文检索内容；数字敦煌偏石窟资源，国家图书馆论文说明IDP数字化流程。",
+    "provider": "native",
+    "score": 88.5,
+    "elapsed_ms": 9500,
+    "text_chars": 15916,
+    "error": false
+  },
+  {
+    "id": "A19",
+    "label": "B",
+    "r": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      0,
+      1,
+      0,
+      0,
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "仅唐代抄经论文涉及敦煌藏经洞，其余为文创营销、虚拟遗产综述、僧伽教育及传统文化用户研究。",
+    "provider": "anysearch",
+    "score": 15.5,
+    "elapsed_ms": 7137,
+    "text_chars": 2304,
+    "error": false
+  },
+  {
+    "id": "A19",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "IDP原始站点含数据库检索及馆藏号说明；其余介绍数字藏经洞或IDP数据库建设、藏品数字化与资源规模。",
+    "provider": "deepseek",
+    "score": 92.0,
+    "elapsed_ms": 536,
+    "text_chars": 7437,
+    "error": false
+  },
+  {
+    "id": "A19",
+    "label": "D",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      2,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "IDP官网提供项目入口；中科院页介绍敦煌遗书数据库建设，数字敦煌页为数字资源入口。",
+    "provider": "anysearch_general",
+    "score": 77.25,
+    "elapsed_ms": 781,
+    "text_chars": 900,
+    "error": false
+  },
+  {
+    "id": "A20",
+    "label": "A",
+    "r": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "u": [
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "仅第三项为中世纪中文文本数据库类比；其余讨论一般馆藏数字化、发现性、贡献者或无关语法研究，未定位IDP藏品。",
+    "provider": "anysearch",
+    "score": 21.5,
+    "elapsed_ms": 3513,
+    "text_chars": 6236,
+    "error": false
+  },
+  {
+    "id": "A20",
+    "label": "B",
+    "r": [
+      1,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      3,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "IDP官方新闻介绍新数字藏经洞平台，NLC官网提供IDP数据库检索方法；项目页与旧通讯支持馆藏数字化背景。",
+    "provider": "deepseek",
+    "score": 82.75,
+    "elapsed_ms": 485,
+    "text_chars": 17022,
+    "error": false
+  },
+  {
+    "id": "A20",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "BnF官方项目页、IDP项目列表及检索帮助页直指数字馆藏、目录和图像浏览；法文官方页面同样匹配，维基仅作补充。",
+    "provider": "native",
+    "score": 92.5,
+    "elapsed_ms": 6849,
+    "text_chars": 36720,
+    "error": false
+  },
+  {
+    "id": "A20",
+    "label": "D",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "IDP官网称可探索手稿、绘画、织物与器物；法国国家图书馆页说明编目数字化目标。",
+    "provider": "anysearch_general",
+    "score": 83.0,
+    "elapsed_ms": 2104,
+    "text_chars": 1529,
+    "error": false
+  },
+  {
+    "id": "A21",
+    "label": "A",
+    "r": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      2,
+      1,
+      2,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "命中IPBES土地退化评估摘要与气候湿地综述，但缺全球灭绝评估核心；其余海洋治理、NbS材料偏题。",
+    "provider": "anysearch",
+    "score": 48.0,
+    "elapsed_ms": 2599,
+    "text_chars": 8360,
+    "error": false
+  },
+  {
+    "id": "A21",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "日本官方白皮书、议会简报、CBD原始评估材料及IPCC-IPBES研讨报告直接讨论气候与其他驱动因素。",
+    "provider": "deepseek",
+    "score": 96.0,
+    "elapsed_ms": 527,
+    "text_chars": 15018,
+    "error": false
+  },
+  {
+    "id": "A21",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      2,
+      0,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "IPBES与IPCC官方材料可追溯且相关；摘要多聚焦变革、热点或淡水灭绝，未集中呈现全部驱动比较。",
+    "provider": "native",
+    "score": 93.75,
+    "elapsed_ms": 2174,
+    "text_chars": 29503,
+    "error": false
+  },
+  {
+    "id": "A21",
+    "label": "D",
+    "r": [
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      2,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      2,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "IPBES决策者摘要直接讨论气候相关灭绝风险；其余多为背景介绍或情景研究。",
+    "provider": "anysearch_general",
+    "score": 79.25,
+    "elapsed_ms": 2321,
+    "text_chars": 1159,
+    "error": false
+  },
+  {
+    "id": "A22",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "IPCC AR6章节、图表和技术摘要提供灭绝风险及气候影响证据，IPBES补充材料可追溯；日期均为既有评估。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 4520,
+    "text_chars": 36269,
+    "error": false
+  },
+  {
+    "id": "A22",
+    "label": "B",
+    "r": [
+      1,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      0,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "多篇综合研究直述气候与生物多样性关系，但首项侧重概念沟通，部分仅有引文元数据，灭绝风险量化有限。",
+    "provider": "anysearch",
+    "score": 74.75,
+    "elapsed_ms": 2771,
+    "text_chars": 7641,
+    "error": false
+  },
+  {
+    "id": "A22",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      0,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      0,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "议会研究简报及IPCC热点章节直接相关，摘要含主要驱动因素；商业与机构页面有二手内容或偏政策背景。",
+    "provider": "deepseek",
+    "score": 78.75,
+    "elapsed_ms": 537,
+    "text_chars": 20489,
+    "error": false
+  },
+  {
+    "id": "A22",
+    "label": "D",
+    "r": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      3,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "IPCC事实表描述生态系统气候影响，IPBES全球评估为原始综合报告；未直接量化灭绝风险。",
+    "provider": "anysearch_general",
+    "score": 77.25,
+    "elapsed_ms": 4668,
+    "text_chars": 2175,
+    "error": false
+  },
+  {
+    "id": "A23",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "IEEE原始论文与ML Anthology书目列出六位作者含Fei-Fei Li；另有两条人物报道，聚焦论文的结果约半数。",
+    "provider": "native",
+    "score": 74.75,
+    "elapsed_ms": 2279,
+    "text_chars": 24804,
+    "error": false
+  },
+  {
+    "id": "A23",
+    "label": "B",
+    "r": [
+      0,
+      0,
+      0,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      0,
+      0,
+      1,
+      2
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "多为无关文献或仅在参考文献中提及ImageNet；Harvard条目列出作者、年份和DOI但不是原论文。",
+    "provider": "anysearch",
+    "score": 39.75,
+    "elapsed_ms": 1881,
+    "text_chars": 3721,
+    "error": false
+  },
+  {
+    "id": "A23",
+    "label": "C",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "结果均以参考文献形式命中准确论文信息，能确认作者、年份和DOI，未提供原文或摘要，无法直接核验正文。",
+    "provider": "deepseek",
+    "score": 58.0,
+    "elapsed_ms": 458,
+    "text_chars": 4975,
+    "error": false
+  },
+  {
+    "id": "A23",
+    "label": "D",
+    "r": [
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      0,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 2,
+    "note": "结果未给出目标CVPR 2009原文；第二条实际是Krizhevsky 2012另一篇论文。",
+    "provider": "anysearch_general",
+    "score": 42.25,
+    "elapsed_ms": 1587,
+    "text_chars": 1303,
+    "error": false
+  },
+  {
+    "id": "A24",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "普林斯顿、ScienceOpen和CiNii均列作者、CVPR 2009及DOI；其余聚合条目有书目信息但可追溯性较弱。",
+    "provider": "native",
+    "score": 88.0,
+    "elapsed_ms": 2170,
+    "text_chars": 30457,
+    "error": false
+  },
+  {
+    "id": "A24",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      0,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      0,
+      1,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "ACM与Harvard条目能核对作者和DOI，但多为别的论文参考文献；幻灯片仅提及团队背景。",
+    "provider": "deepseek",
+    "score": 56.0,
+    "elapsed_ms": 492,
+    "text_chars": 7718,
+    "error": false
+  },
+  {
+    "id": "A24",
+    "label": "C",
+    "r": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "五项均为ImageNet后续研究或模型论文，不是2009原始论文；来源可追溯但未提供所需原始记录。",
+    "provider": "anysearch",
+    "score": 20.0,
+    "elapsed_ms": 2684,
+    "text_chars": 7111,
+    "error": false
+  },
+  {
+    "id": "A24",
+    "label": "D",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "首条ImageNet论文PDF列出Deng、Li与Fei-Fei；普林斯顿页给出CVPR 2009书目信息。",
+    "provider": "anysearch_general",
+    "score": 92.0,
+    "elapsed_ms": 1032,
+    "text_chars": 2651,
+    "error": false
+  },
+  {
+    "id": "A25",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "arXivDaily明确列出2610.19686与2610.20442为10月15日、2610.21604为16日；2610.19712为14日，来源属聚合站。",
+    "provider": "native",
+    "score": 61.75,
+    "elapsed_ms": 2210,
+    "text_chars": 16628,
+    "error": false
+  },
+  {
+    "id": "A25",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      3,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "可见VLA综述与科研智能体文章相关但未显示提交日期；其余偏题，当前材料不足以核实10月15至17日首次提交。",
+    "provider": "anysearch",
+    "score": 45.5,
+    "elapsed_ms": 2432,
+    "text_chars": 2191,
+    "error": false
+  },
+  {
+    "id": "A25",
+    "label": "C",
+    "r": [
+      1,
+      2,
+      2,
+      1,
+      0
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      0
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "智源转载列出arXiv 2610.10513并称15日发布，阿里云转载指向2610.19843且称17日；均非arXiv原始记录。",
+    "provider": "deepseek",
+    "score": 61.75,
+    "elapsed_ms": 579,
+    "text_chars": 14322,
+    "error": false
+  },
+  {
+    "id": "A25",
+    "label": "D",
+    "r": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "没有列出窗内新论文；2023综述过旧，近期列表摘录含10月21至23日未来日期。",
+    "provider": "anysearch_general",
+    "score": 28.0,
+    "elapsed_ms": 817,
+    "text_chars": 1270,
+    "error": false
+  },
+  {
+    "id": "A26",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多篇SciRate页面载有Submitted 15 Oct 2026记录且主题相关；HuggingFace两项标为14日或11日，不能计入窗口。",
+    "provider": "deepseek",
+    "score": 86.5,
+    "elapsed_ms": 456,
+    "text_chars": 12538,
+    "error": false
+  },
+  {
+    "id": "A26",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 1,
+    "note": "聚合搜索页给出多个10月15日arXiv编号和摘要，新闻聚合也覆盖新文；平台摘录日期不等同可核验首次提交记录。",
+    "provider": "native",
+    "score": 75.0,
+    "elapsed_ms": 13879,
+    "text_chars": 34609,
+    "error": false
+  },
+  {
+    "id": "A26",
+    "label": "C",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 0,
+    "note": "所列主题涉及智能体或科学研究，但摘录显示旧论文、评论或未证明首次提交日期，无法满足指定72小时窗口。",
+    "provider": "anysearch",
+    "score": 41.75,
+    "elapsed_ms": 2557,
+    "text_chars": 8908,
+    "error": false
+  },
+  {
+    "id": "A26",
+    "label": "D",
+    "r": [
+      2,
+      1,
+      0,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      0,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 0,
+    "note": "arXiv近期页明确列16日提交，但未展示具体目标论文；其他线索指向旧文或旧月份。",
+    "provider": "anysearch_general",
+    "score": 39.75,
+    "elapsed_ms": 2620,
+    "text_chars": 1415,
+    "error": false
+  },
+  {
+    "id": "A27",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "ACS首项明确在线发表于10月13日，Nature稿件显示10月8日；另有回收相关条目但摘录未给确切出版日期。",
+    "provider": "deepseek",
+    "score": 75.75,
+    "elapsed_ms": 527,
+    "text_chars": 15939,
+    "error": false
+  },
+  {
+    "id": "A27",
+    "label": "B",
+    "r": [
+      0,
+      0,
+      2,
+      0,
+      0
+    ],
+    "q": [
+      1,
+      2,
+      1,
+      2,
+      1
+    ],
+    "u": [
+      0,
+      0,
+      2,
+      0,
+      0
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "仅生命周期评价综述直接讨论动力电池回收；未见明确10月发表日期，其余主题错位或仅泛谈电池。",
+    "provider": "anysearch",
+    "score": 32.25,
+    "elapsed_ms": 6436,
+    "text_chars": 3776,
+    "error": false
+  },
+  {
+    "id": "A27",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      0
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      0
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "PubMed记录给出10月7日与DOI，另有10月卷期及官方平台条目；部分仅列卷期或旧文，在线与印刷时间未处处明确。",
+    "provider": "native",
+    "score": 74.25,
+    "elapsed_ms": 9844,
+    "text_chars": 19904,
+    "error": false
+  },
+  {
+    "id": "A27",
+    "label": "D",
+    "r": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "未找到10月发表研究；列举新闻日期为2026年2月、5月及更早。",
+    "provider": "anysearch_general",
+    "score": 32.0,
+    "elapsed_ms": 1979,
+    "text_chars": 1056,
+    "error": false
+  },
+  {
+    "id": "A28",
+    "label": "A",
+    "r": [
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      2,
+      1,
+      0,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      0,
+      0,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "首项涉及回收预处理但摘录无出版日期；排序系统论文和综述无关，剩余内容未证实为10月新研究。",
+    "provider": "anysearch",
+    "score": 32.25,
+    "elapsed_ms": 2876,
+    "text_chars": 8715,
+    "error": false
+  },
+  {
+    "id": "A28",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "ACS、Nature及Elsevier页面列出10月出版日和DOI，含回收研究；其中部分是综述，具体研究数据摘录不完整。",
+    "provider": "deepseek",
+    "score": 96.0,
+    "elapsed_ms": 474,
+    "text_chars": 11060,
+    "error": false
+  },
+  {
+    "id": "A28",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Nature原文确认10月9日与15日，Elsevier页面列10月1日及8日并给DOI；覆盖直接回收和相关研究。",
+    "provider": "native",
+    "score": 94.0,
+    "elapsed_ms": 6448,
+    "text_chars": 35018,
+    "error": false
+  },
+  {
+    "id": "A28",
+    "label": "D",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      3,
+      2,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "Nature条目标明2026年3月发表；其余可见条目未证实10月出版日期。",
+    "provider": "anysearch_general",
+    "score": 37.5,
+    "elapsed_ms": 1093,
+    "text_chars": 1662,
+    "error": false
+  },
+  {
+    "id": "A29",
+    "label": "A",
+    "r": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "u": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "中文期刊文章涉及AI但无Nature系列或10月证据；其余题目偏向地理、传染病与教育，未命中目标。",
+    "provider": "anysearch",
+    "score": 16.0,
+    "elapsed_ms": 2694,
+    "text_chars": 2767,
+    "error": false
+  },
+  {
+    "id": "A29",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "PubMed记录证实Nature Computational Science论文发表于10月12日；其余为新闻、聚合专题或无关刊物条目。",
+    "provider": "native",
+    "score": 71.5,
+    "elapsed_ms": 13654,
+    "text_chars": 16270,
+    "error": false
+  },
+  {
+    "id": "A29",
+    "label": "C",
+    "r": [
+      0,
+      2,
+      2,
+      1,
+      0
+    ],
+    "q": [
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      0,
+      2,
+      2,
+      1,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "Nature新闻提及AI数学预印本，澎湃介绍Nature蛋白酶论文；仅能从摘录确认其余Nature研究较早发表。",
+    "provider": "deepseek",
+    "score": 49.0,
+    "elapsed_ms": 513,
+    "text_chars": 9251,
+    "error": false
+  },
+  {
+    "id": "A29",
+    "label": "D",
+    "r": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      1,
+      2,
+      2,
+      2,
+      3
+    ],
+    "u": [
+      0,
+      1,
+      1,
+      1,
+      2
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "唯一Nature原始研究摘要称Co-Scientist，材料未显示10月日期；其余为旧文或新闻。",
+    "provider": "anysearch_general",
+    "score": 34.0,
+    "elapsed_ms": 2239,
+    "text_chars": 1376,
+    "error": false
+  },
+  {
+    "id": "A30",
+    "label": "A",
+    "r": [
+      0,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      0,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "Nature通讯社页面列有9月底与10月1日条目；新闻报道链接Nature原文但属二手，其他结果主题较宽泛。",
+    "provider": "deepseek",
+    "score": 58.0,
+    "elapsed_ms": 508,
+    "text_chars": 15052,
+    "error": false
+  },
+  {
+    "id": "A30",
+    "label": "B",
+    "r": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 0,
+    "note": "大多是AI科研综述、评论或非Nature系列出版物；未提供符合10月条件的Nature原始研究记录。",
+    "provider": "anysearch",
+    "score": 38.25,
+    "elapsed_ms": 2145,
+    "text_chars": 8237,
+    "error": false
+  },
+  {
+    "id": "A30",
+    "label": "C",
+    "r": [
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      0,
+      2,
+      0,
+      0,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "第2条专题页列出10月新条目；另外4篇原文显示为更早月份，不符合限定月份。",
+    "provider": "native",
+    "score": 52.5,
+    "elapsed_ms": 2292,
+    "text_chars": 39660,
+    "error": false
+  },
+  {
+    "id": "A30",
+    "label": "D",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      0,
+      1
+    ],
+    "coverage": 0,
+    "constraint": 0,
+    "note": "Nature首条标题为观点文章且未显示10月日期；其他结果来自非Nature来源或无出版信息。",
+    "provider": "anysearch_general",
+    "score": 33.5,
+    "elapsed_ms": 2205,
+    "text_chars": 1438,
+    "error": false
+  },
+  {
+    "id": "D01",
+    "label": "A",
+    "r": [
+      1,
+      2,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      2,
+      2,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "政府食品提示有室温或剩饭建议，但多数未给熟米饭冷藏时长。",
+    "provider": "native",
+    "score": 77.0,
+    "elapsed_ms": 2532,
+    "text_chars": 12421,
+    "error": false
+  },
+  {
+    "id": "D01",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      0,
+      2,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "Mayo与米饭专页切题；Reddit无证，厂商及地方博客证据较弱。",
+    "provider": "anysearch",
+    "score": 78.75,
+    "elapsed_ms": 3721,
+    "text_chars": 1333,
+    "error": false
+  },
+  {
+    "id": "D01",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方提示与米饭专文均给出冷藏及室温时限，转载与新闻质量次之。",
+    "provider": "deepseek",
+    "score": 92.0,
+    "elapsed_ms": 488,
+    "text_chars": 3521,
+    "error": false
+  },
+  {
+    "id": "D02",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "NSW给熟米饭两天，FSA含快速冷却；其余部分切题且有官方来源。",
+    "provider": "deepseek",
+    "score": 88.5,
+    "elapsed_ms": 495,
+    "text_chars": 8680,
+    "error": false
+  },
+  {
+    "id": "D02",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 2,
+    "note": "权威机构可信，但摘录主要是泛食品安全，未直接回答米饭冷藏多久。",
+    "provider": "native",
+    "score": 63.75,
+    "elapsed_ms": 2173,
+    "text_chars": 35558,
+    "error": false
+  },
+  {
+    "id": "D02",
+    "label": "C",
+    "r": [
+      2,
+      0,
+      0,
+      2,
+      0
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      2,
+      1
+    ],
+    "u": [
+      1,
+      0,
+      0,
+      2,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "USDA给剩菜冷藏起点，合作推广文章切题；社交问答无依据。",
+    "provider": "anysearch",
+    "score": 52.5,
+    "elapsed_ms": 5347,
+    "text_chars": 1281,
+    "error": false
+  },
+  {
+    "id": "D03",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "国家移民局及使领馆、政府办事页均对护照换发直接适用。",
+    "provider": "anysearch",
+    "score": 100.0,
+    "elapsed_ms": 1570,
+    "text_chars": 1073,
+    "error": false
+  },
+  {
+    "id": "D03",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "政府办事页与公安出入境指南明确列出换发条件和所需材料。",
+    "provider": "deepseek",
+    "score": 100.0,
+    "elapsed_ms": 513,
+    "text_chars": 7706,
+    "error": false
+  },
+  {
+    "id": "D03",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "国家移民管理局材料、条件及在线办理页面均直接吻合。",
+    "provider": "native",
+    "score": 98.0,
+    "elapsed_ms": 2469,
+    "text_chars": 13872,
+    "error": false
+  },
+  {
+    "id": "D04",
+    "label": "A",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "仅首条GOV.UK是境外支持文件，其他多为代办、资讯或首次申请。",
+    "provider": "deepseek",
+    "score": 39.25,
+    "elapsed_ms": 497,
+    "text_chars": 21973,
+    "error": false
+  },
+  {
+    "id": "D04",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "GOV.UK续期流程和费用直接相关；首申及境外群体材料略偏题。",
+    "provider": "native",
+    "score": 86.75,
+    "elapsed_ms": 4370,
+    "text_chars": 36463,
+    "error": false
+  },
+  {
+    "id": "D04",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      1,
+      0,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      0,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "官方续期页提供在线材料要点，余项以境外申请或非官方信息为主。",
+    "provider": "anysearch",
+    "score": 60.0,
+    "elapsed_ms": 3224,
+    "text_chars": 1527,
+    "error": false
+  },
+  {
+    "id": "D05",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "美的、LG和小米官方材料覆盖门封、异味、内筒及过滤器维护。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 3191,
+    "text_chars": 18673,
+    "error": false
+  },
+  {
+    "id": "D05",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "LG官方步骤较完整；论坛和Coolblue建议缺少制造商一手依据。",
+    "provider": "anysearch",
+    "score": 73.75,
+    "elapsed_ms": 1412,
+    "text_chars": 1763,
+    "error": false
+  },
+  {
+    "id": "D05",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "iFixit维护指南与Zanussi、Fisher & Paykel、Electrolux原厂资料覆盖异味、门封和过滤器维护；第4条是原厂支持页。",
+    "provider": "deepseek",
+    "score": 98.0,
+    "elapsed_ms": 554,
+    "text_chars": 16345,
+    "error": false
+  },
+  {
+    "id": "D06",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "LG官方支持覆盖异味成因和维护；第三方故障站仅提供概述。",
+    "provider": "native",
+    "score": 92.5,
+    "elapsed_ms": 3017,
+    "text_chars": 35680,
+    "error": false
+  },
+  {
+    "id": "D06",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "LG官方清洁步骤实用，Miele建议来自零售商且重复出现。",
+    "provider": "deepseek",
+    "score": 73.75,
+    "elapsed_ms": 530,
+    "text_chars": 20009,
+    "error": false
+  },
+  {
+    "id": "D06",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      3,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      0,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "iFixit步骤及Electrolux厂商支持可用，视频与社交内容证据弱。",
+    "provider": "anysearch",
+    "score": 79.25,
+    "elapsed_ms": 2388,
+    "text_chars": 1582,
+    "error": false
+  },
+  {
+    "id": "D07",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "故宫订票页及官网切题，国博和恭王府是错对象，Klook为代理。",
+    "provider": "anysearch",
+    "score": 69.5,
+    "elapsed_ms": 2063,
+    "text_chars": 886,
+    "error": false
+  },
+  {
+    "id": "D07",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多条故宫官网重复确认周一闭馆与预约规则，末条为非官方汇总。",
+    "provider": "native",
+    "score": 92.5,
+    "elapsed_ms": 2338,
+    "text_chars": 15536,
+    "error": false
+  },
+  {
+    "id": "D07",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官网订票和参观页直接说明规则，央广报道与Trip攻略作辅助。",
+    "provider": "deepseek",
+    "score": 89.0,
+    "elapsed_ms": 464,
+    "text_chars": 3835,
+    "error": false
+  },
+  {
+    "id": "D08",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "前两条博物馆官方页直接给免费入场、时段和预约；其余为旅行内容。",
+    "provider": "deepseek",
+    "score": 65.0,
+    "elapsed_ms": 480,
+    "text_chars": 8188,
+    "error": false
+  },
+  {
+    "id": "D08",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方访问页及周五延时页可信且相关，联系方式页只补充免费入场。",
+    "provider": "native",
+    "score": 86.75,
+    "elapsed_ms": 2169,
+    "text_chars": 32789,
+    "error": false
+  },
+  {
+    "id": "D08",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      1,
+      0
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方页提供核心答案，VisitLondon有用；攻略与社交问答较弱。",
+    "provider": "anysearch",
+    "score": 69.25,
+    "elapsed_ms": 2868,
+    "text_chars": 1498,
+    "error": false
+  },
+  {
+    "id": "D09",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多篇手机报道解释USB-C与速率差异，但标准级证据不足且有代码文档。",
+    "provider": "deepseek",
+    "score": 82.5,
+    "elapsed_ms": 563,
+    "text_chars": 9646,
+    "error": false
+  },
+  {
+    "id": "D09",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Apple说明机型速率，Richtek与TI资料讲PD供电，SOGI作通俗补充。",
+    "provider": "native",
+    "score": 98.0,
+    "elapsed_ms": 2612,
+    "text_chars": 23093,
+    "error": false
+  },
+  {
+    "id": "D09",
+    "label": "C",
+    "r": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      2,
+      3,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "Belkin与Infineon说明协议差别；知乎及购物导购证据较弱。",
+    "provider": "anysearch",
+    "score": 71.25,
+    "elapsed_ms": 2395,
+    "text_chars": 1184,
+    "error": false
+  },
+  {
+    "id": "D10",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Same Sky与Plugable区分连接器速度供电，另有技术媒体报道。",
+    "provider": "deepseek",
+    "score": 84.5,
+    "elapsed_ms": 508,
+    "text_chars": 10588,
+    "error": false
+  },
+  {
+    "id": "D10",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      1,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Plugable与Infineon解释接口、数据率及PD，其他资料提供补充。",
+    "provider": "native",
+    "score": 90.0,
+    "elapsed_ms": 2552,
+    "text_chars": 31676,
+    "error": false
+  },
+  {
+    "id": "D10",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      2,
+      2,
+      2,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Kingston、OnLogic和Anker说明连接器与协议区别，维基及视频较弱。",
+    "provider": "anysearch",
+    "score": 86.5,
+    "elapsed_ms": 5187,
+    "text_chars": 1408,
+    "error": false
+  },
+  {
+    "id": "D11",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      2,
+      1,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 2,
+    "note": "Mayo含量表及农业机构资料有用；BBC、知乎和论坛较泛或无依据。",
+    "provider": "anysearch",
+    "score": 67.0,
+    "elapsed_ms": 2091,
+    "text_chars": 1036,
+    "error": false
+  },
+  {
+    "id": "D11",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Mayo与论文表列出含量并提醒差异，科普材料提供茶饮影响因素。",
+    "provider": "deepseek",
+    "score": 96.0,
+    "elapsed_ms": 478,
+    "text_chars": 6651,
+    "error": false
+  },
+  {
+    "id": "D11",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Mayo、台湾卫生与茶研资料均提示含量受份量和冲泡方式影响。",
+    "provider": "native",
+    "score": 94.5,
+    "elapsed_ms": 4314,
+    "text_chars": 17808,
+    "error": false
+  },
+  {
+    "id": "D12",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      3,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "研究论文、PubMed与Harvard资料可追溯，含量差异主题匹配。",
+    "provider": "native",
+    "score": 96.0,
+    "elapsed_ms": 2723,
+    "text_chars": 35012,
+    "error": false
+  },
+  {
+    "id": "D12",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "PubMed研究、系统论文与Mayo数据提供含量差异及影响线索。",
+    "provider": "deepseek",
+    "score": 94.5,
+    "elapsed_ms": 545,
+    "text_chars": 18685,
+    "error": false
+  },
+  {
+    "id": "D12",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      3,
+      1,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      0,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Mayo与同行评审研究支撑比较和因素，Reddit无证，商业博客较薄弱。",
+    "provider": "anysearch",
+    "score": 86.5,
+    "elapsed_ms": 4554,
+    "text_chars": 1688,
+    "error": false
+  },
+  {
+    "id": "N01",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "五条均报10月6日哈尔岑获奖；央视及新华社可追溯，非诺贝尔官方原页。",
+    "provider": "deepseek",
+    "score": 86.0,
+    "elapsed_ms": 498,
+    "text_chars": 3180,
+    "error": false
+  },
+  {
+    "id": "N01",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "DW、RFI及中新网报10月6日结果；视频与社媒证据较弱或内容不符。",
+    "provider": "anysearch",
+    "score": 70.75,
+    "elapsed_ms": 4558,
+    "text_chars": 2115,
+    "error": false
+  },
+  {
+    "id": "N01",
+    "label": "C",
+    "r": [
+      1,
+      2,
+      2,
+      0,
+      1
+    ],
+    "q": [
+      1,
+      1,
+      3,
+      1,
+      1
+    ],
+    "u": [
+      0,
+      2,
+      2,
+      0,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "NobelPress非官方且第1项停在2025；Fermilab转载科学院原文可核验2026结果。",
+    "provider": "native",
+    "score": 52.5,
+    "elapsed_ms": 5754,
+    "text_chars": 20240,
+    "error": false
+  },
+  {
+    "id": "N02",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方站首页列出2026物理奖得主；官方直播与社媒可辅助，部分条目泛或未给姓名。",
+    "provider": "anysearch",
+    "score": 80.75,
+    "elapsed_ms": 2160,
+    "text_chars": 1486,
+    "error": false
+  },
+  {
+    "id": "N02",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      2,
+      2,
+      3,
+      2,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Reuters、韩联社和APS均确认10月6日结果；APS为学会一手祝贺信息。",
+    "provider": "deepseek",
+    "score": 86.5,
+    "elapsed_ms": 500,
+    "text_chars": 7290,
+    "error": false
+  },
+  {
+    "id": "N02",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      1,
+      2,
+      0
+    ],
+    "q": [
+      2,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      2,
+      0
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "AP名单及Fermilab转录可确认获奖；官方日程仅给日期，2025公告年份错误。",
+    "provider": "native",
+    "score": 72.75,
+    "elapsed_ms": 2325,
+    "text_chars": 35040,
+    "error": false
+  },
+  {
+    "id": "N03",
+    "label": "A",
+    "r": [
+      0,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      2,
+      1,
+      3
+    ],
+    "u": [
+      0,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方日志明确10月17日Flash-1017与Search API；第1项只列7月旧更新。",
+    "provider": "deepseek",
+    "score": 85.0,
+    "elapsed_ms": 531,
+    "text_chars": 7322,
+    "error": false
+  },
+  {
+    "id": "N03",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方新闻页及10月17日报道均指向Flash-1017；其余多为媒体转述或聚合。",
+    "provider": "anysearch",
+    "score": 86.0,
+    "elapsed_ms": 2325,
+    "text_chars": 1134,
+    "error": false
+  },
+  {
+    "id": "N03",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      0,
+      0,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "官方10月17日日志与发布页直接满足；后三项分别是9月发布、旧视觉实验和旧日志。",
+    "provider": "native",
+    "score": 61.5,
+    "elapsed_ms": 6846,
+    "text_chars": 21871,
+    "error": false
+  },
+  {
+    "id": "N04",
+    "label": "A",
+    "r": [
+      0,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      2,
+      3,
+      1
+    ],
+    "u": [
+      0,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "10月17日中文日志直接确认新版本；首项仅讲7月V4-Flash，西ina为转述。",
+    "provider": "deepseek",
+    "score": 85.0,
+    "elapsed_ms": 538,
+    "text_chars": 7306,
+    "error": false
+  },
+  {
+    "id": "N04",
+    "label": "B",
+    "r": [
+      2,
+      0,
+      2,
+      0,
+      0
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      0,
+      2,
+      0,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "英文日志首项虽含10月17日更新，旧Flash官方发布页和价格页不满足时效。",
+    "provider": "native",
+    "score": 57.5,
+    "elapsed_ms": 19420,
+    "text_chars": 27138,
+    "error": false
+  },
+  {
+    "id": "N04",
+    "label": "C",
+    "r": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      2,
+      1
+    ],
+    "u": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 0,
+    "note": "官方日志只给9月10日发布；其余是无关讨论、错写1710或二手报道。",
+    "provider": "anysearch",
+    "score": 36.25,
+    "elapsed_ms": 2498,
+    "text_chars": 1402,
+    "error": false
+  },
+  {
+    "id": "N05",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "BLS的M09摘要和新闻稿对应9月数据；第二条片段提10月20日属下一次发布。",
+    "provider": "native",
+    "score": 75.25,
+    "elapsed_ms": 4368,
+    "text_chars": 19496,
+    "error": false
+  },
+  {
+    "id": "N05",
+    "label": "B",
+    "r": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "BLS首条讲10月报告日程而非9月数据；其余多给10月14日已公布线索。",
+    "provider": "anysearch",
+    "score": 69.25,
+    "elapsed_ms": 3562,
+    "text_chars": 1248,
+    "error": false
+  },
+  {
+    "id": "N05",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多条报道明确9月CPI于10月14日公布；GMW与自由财经为可追溯报道。",
+    "provider": "deepseek",
+    "score": 86.0,
+    "elapsed_ms": 486,
+    "text_chars": 5696,
+    "error": false
+  },
+  {
+    "id": "N06",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      2,
+      2,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "AP、Axios及BLS均对应10月14日发布的9月CPI，官方摘要给出准确日期。",
+    "provider": "native",
+    "score": 89.0,
+    "elapsed_ms": 2804,
+    "text_chars": 30060,
+    "error": false
+  },
+  {
+    "id": "N06",
+    "label": "B",
+    "r": [
+      1,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      2,
+      1
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "BLS发布日程确认10月14日；民间预测条目证据较弱，末项是发布前预测。",
+    "provider": "deepseek",
+    "score": 76.75,
+    "elapsed_ms": 494,
+    "text_chars": 10353,
+    "error": false
+  },
+  {
+    "id": "N06",
+    "label": "C",
+    "r": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      2,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "BLS日程页列发布日，CNBC报道9月通胀结果；社媒和索引摘要证据弱。",
+    "provider": "anysearch",
+    "score": 64.25,
+    "elapsed_ms": 2158,
+    "text_chars": 1509,
+    "error": false
+  },
+  {
+    "id": "N07",
+    "label": "A",
+    "r": [
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "NASA新闻索引覆盖新近发布，但多为聚合入口；新闻稿列表有10月条目可追溯。",
+    "provider": "native",
+    "score": 72.75,
+    "elapsed_ms": 2827,
+    "text_chars": 34667,
+    "error": false
+  },
+  {
+    "id": "N07",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      2,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "NASA索引及新闻稿页可查近期项目；首项泛首页，Facebook非官方证据。",
+    "provider": "anysearch",
+    "score": 68.75,
+    "elapsed_ms": 1109,
+    "text_chars": 1752,
+    "error": false
+  },
+  {
+    "id": "N07",
+    "label": "C",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      0,
+      1,
+      1,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "多数为转载或旧日期线索；10月13日卫星图像报道较近但未给NASA原始发布页。",
+    "provider": "deepseek",
+    "score": 50.5,
+    "elapsed_ms": 508,
+    "text_chars": 8014,
+    "error": false
+  },
+  {
+    "id": "N08",
+    "label": "A",
+    "r": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      3,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "亚马逊火情NASA页与10月17日补给报道相关；其余是转载，缺少官方原稿链接。",
+    "provider": "deepseek",
+    "score": 74.25,
+    "elapsed_ms": 508,
+    "text_chars": 13721,
+    "error": false
+  },
+  {
+    "id": "N08",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      2,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "NASA 10月10日页、新闻稿索引和10月12日运营新闻可追溯，含近期线索。",
+    "provider": "native",
+    "score": 78.25,
+    "elapsed_ms": 3520,
+    "text_chars": 32734,
+    "error": false
+  },
+  {
+    "id": "N08",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "罗曼望远镜测试和卫星观测均属近期主题，但均为媒体转述而非NASA发布页。",
+    "provider": "anysearch",
+    "score": 70.25,
+    "elapsed_ms": 1120,
+    "text_chars": 29005,
+    "error": false
+  },
+  {
+    "id": "N09",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      2,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多条报道正确指向9月29日DevDay及发布内容，但大多为媒体二手报道。",
+    "provider": "deepseek",
+    "score": 82.0,
+    "elapsed_ms": 611,
+    "text_chars": 12693,
+    "error": false
+  },
+  {
+    "id": "N09",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方回顾、新闻中心及产品页确认DevDay为9月29日；覆盖回顾与公告入口。",
+    "provider": "native",
+    "score": 96.5,
+    "elapsed_ms": 2781,
+    "text_chars": 19677,
+    "error": false
+  },
+  {
+    "id": "N09",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方公告与DevDay站给出9月29日；媒体复盘可补充发布内容但来源较弱。",
+    "provider": "anysearch",
+    "score": 88.0,
+    "elapsed_ms": 5661,
+    "text_chars": 1352,
+    "error": false
+  },
+  {
+    "id": "N10",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方回顾与活动站直接确认9月29日；Exchange条目是后续活动，不能替代主会。",
+    "provider": "anysearch",
+    "score": 92.5,
+    "elapsed_ms": 2274,
+    "text_chars": 1304,
+    "error": false
+  },
+  {
+    "id": "N10",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      2,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      2,
+      2,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "社区公告与官方Save the Date提供活动线索；首两条泛论坛索引，非完整回顾。",
+    "provider": "native",
+    "score": 67.5,
+    "elapsed_ms": 3237,
+    "text_chars": 32590,
+    "error": false
+  },
+  {
+    "id": "N10",
+    "label": "C",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "主要结果谈10月DevDay Exchange或泛产品；末项才回顾9月29日大会。",
+    "provider": "deepseek",
+    "score": 48.5,
+    "elapsed_ms": 538,
+    "text_chars": 20629,
+    "error": false
+  },
+  {
+    "id": "N11",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方更新日志确认1017快照更新；Hugging Face条目谈基础模型，未明确新checkpoint。",
+    "provider": "anysearch",
+    "score": 80.75,
+    "elapsed_ms": 786,
+    "text_chars": 1500,
+    "error": false
+  },
+  {
+    "id": "N11",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "五条均称1017权重开放或发布，但主要为媒体、周报等二手来源。",
+    "provider": "deepseek",
+    "score": 80.0,
+    "elapsed_ms": 477,
+    "text_chars": 11431,
+    "error": false
+  },
+  {
+    "id": "N11",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方日志和1017新闻页对应当日更新；9月官方发布页仅提供背景。",
+    "provider": "native",
+    "score": 96.5,
+    "elapsed_ms": 2595,
+    "text_chars": 21498,
+    "error": false
+  },
+  {
+    "id": "N12",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "多条结果提到1017权重或版本，但主要是媒体与平台说明；HF页未证1017。",
+    "provider": "anysearch",
+    "score": 72.25,
+    "elapsed_ms": 1248,
+    "text_chars": 2258,
+    "error": false
+  },
+  {
+    "id": "N12",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "五条均直接提1017模型权重开放，证据来自二手媒体报道而非官方权重页。",
+    "provider": "deepseek",
+    "score": 80.0,
+    "elapsed_ms": 463,
+    "text_chars": 10588,
+    "error": false
+  },
+  {
+    "id": "N12",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方日志及新闻页明确1017更新；9月基础发布页与目标checkpoint有日期差异。",
+    "provider": "native",
+    "score": 86.75,
+    "elapsed_ms": 2288,
+    "text_chars": 24761,
+    "error": false
+  },
+  {
+    "id": "N13",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方日志确认10月17日开放搜索API；指南解释接口但抓取时间显示前一日。",
+    "provider": "native",
+    "score": 82.75,
+    "elapsed_ms": 2236,
+    "text_chars": 24798,
+    "error": false
+  },
+  {
+    "id": "N13",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方英文日志直述10月17日开放Search API；其他多为媒体转述或泛定价页。",
+    "provider": "anysearch",
+    "score": 80.5,
+    "elapsed_ms": 2590,
+    "text_chars": 1264,
+    "error": false
+  },
+  {
+    "id": "N13",
+    "label": "C",
+    "r": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "中文日志与媒体报道确认10月17日上线；指南和参考页提供接口细节但缺发布日期。",
+    "provider": "deepseek",
+    "score": 86.5,
+    "elapsed_ms": 498,
+    "text_chars": 8484,
+    "error": false
+  },
+  {
+    "id": "N14",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      1,
+      1,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "媒体报道及官方指南列出Search、Fetch端点；新闻页兼述1017模型更新。",
+    "provider": "deepseek",
+    "score": 88.5,
+    "elapsed_ms": 503,
+    "text_chars": 13608,
+    "error": false
+  },
+  {
+    "id": "N14",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      0,
+      0
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      2,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      0,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "官方日志确认接口开放；Reddit与MarkTechPost是转述，末两条谈其他问题。",
+    "provider": "anysearch",
+    "score": 54.5,
+    "elapsed_ms": 2598,
+    "text_chars": 1477,
+    "error": false
+  },
+  {
+    "id": "N14",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方指南及Search、Fetch参考页列出端点功能；定价页与论坛帖不是发布公告。",
+    "provider": "native",
+    "score": 94.5,
+    "elapsed_ms": 2315,
+    "text_chars": 32707,
+    "error": false
+  },
+  {
+    "id": "N15",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "OpenAI中英文新闻中心列出10月15日两项公告及其他近期更新。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 2379,
+    "text_chars": 22739,
+    "error": false
+  },
+  {
+    "id": "N15",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "结果集中于FTC、测试币事故及模型传闻，未提供指定日期的官方公告列表。",
+    "provider": "deepseek",
+    "score": 38.75,
+    "elapsed_ms": 587,
+    "text_chars": 7060,
+    "error": false
+  },
+  {
+    "id": "N15",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "OpenAI发布说明与帮助中心列出10月15至16日更新；其他结果多为泛页或他司信息。",
+    "provider": "anysearch",
+    "score": 79.25,
+    "elapsed_ms": 1866,
+    "text_chars": 1426,
+    "error": false
+  },
+  {
+    "id": "N16",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "官方帮助中心与新闻页展示10月15至16日更新，多个OpenAI入口可交叉确认。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 3187,
+    "text_chars": 30603,
+    "error": false
+  },
+  {
+    "id": "N16",
+    "label": "B",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "结果多谈Chrome、测试网事故或采访，未覆盖10月15至17日官方更新目录。",
+    "provider": "deepseek",
+    "score": 38.75,
+    "elapsed_ms": 540,
+    "text_chars": 15295,
+    "error": false
+  },
+  {
+    "id": "N16",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "帮助中心确认10月16日发布幻灯片功能；DevDay回顾为9月29日，余项较泛。",
+    "provider": "anysearch",
+    "score": 56.5,
+    "elapsed_ms": 2638,
+    "text_chars": 1356,
+    "error": false
+  },
+  {
+    "id": "S01",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      0,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "前三项是VideoLAN官方多语言页面，直接给版本和Windows下载线索；第4项虽仿官方标题但域名不同，摘录仅为旧版页面，需辨别来源。",
+    "provider": "deepseek",
+    "score": 77.25,
+    "elapsed_ms": 438,
+    "text_chars": 5313,
+    "error": false
+  },
+  {
+    "id": "S01",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "均为VideoLAN下载目录或官方测试站，文件名、版本、架构、校验文件可见；排名页有重复路径及旧版本，仍是官方下载证据。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 2599,
+    "text_chars": 24760,
+    "error": false
+  },
+  {
+    "id": "S01",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "含Microsoft Store和VideoLAN入口，但三条第三方下载/教程仅给安全或下载宣传，缺少来源校验与安装细节；官方入口摘录为空。",
+    "provider": "anysearch",
+    "score": 63.0,
+    "elapsed_ms": 2518,
+    "text_chars": 1134,
+    "error": false
+  },
+  {
+    "id": "S02",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方页面和大学镜像列出版本、平台或校验文件；GitHub README只转链官方地址，末项是第三方镜像目录，官方性及下载链需确认。",
+    "provider": "deepseek",
+    "score": 86.25,
+    "elapsed_ms": 603,
+    "text_chars": 6383,
+    "error": false
+  },
+  {
+    "id": "S02",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "结果均为VideoLAN域名下载页或文件目录，版本、Windows架构与安装包类型清楚；部分为镜像/测试站，摘录未呈现额外下载优势。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 2547,
+    "text_chars": 31732,
+    "error": false
+  },
+  {
+    "id": "S02",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "Microsoft Store和夜间构建页有明确用途，但Softonic与Uptodown摘录只有安全、最新版本等宣传，未给校验或官方直链证据。",
+    "provider": "anysearch",
+    "score": 66.5,
+    "elapsed_ms": 4568,
+    "text_chars": 1442,
+    "error": false
+  },
+  {
+    "id": "S03",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "Johns Hopkins明确说明缺乏临床证据及补剂肝损风险；期刊集合结果混入肝硬化研究而偏题，林庆顺文章引用具体研究但属二手解读。",
+    "provider": "deepseek",
+    "score": 86.5,
+    "elapsed_ms": 551,
+    "text_chars": 15736,
+    "error": false
+  },
+  {
+    "id": "S03",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "霍普金斯、Cochrane及消费者委员会给出疗效证据边界；北京党员教育条目摘录泛，且两种语言的消委会页面信息重复。",
+    "provider": "native",
+    "score": 94.5,
+    "elapsed_ms": 2845,
+    "text_chars": 19809,
+    "error": false
+  },
+  {
+    "id": "S03",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      2,
+      3,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "社交短视频证据薄弱；Humanhealth原页有强疗效表述却未提供对应临床来源。其余含消委会和可追溯二手解读；本组没有PubMed条目。",
+    "provider": "anysearch",
+    "score": 76.75,
+    "elapsed_ms": 1482,
+    "text_chars": 988,
+    "error": false
+  },
+  {
+    "id": "S04",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "霍普金斯、NCCIH和UW Medicine解释证据边界；共识站有NCCIH和具体综述DOI，虽审查日期来源不明，仍有可追溯证据。",
+    "provider": "native",
+    "score": 96.0,
+    "elapsed_ms": 5962,
+    "text_chars": 37443,
+    "error": false
+  },
+  {
+    "id": "S04",
+    "label": "B",
+    "r": [
+      2,
+      0,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "首项霍普金斯内容直接；第二项ACG集合页摘录聚焦肝硬化而非排毒补剂，后续MIMS和日经转述具体研究但仍为二手材料。",
+    "provider": "deepseek",
+    "score": 75.75,
+    "elapsed_ms": 530,
+    "text_chars": 13424,
+    "error": false
+  },
+  {
+    "id": "S04",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      2,
+      3
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "霍普金斯及PubMed研究切题；GoodRx标题是补剂推荐榜，摘录未呈方法且仅泛称研究不足；Mayo针对MASLD人群，不能泛化为排毒证据。",
+    "provider": "anysearch",
+    "score": 79.25,
+    "elapsed_ms": 2254,
+    "text_chars": 1714,
+    "error": false
+  },
+  {
+    "id": "S05",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "证监会问答直接回应“保证20%”，并说明禁止保本保收益；金融监管总局和市监部门提供警示及法规，建行提示补充具体诈骗方式。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 5350,
+    "text_chars": 14035,
+    "error": false
+  },
+  {
+    "id": "S05",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      1,
+      1,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "中行和市监局材料切题且有具体风险信息；新浪转述案例、搜狐自媒体及保险协会转载未呈可核执法或原始监管依据。",
+    "provider": "deepseek",
+    "score": 81.75,
+    "elapsed_ms": 542,
+    "text_chars": 7367,
+    "error": false
+  },
+  {
+    "id": "S05",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      2,
+      3,
+      2,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "建行旧风险揭示书讲浮动收益，不直接论证20%承诺；央视和基金页有风险提示但非监管结论，末项只是长期收益泛谈。",
+    "provider": "anysearch",
+    "score": 67.5,
+    "elapsed_ms": 2419,
+    "text_chars": 1042,
+    "error": false
+  },
+  {
+    "id": "S06",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "SEC法律文件与SEC反欺诈说明直接涉及无风险高收益；东财转载内容中文切题但属二手，LinkedIn个人帖含绝对化判断及未核实的监管背书。",
+    "provider": "deepseek",
+    "score": 85.75,
+    "elapsed_ms": 528,
+    "text_chars": 14284,
+    "error": false
+  },
+  {
+    "id": "S06",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "SEC、尼日利亚SEC、FCA及SEC投资者教育均给出监管警示或识别方法；具体收益阈值随司法辖区与产品情境而异，摘录未充分限定。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 3188,
+    "text_chars": 39292,
+    "error": false
+  },
+  {
+    "id": "S06",
+    "label": "C",
+    "r": [
+      1,
+      2,
+      2,
+      1,
+      0
+    ],
+    "q": [
+      1,
+      1,
+      3,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      2,
+      1,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "CFTC警示直接匹配且摘录保留20–50%示例；Facebook、博客和信用社文章证据层级较低，PBS条目摘录内容与问题无关。",
+    "provider": "anysearch",
+    "score": 52.5,
+    "elapsed_ms": 2651,
+    "text_chars": 1621,
+    "error": false
+  },
+  {
+    "id": "S07",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "IQAir解释CADR但有品牌利益背景；购物指南与Dealmoon无具体测试方法，视频证据薄；8world标题相关但摘录未提供测试数据。",
+    "provider": "anysearch",
+    "score": 61.0,
+    "elapsed_ms": 1724,
+    "text_chars": 1033,
+    "error": false
+  },
+  {
+    "id": "S07",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "IQAir列测试限制但有商业立场；IT之家等榜单报标准、实验室数值及报告编号，却未在摘录展示报告或利益披露，需核实测量链。",
+    "provider": "deepseek",
+    "score": 65.25,
+    "elapsed_ms": 673,
+    "text_chars": 9741,
+    "error": false
+  },
+  {
+    "id": "S07",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      1,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "标准与政府文件提供方法定义，国际指南强调独立认证；家电选购文章虽称联合实验室实测，却未列实验室名称或结果，编制说明不是现行标准。",
+    "provider": "native",
+    "score": 94.0,
+    "elapsed_ms": 2248,
+    "text_chars": 18842,
+    "error": false
+  },
+  {
+    "id": "S08",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "RTINGS列购买测试数量及方法页，测试变更披露旧测法误差；AirFilterGuru声明数据来源但摘录未给实测表，整体方法证据较充分。",
+    "provider": "native",
+    "score": 98.0,
+    "elapsed_ms": 3015,
+    "text_chars": 35155,
+    "error": false
+  },
+  {
+    "id": "S08",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "HouseFresh和Consumer Reports是评测/选购来源但摘录缺方法细节；Reddit是讨论；IQAir为商业品牌观点，Oransi文章也有销售方立场。",
+    "provider": "anysearch",
+    "score": 73.25,
+    "elapsed_ms": 3335,
+    "text_chars": 1567,
+    "error": false
+  },
+  {
+    "id": "S08",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "论文给出CADR估算公式及多次测量，ANSI说明标准方法，Testfakta披露受Coway委托且有独立实验室；IQAir观点带品牌利益。",
+    "provider": "deepseek",
+    "score": 90.5,
+    "elapsed_ms": 519,
+    "text_chars": 20347,
+    "error": false
+  },
+  {
+    "id": "S09",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      2,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "前两条分别为泛科普和新闻转述复现，第三条引述韩国学会及八家实验室；New Scientist呈现争议，百度百科为二手汇总。",
+    "provider": "deepseek",
+    "score": 83.75,
+    "elapsed_ms": 540,
+    "text_chars": 9237,
+    "error": false
+  },
+  {
+    "id": "S09",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "内容集中早期复现消息及社交讨论，未直接提供论文全文或后来综合结论；知乎、36氪、腾讯和SMZDM均为二手叙述。",
+    "provider": "anysearch",
+    "score": 62.5,
+    "elapsed_ms": 5441,
+    "text_chars": 1090,
+    "error": false
+  },
+  {
+    "id": "S09",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      2,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "多篇arXiv原始研究与物理学会期刊文章覆盖复现和反证；第三项摘录主要复述原始宣称，不能据此当作反证。",
+    "provider": "native",
+    "score": 92.5,
+    "elapsed_ms": 2282,
+    "text_chars": 21755,
+    "error": false
+  },
+  {
+    "id": "S10",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      1,
+      1,
+      2,
+      2,
+      3
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "Zenodo摘要提及复现但引入未经摘录验证的新理论；New Scientist保留争议，RNZ转述学会结果；NSTL仅摘要，末项原论文含Cu₂S解释。",
+    "provider": "deepseek",
+    "score": 78.25,
+    "elapsed_ms": 510,
+    "text_chars": 14914,
+    "error": false
+  },
+  {
+    "id": "S10",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "arXiv及IOP研究、PubMed和ACS论文直接提供复现实验与无超导证据，Physics World提供可追溯报道；前两项为同一研究的预印本和期刊版。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 3841,
+    "text_chars": 37186,
+    "error": false
+  },
+  {
+    "id": "S10",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      1,
+      2,
+      2
+    ],
+    "q": [
+      2,
+      1,
+      1,
+      3,
+      1
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      2,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "Physics World直接报道复现失败；Medium与Reddit为评论讨论，Nature期刊版研究证据强但摘录只呈研究背景，Wikipedia仅给定义。",
+    "provider": "anysearch",
+    "score": 61.5,
+    "elapsed_ms": 2637,
+    "text_chars": 1563,
+    "error": false
+  },
+  {
+    "id": "T01",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "CPython实现与中文、英文官方文档直接解释异常聚合及取消行为。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 4421,
+    "text_chars": 28941,
+    "error": false
+  },
+  {
+    "id": "T01",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      0,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      0,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方文档最有用，博客、论坛、视频和问答提供不同深度解释。",
+    "provider": "anysearch",
+    "score": 77.75,
+    "elapsed_ms": 2366,
+    "text_chars": 1492,
+    "error": false
+  },
+  {
+    "id": "T01",
+    "label": "C",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "CPython实现及文档版本具体，邮件列表证据较弱，翻译稿有版本差异。",
+    "provider": "deepseek",
+    "score": 92.5,
+    "elapsed_ms": 475,
+    "text_chars": 9292,
+    "error": false
+  },
+  {
+    "id": "T02",
+    "label": "A",
+    "r": [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      3,
+      1,
+      2
+    ],
+    "u": [
+      2,
+      1,
+      2,
+      1,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "源码和check-in材料涉及异常取消，个别条目摘录不足或时间元数据异常。",
+    "provider": "deepseek",
+    "score": 76.75,
+    "elapsed_ms": 451,
+    "text_chars": 12858,
+    "error": false
+  },
+  {
+    "id": "T02",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      2,
+      2,
+      1
+    ],
+    "q": [
+      3,
+      1,
+      2,
+      1,
+      1
+    ],
+    "u": [
+      2,
+      0,
+      2,
+      1,
+      1
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "官方文档最直接，问答与论坛是次级线索，视频未见具体行为证据。",
+    "provider": "anysearch",
+    "score": 72.75,
+    "elapsed_ms": 2546,
+    "text_chars": 1551,
+    "error": false
+  },
+  {
+    "id": "T02",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "实现源码及官方文档明确异常传播和取消，多个版本资料相互印证。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 4398,
+    "text_chars": 34894,
+    "error": false
+  },
+  {
+    "id": "T03",
+    "label": "A",
+    "r": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      2,
+      1
+    ],
+    "coverage": 4,
+    "constraint": 1,
+    "note": "gov.cn包含其子域；第2–4条有现行法第38条原文，第1条为草案。",
+    "provider": "native",
+    "score": 91.5,
+    "elapsed_ms": 2500,
+    "text_chars": 14644,
+    "error": false
+  },
+  {
+    "id": "T03",
+    "label": "B",
+    "r": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      1
+    ],
+    "u": [
+      2,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "CAC现行法页面属于gov.cn子域，其他结果混有配套法规、境外站点与翻译站。",
+    "provider": "anysearch",
+    "score": 64.5,
+    "elapsed_ms": 1722,
+    "text_chars": 1241,
+    "error": false
+  },
+  {
+    "id": "T03",
+    "label": "C",
+    "r": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coverage": 1,
+    "constraint": 1,
+    "note": "5条均为gov.cn子域，但内容主要是配套办法或解读，未命中所需法律原文。",
+    "provider": "deepseek",
+    "score": 56.75,
+    "elapsed_ms": 510,
+    "text_chars": 3452,
+    "error": false
+  },
+  {
+    "id": "T04",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      2,
+      1,
+      2,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      1,
+      1,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 1,
+    "note": "仅第一条在rfc-editor.org；RFC文本、Info页及历史记录能佐证编号与元数据。",
+    "provider": "anysearch",
+    "score": 87.0,
+    "elapsed_ms": 2977,
+    "text_chars": 1254,
+    "error": false
+  },
+  {
+    "id": "T04",
+    "label": "B",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "五项均为rfc-editor.org，涵盖正文、勘误、STD 97元数据和状态。",
+    "provider": "deepseek",
+    "score": 100.0,
+    "elapsed_ms": 615,
+    "text_chars": 7353,
+    "error": false
+  },
+  {
+    "id": "T04",
+    "label": "C",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 4,
+    "constraint": 2,
+    "note": "全部来自指定RFC编辑器站点，含HTML、Info、STD元数据及PDF原文。",
+    "provider": "native",
+    "score": 100.0,
+    "elapsed_ms": 6600,
+    "text_chars": 32358,
+    "error": false
+  },
+  {
+    "id": "T05",
+    "label": "A",
+    "r": [
+      2,
+      2,
+      2,
+      2,
+      0
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      2
+    ],
+    "u": [
+      2,
+      2,
+      2,
+      2,
+      0
+    ],
+    "coverage": 3,
+    "constraint": 1,
+    "note": "前四项为电池回收综述且日期落窗；ACS校园代理页无法确认日期与排除站点。",
+    "provider": "deepseek",
+    "score": 79.75,
+    "elapsed_ms": 459,
+    "text_chars": 28595,
+    "error": false
+  },
+  {
+    "id": "T05",
+    "label": "B",
+    "r": [
+      0,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      0,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 0,
+    "note": "首条发布日期为2026年6月超出窗口；余项日期在2024至2025且无知乎。",
+    "provider": "native",
+    "score": 76.75,
+    "elapsed_ms": 4483,
+    "text_chars": 26672,
+    "error": false
+  },
+  {
+    "id": "T05",
+    "label": "C",
+    "r": [
+      1,
+      2,
+      0,
+      1,
+      0
+    ],
+    "q": [
+      2,
+      3,
+      2,
+      2,
+      2
+    ],
+    "u": [
+      1,
+      2,
+      0,
+      1,
+      0
+    ],
+    "coverage": 2,
+    "constraint": 1,
+    "note": "一篇2024综述吻合；市场报告和资讯偏题，多项时间超窗。",
+    "provider": "anysearch",
+    "score": 53.5,
+    "elapsed_ms": 3688,
+    "text_chars": 1187,
+    "error": false
+  },
+  {
+    "id": "T06",
+    "label": "A",
+    "r": [
+      0,
+      0,
+      1,
+      0,
+      2
+    ],
+    "q": [
+      3,
+      1,
+      2,
+      1,
+      3
+    ],
+    "u": [
+      0,
+      0,
+      1,
+      0,
+      2
+    ],
+    "coverage": 1,
+    "constraint": 0,
+    "note": "首条为2026年论文超窗，第二和第四为概览或营销，未见Reddit排除违规。",
+    "provider": "anysearch",
+    "score": 36.75,
+    "elapsed_ms": 2400,
+    "text_chars": 1612,
+    "error": false
+  },
+  {
+    "id": "T06",
+    "label": "B",
+    "r": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "u": [
+      1,
+      2,
+      2,
+      2,
+      2
+    ],
+    "coverage": 3,
+    "constraint": 2,
+    "note": "结果均无Reddit且日期在窗内，涵盖电极回收、综述和预处理。",
+    "provider": "deepseek",
+    "score": 90.25,
+    "elapsed_ms": 459,
+    "text_chars": 20437,
+    "error": false
+  },
+  {
+    "id": "T06",
+    "label": "C",
+    "r": [
+      0,
+      2,
+      0,
+      0,
+      2
+    ],
+    "q": [
+      3,
+      3,
+      3,
+      1,
+      3
+    ],
+    "u": [
+      0,
+      2,
+      0,
+      0,
+      2
+    ],
+    "coverage": 2,
+    "constraint": 0,
+    "note": "多条为2026年超窗；2025年Nature综述与2024年MDPI文章切题。",
+    "provider": "native",
+    "score": 52.5,
+    "elapsed_ms": 4971,
+    "text_chars": 35562,
+    "error": false
+  }
+]

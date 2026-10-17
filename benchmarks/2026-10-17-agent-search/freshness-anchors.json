@@ -1,0 +1,82 @@
+{
+  "verified_on": "2026-10-17",
+  "timezone": "Asia/Shanghai",
+  "anchors": [
+    {
+      "cases": [
+        "N01",
+        "N02"
+      ],
+      "fact": "2026年物理学奖公告日期为10月6日；Fermilab转载科学院发布稿及APS公告均指向Francis Halzen。",
+      "sources": [
+        "https://www.nobelprize.org/prizes/about/prize-announcement-dates",
+        "https://news.fnal.gov/2026/10/nobel-prize-in-physics-awarded-to-francis-halzen-for-groundbreaking-neutrino-research/",
+        "https://www.aps.org/about/news/2026/10/aps-winner-2026-nobel-physics"
+      ],
+      "note": "诺奖发布页直接访问403，以明确注明转载来源的实验室稿和学会公告交叉核验。"
+    },
+    {
+      "cases": [
+        "N03",
+        "N04",
+        "N11",
+        "N12",
+        "N13",
+        "N14"
+      ],
+      "fact": "官方10月17日更新条目包含Flash-1017以及Search/Fetch API。",
+      "sources": [
+        "https://api-docs.deepseek.com/updates/",
+        "https://api-docs.deepseek.com/news/news261017/",
+        "https://api-docs.deepseek.com/guides/search/"
+      ]
+    },
+    {
+      "cases": [
+        "N05",
+        "N06"
+      ],
+      "fact": "美国2026年9月CPI发布时间为10月14日08:30；月份是统计月份，不能与发布日期混淆。",
+      "sources": [
+        "https://www.bls.gov/schedule/news_release/cpi.htm",
+        "https://www.bls.gov/news.release/archives/cpi_10142026.htm"
+      ]
+    },
+    {
+      "cases": [
+        "N07",
+        "N08"
+      ],
+      "fact": "NASA存在10月15日研究教育资助公告和10月16日中心主任任命公告，可用来核对“最近一周”能力。",
+      "sources": [
+        "https://www.nasa.gov/learning-resources/nasa-awards-enable-research-technology-to-build-future-workforce/",
+        "https://www.nasa.gov/news-release/nasa-names-stephen-cash-marshall-space-flight-center-director/"
+      ],
+      "note": "这些是可验证的例子，不是穷举正确结果集；其他符合时间窗的NASA新闻也可得分。"
+    },
+    {
+      "cases": [
+        "N09",
+        "N10"
+      ],
+      "fact": "OpenAI DevDay 2026 主活动为9月29日；10月的Exchange活动不能替代主会日期。",
+      "sources": [
+        "https://openai.com/index/devday-2026-recap/",
+        "https://devday.openai.com/"
+      ]
+    },
+    {
+      "cases": [
+        "N15",
+        "N16"
+      ],
+      "fact": "官方10月15日公告包含Rosalind Academic Plan和以提问促进学习的文章；帮助中心另有近72小时更新。",
+      "sources": [
+        "https://openai.com/index/introducing-the-rosalind-academic-plan/",
+        "https://openai.com/index/teaching-students-to-think-and-learn-through-questions/",
+        "https://openai.com/news/"
+      ],
+      "note": "作为已核对的样例，不要求所有工具必须返回完全相同的公告。"
+    }
+  ]
+}

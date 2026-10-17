@@ -1,0 +1,1095 @@
+{
+  "version": "1.1",
+  "amended_at": "2026-10-17T13:08:18.818Z",
+  "amendment": "按用户补充增加当日、近72小时及当月测试；已有试跑A01不变。",
+  "date": "2026-10-17",
+  "timezone": "Asia/Shanghai",
+  "top_k": 5,
+  "cases": [
+    {
+      "id": "A01",
+      "category": "学术",
+      "language": "zh",
+      "query": "香农 1948 通信的数学理论 原始论文 DOI",
+      "scenario": "精确文献",
+      "criteria": "找到Shannon原始论文而非科普；标题、作者、1948年份一致。",
+      "anchor": "https://doi.org/10.1002/j.1538-7305.1948.tb01338.x",
+      "anysearch": {
+        "query": "香农 1948 通信的数学理论 原始论文 DOI",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A02",
+      "category": "学术",
+      "language": "en",
+      "query": "\"Attention Is All You Need\" original paper 2017",
+      "scenario": "精确文献",
+      "criteria": "找到2017论文记录或原文；Vaswani等；可追溯arXiv/NeurIPS。",
+      "anchor": "https://arxiv.org/abs/1706.03762",
+      "anysearch": {
+        "query": "\"Attention Is All You Need\" original paper 2017",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A03",
+      "category": "学术",
+      "language": "zh",
+      "query": "查找 DOI 10.1371/journal.pmed.0020124 的论文、作者与原文",
+      "scenario": "DOI定位",
+      "criteria": "Ioannidis 2005 Why Most Published Research Findings Are False；DOI匹配。",
+      "anchor": "https://doi.org/10.1371/journal.pmed.0020124",
+      "anysearch": {
+        "query": "查找 DOI 10.1371/journal.pmed.0020124 的论文、作者与原文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {
+          "doi": "10.1371/journal.pmed.0020124"
+        }
+      }
+    },
+    {
+      "id": "A04",
+      "category": "学术",
+      "language": "en",
+      "query": "Find the paper, authors and original source for DOI 10.1038/nature14539",
+      "scenario": "DOI定位",
+      "criteria": "Deep learning；LeCun Bengio Hinton；Nature 2015；DOI匹配。",
+      "anchor": "https://doi.org/10.1038/nature14539",
+      "anysearch": {
+        "query": "Find the paper, authors and original source for DOI 10.1038/nature14539",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {
+          "doi": "10.1038/nature14539"
+        }
+      }
+    },
+    {
+      "id": "A05",
+      "category": "学术",
+      "language": "zh",
+      "query": "双重差分 错位实施 异质性处理效应 双向固定效应 方法论文",
+      "scenario": "因果推断",
+      "criteria": "找到讨论错位DID偏误和异质性的原始方法论文，足以区分替代估计方法。",
+      "anchor": "https://doi.org/10.1016/j.jeconom.2021.03.014",
+      "anysearch": {
+        "query": "双重差分 错位实施 异质性处理效应 双向固定效应 方法论文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A06",
+      "category": "学术",
+      "language": "en",
+      "query": "staggered difference in differences heterogeneous treatment effects Callaway Sant'Anna",
+      "scenario": "因果推断",
+      "criteria": "找到Callaway/Sant'Anna多期DID方法；作者和方法匹配。",
+      "anchor": "https://doi.org/10.1016/j.jeconom.2020.12.001",
+      "anysearch": {
+        "query": "staggered difference in differences heterogeneous treatment effects Callaway Sant'Anna",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A07",
+      "category": "学术",
+      "language": "zh",
+      "query": "CRISPR Cas9 PAM 脱靶效应 机制 综述 论文",
+      "scenario": "生命科学综述",
+      "criteria": "学术综述或原始研究，讨论PAM和脱靶，不只提供培训/实验试剂营销。",
+      "anchor": "https://pubmed.ncbi.nlm.nih.gov/?term=CRISPR+Cas9+PAM+off-target+review",
+      "anysearch": {
+        "query": "CRISPR Cas9 PAM 脱靶效应 机制 综述 论文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.biomedical",
+        "sub_domain_params": {
+          "field": "all"
+        }
+      }
+    },
+    {
+      "id": "A08",
+      "category": "学术",
+      "language": "en",
+      "query": "CRISPR Cas9 off target effects systematic review genome editing",
+      "scenario": "生命科学综述",
+      "criteria": "相关评述或系统综述；能核对文献元数据与脱靶证据。",
+      "anchor": "https://pubmed.ncbi.nlm.nih.gov/?term=CRISPR+Cas9+off-target+systematic+review",
+      "anysearch": {
+        "query": "CRISPR Cas9 off target effects systematic review genome editing",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.biomedical",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A09",
+      "category": "学术",
+      "language": "zh",
+      "query": "MIMIC-IV 数据集 官方 数据访问 许可 代码仓库",
+      "scenario": "数据与复现",
+      "criteria": "优先PhysioNet和MIT-LCP；提供数据访问/许可及代码线索，区分数据和介绍文章。",
+      "anchor": "https://physionet.org/content/mimiciv/",
+      "anysearch": {
+        "query": "MIMIC-IV 数据集 官方 数据访问 许可 代码仓库",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.dataset",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A10",
+      "category": "学术",
+      "language": "en",
+      "query": "MIMIC-IV database official dataset access license code repository",
+      "scenario": "数据与复现",
+      "criteria": "找到PhysioNet数据访问限制与MIT-LCP官方代码，不把第三方副本当权威数据。",
+      "anchor": "https://physionet.org/content/mimiciv/",
+      "anysearch": {
+        "query": "MIMIC-IV database official dataset access license code repository",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.dataset",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A11",
+      "category": "学术",
+      "language": "zh",
+      "query": "Wakefield 1998 麻疹疫苗 自闭症 柳叶刀 撤稿声明",
+      "scenario": "撤稿与负面证据",
+      "criteria": "检出撤稿事实和声明，不能仅返回被撤稿论文而遗漏状态。",
+      "anchor": "https://doi.org/10.1016/S0140-6736(10)60175-4",
+      "anysearch": {
+        "query": "Wakefield 1998 麻疹疫苗 自闭症 柳叶刀 撤稿声明",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.biomedical",
+        "sub_domain_params": {
+          "field": "all"
+        }
+      }
+    },
+    {
+      "id": "A12",
+      "category": "学术",
+      "language": "en",
+      "query": "Wakefield 1998 MMR autism Lancet retraction notice",
+      "scenario": "撤稿与负面证据",
+      "criteria": "找到2010撤稿声明或明确标记RETRACTED的原始记录。",
+      "anchor": "https://doi.org/10.1016/S0140-6736(10)60175-4",
+      "anysearch": {
+        "query": "Wakefield 1998 MMR autism Lancet retraction notice",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.biomedical",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A13",
+      "category": "学术",
+      "language": "zh",
+      "query": "心理学 可重复性 100项研究 2015 Science 原论文",
+      "scenario": "复制研究",
+      "criteria": "Open Science Collaboration；100项研究；2015 Science原文/记录。",
+      "anchor": "https://doi.org/10.1126/science.aac4716",
+      "anysearch": {
+        "query": "心理学 可重复性 100项研究 2015 Science 原论文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A14",
+      "category": "学术",
+      "language": "en",
+      "query": "Estimating the reproducibility of psychological science 2015 original study",
+      "scenario": "复制研究",
+      "criteria": "原始研究标题匹配；Science 2015；可核对作者群体与结果。",
+      "anchor": "https://doi.org/10.1126/science.aac4716",
+      "anysearch": {
+        "query": "Estimating the reproducibility of psychological science 2015 original study",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A15",
+      "category": "学术",
+      "language": "zh",
+      "query": "现金转移 肯尼亚 随机对照实验 Haushofer Shapiro 2016 论文",
+      "scenario": "经济学实证",
+      "criteria": "对应2016 QJE随机实验；识别作者、干预与结局，不只一般扶贫评论。",
+      "anchor": "https://doi.org/10.1093/qje/qjw025",
+      "anysearch": {
+        "query": "现金转移 肯尼亚 随机对照实验 Haushofer Shapiro 2016 论文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A16",
+      "category": "学术",
+      "language": "en",
+      "query": "cash transfers Kenya randomized controlled trial Haushofer Shapiro 2016",
+      "scenario": "经济学实证",
+      "criteria": "匹配肯尼亚现金转移RCT原始论文与可用摘要。",
+      "anchor": "https://doi.org/10.1093/qje/qjw025",
+      "anysearch": {
+        "query": "cash transfers Kenya randomized controlled trial Haushofer Shapiro 2016",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A17",
+      "category": "学术",
+      "language": "zh",
+      "query": "中国 碳排放权交易试点 双重差分 政策评估 2020 2025 论文",
+      "scenario": "中文社科与时间限定",
+      "criteria": "2020至2025论文；主题为中国碳交易试点，使用DID评估；非纯政策新闻。",
+      "anchor": "",
+      "anysearch": {
+        "query": "中国 碳排放权交易试点 双重差分 政策评估 2020 2025 论文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {
+          "year_from": "2020",
+          "year_to": "2025"
+        }
+      }
+    },
+    {
+      "id": "A18",
+      "category": "学术",
+      "language": "en",
+      "query": "GLP-1 receptor agonists cardiovascular outcomes meta-analysis randomized trials 2025",
+      "scenario": "医学时限综述",
+      "criteria": "2025年、GLP-1、心血管结局RCT荟萃分析；不能用其他年份或单试验冒充。",
+      "anchor": "https://pubmed.ncbi.nlm.nih.gov/?term=GLP-1+cardiovascular+meta-analysis+2025",
+      "anysearch": {
+        "query": "GLP-1 receptor agonists cardiovascular outcomes meta-analysis randomized trials 2025",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.biomedical",
+        "sub_domain_params": {
+          "year_from": "2025",
+          "year_to": "2025",
+          "date_type": "pdat"
+        }
+      }
+    },
+    {
+      "id": "A19",
+      "category": "学术",
+      "language": "zh",
+      "query": "敦煌 遗书 数字化 国际敦煌项目 藏品 数据库",
+      "scenario": "数字人文",
+      "criteria": "找到IDP/图书馆原始藏品数据库或学术数字化材料。",
+      "anchor": "https://idp.bl.uk/",
+      "anysearch": {
+        "query": "敦煌 遗书 数字化 国际敦煌项目 藏品 数据库",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A20",
+      "category": "学术",
+      "language": "en",
+      "query": "International Dunhuang Programme digitised manuscripts collection database",
+      "scenario": "数字人文",
+      "criteria": "定位IDP原始数字藏品与馆藏目录，非旅游图片。",
+      "anchor": "https://idp.bl.uk/",
+      "anysearch": {
+        "query": "International Dunhuang Programme digitised manuscripts collection database",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A21",
+      "category": "学术",
+      "language": "zh",
+      "query": "气候变化 生物多样性 物种灭绝 综合评估 IPBES IPCC",
+      "scenario": "跨学科评估",
+      "criteria": "IPBES/IPCC报告或相关综合研究，区分气候作用与全部驱动因素。",
+      "anchor": "https://www.ipbes.net/global-assessment",
+      "anysearch": {
+        "query": "气候变化 生物多样性 物种灭绝 综合评估 IPBES IPCC",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A22",
+      "category": "学术",
+      "language": "en",
+      "query": "climate change biodiversity species extinction global assessment IPBES IPCC",
+      "scenario": "跨学科评估",
+      "criteria": "返回权威评估或综合论文，支持气候影响与灭绝风险证据。",
+      "anchor": "https://www.ipbes.net/global-assessment",
+      "anysearch": {
+        "query": "climate change biodiversity species extinction global assessment IPBES IPCC",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A23",
+      "category": "学术",
+      "language": "zh",
+      "query": "李飞飞 ImageNet 2009 论文 作者 原文",
+      "scenario": "作者与文献识别",
+      "criteria": "定位Deng等ImageNet 2009论文，包含Fei-Fei Li，避免人物介绍替代论文。",
+      "anchor": "https://doi.org/10.1109/CVPR.2009.5206848",
+      "anysearch": {
+        "query": "李飞飞 ImageNet 2009 论文 作者 原文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "A24",
+      "category": "学术",
+      "language": "en",
+      "query": "ImageNet 2009 paper Fei-Fei Li Jia Deng authors original publication",
+      "scenario": "作者与文献识别",
+      "criteria": "检出CVPR 2009 ImageNet论文，正确作者与原文链接。",
+      "anchor": "https://doi.org/10.1109/CVPR.2009.5206848",
+      "anysearch": {
+        "query": "ImageNet 2009 paper Fei-Fei Li Jia Deng authors original publication",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {}
+      }
+    },
+    {
+      "id": "D01",
+      "category": "日常任务",
+      "language": "zh",
+      "query": "熟米饭 冰箱 保存多久 食品安全 官方建议",
+      "scenario": "食品保存",
+      "criteria": "可靠公共卫生/食品机构建议，区分室温放置与冷藏时长。",
+      "anchor": "",
+      "anysearch": {
+        "query": "熟米饭 冰箱 保存多久 食品安全 官方建议",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D02",
+      "category": "日常任务",
+      "language": "en",
+      "query": "cooked rice refrigerator storage how long food safety official guidance",
+      "scenario": "食品保存",
+      "criteria": "FDA/USDA/NHS/FSA等可追溯食品安全依据，区分冷藏与室温。",
+      "anchor": "",
+      "anysearch": {
+        "query": "cooked rice refrigerator storage how long food safety official guidance",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D03",
+      "category": "日常任务",
+      "language": "zh",
+      "query": "护照 过期 换发 国家移民管理局 材料 办理",
+      "scenario": "公共服务",
+      "criteria": "中国官方护照换发材料与办理途径，不混入其他国家或旅行中介。",
+      "anchor": "https://www.nia.gov.cn/",
+      "anysearch": {
+        "query": "护照 过期 换发 国家移民管理局 材料 办理",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D04",
+      "category": "日常任务",
+      "language": "en",
+      "query": "UK passport renewal required documents official online application",
+      "scenario": "公共服务",
+      "criteria": "英国政府官方续期流程和材料，排除付费代办冒充官方。",
+      "anchor": "https://www.gov.uk/renew-adult-passport",
+      "anysearch": {
+        "query": "UK passport renewal required documents official online application",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D05",
+      "category": "日常任务",
+      "language": "zh",
+      "query": "洗衣机 衣服霉味 门封 清洁 排水过滤器 厂商说明",
+      "scenario": "家电排障",
+      "criteria": "能给出厂商维护依据，涵盖门封/过滤器/清洁，非只有购买推荐。",
+      "anchor": "",
+      "anysearch": {
+        "query": "洗衣机 衣服霉味 门封 清洁 排水过滤器 厂商说明",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D06",
+      "category": "日常任务",
+      "language": "en",
+      "query": "washing machine musty smell door seal drain filter manufacturer cleaning instructions",
+      "scenario": "家电排障",
+      "criteria": "厂商手册或支持文档支持具体清洁步骤。",
+      "anchor": "",
+      "anysearch": {
+        "query": "washing machine musty smell door seal drain filter manufacturer cleaning instructions",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D07",
+      "category": "日常任务",
+      "language": "zh",
+      "query": "北京 故宫 博物院 预约 门票 周一 闭馆 官方",
+      "scenario": "本地出行",
+      "criteria": "故宫官方预约渠道和闭馆规则；特殊开放不能误当常规。",
+      "anchor": "https://www.dpm.org.cn/",
+      "anysearch": {
+        "query": "北京 故宫 博物院 预约 门票 周一 闭馆 官方",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D08",
+      "category": "日常任务",
+      "language": "en",
+      "query": "British Museum opening hours free entry booking official",
+      "scenario": "本地出行",
+      "criteria": "博物馆官方开放时间与预约/收费信息。",
+      "anchor": "https://www.britishmuseum.org/visit",
+      "anysearch": {
+        "query": "British Museum opening hours free entry booking official",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D09",
+      "category": "日常任务",
+      "language": "zh",
+      "query": "手机 USB-C 接口 USB 3 数据速度 PD 充电 区别",
+      "scenario": "消费技术",
+      "criteria": "区分接口形状、USB协议速度和USB PD供电，支持AI解释兼容性。",
+      "anchor": "",
+      "anysearch": {
+        "query": "手机 USB-C 接口 USB 3 数据速度 PD 充电 区别",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D10",
+      "category": "日常任务",
+      "language": "en",
+      "query": "USB-C connector USB 3 data speed USB Power Delivery difference",
+      "scenario": "消费技术",
+      "criteria": "区分连接器、数据协议、PD功率，优先标准/厂商技术资料。",
+      "anchor": "",
+      "anysearch": {
+        "query": "USB-C connector USB 3 data speed USB Power Delivery difference",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D11",
+      "category": "日常任务",
+      "language": "zh",
+      "query": "茶 咖啡 咖啡因 含量 每杯 影响因素",
+      "scenario": "日常健康知识",
+      "criteria": "可追溯咖啡因范围，注明杯量/泡制差异，避免绝对排行。",
+      "anchor": "",
+      "anysearch": {
+        "query": "茶 咖啡 咖啡因 含量 每杯 影响因素",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "D12",
+      "category": "日常任务",
+      "language": "en",
+      "query": "tea versus coffee caffeine per cup brewing factors reliable source",
+      "scenario": "日常健康知识",
+      "criteria": "可靠含量范围和冲泡/份量条件，不能凭营销断言。",
+      "anchor": "",
+      "anysearch": {
+        "query": "tea versus coffee caffeine per cup brewing factors reliable source",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N01",
+      "category": "新闻时效",
+      "language": "zh",
+      "query": "2026 诺贝尔 物理学奖 获奖者 官方 公布",
+      "scenario": "年度新闻",
+      "criteria": "2026物理学奖官方结果，不能返回2025/2024或预测冒充。",
+      "anchor": "https://www.nobelprize.org/prizes/physics/2026/summary/",
+      "anysearch": {
+        "query": "2026 诺贝尔 物理学奖 获奖者 官方 公布",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N02",
+      "category": "新闻时效",
+      "language": "en",
+      "query": "2026 Nobel Prize in Physics laureates official announcement",
+      "scenario": "年度新闻",
+      "criteria": "2026官方获奖公布；年份正确、可追溯NobelPrize。",
+      "anchor": "https://www.nobelprize.org/prizes/physics/2026/summary/",
+      "anysearch": {
+        "query": "2026 Nobel Prize in Physics laureates official announcement",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N03",
+      "category": "新闻时效",
+      "language": "zh",
+      "query": "DeepSeek 2026年10月17日 Flash 发布 更新 官方",
+      "scenario": "当日产品发布",
+      "criteria": "检出2026-10-17 Flash更新；区分旧型号/历史版本。",
+      "anchor": "https://api-docs.deepseek.com/news/news261017/",
+      "anysearch": {
+        "query": "DeepSeek 2026年10月17日 Flash 发布 更新 官方",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N04",
+      "category": "新闻时效",
+      "language": "en",
+      "query": "DeepSeek October 17 2026 Flash release official update",
+      "scenario": "当日产品发布",
+      "criteria": "找到当日官方发布与版本信息，不用旧V4发布替代。",
+      "anchor": "https://api-docs.deepseek.com/news/news261017/",
+      "anysearch": {
+        "query": "DeepSeek October 17 2026 Flash release official update",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N05",
+      "category": "新闻时效",
+      "language": "zh",
+      "query": "2026年9月 美国 CPI 发布 BLS 2026年10月",
+      "scenario": "统计发布时滞",
+      "criteria": "找2026年9月CPI的BLS发布，区分统计所属月与发布日期。",
+      "anchor": "https://www.bls.gov/news.release/cpi.htm",
+      "anysearch": {
+        "query": "2026年9月 美国 CPI 发布 BLS 2026年10月",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N06",
+      "category": "新闻时效",
+      "language": "en",
+      "query": "September 2026 CPI release BLS October 2026",
+      "scenario": "统计发布时滞",
+      "criteria": "BLS官方9月数据，核对统计期与10月发布日期。",
+      "anchor": "https://www.bls.gov/news.release/cpi.htm",
+      "anysearch": {
+        "query": "September 2026 CPI release BLS October 2026",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N07",
+      "category": "新闻时效",
+      "language": "zh",
+      "query": "2026年10月17日 最近一周 NASA 新闻 官方",
+      "scenario": "近七日新闻",
+      "criteria": "2026-10-10至10-17 NASA实际发布；不能用旧页面抓取日期冒充。",
+      "anchor": "https://www.nasa.gov/news/all-news/",
+      "anysearch": {
+        "query": "2026年10月17日 最近一周 NASA 新闻 官方",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N08",
+      "category": "新闻时效",
+      "language": "en",
+      "query": "NASA news October 10 17 2026 official latest week",
+      "scenario": "近七日新闻",
+      "criteria": "找到日期在2026-10-10到10-17的NASA新闻及可追溯发布页。",
+      "anchor": "https://www.nasa.gov/news/all-news/",
+      "anysearch": {
+        "query": "NASA news October 10 17 2026 official latest week",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "T01",
+      "category": "技术与精确检索",
+      "language": "zh",
+      "query": "Python asyncio TaskGroup 异常 ExceptionGroup 官方文档",
+      "scenario": "技术文档",
+      "criteria": "Python官方TaskGroup异常聚合和取消行为，支持AI写正确代码。",
+      "anchor": "https://docs.python.org/3/library/asyncio-task.html",
+      "anysearch": {
+        "query": "Python asyncio TaskGroup 异常 ExceptionGroup 官方文档",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "T02",
+      "category": "技术与精确检索",
+      "language": "en",
+      "query": "Python asyncio TaskGroup exception cancellation ExceptionGroup official documentation",
+      "scenario": "技术文档",
+      "criteria": "官方TaskGroup异常处理与取消说明，避免过时gather替代。",
+      "anchor": "https://docs.python.org/3/library/asyncio-task.html",
+      "anysearch": {
+        "query": "Python asyncio TaskGroup exception cancellation ExceptionGroup official documentation",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "T03",
+      "category": "技术与精确检索",
+      "language": "zh",
+      "query": "site:gov.cn \"个人信息保护法\" \"第三十八条\"",
+      "scenario": "精确短语与站点",
+      "criteria": "gov.cn来源；个人信息保护法第38条原文，而非一般评论。",
+      "anchor": "https://www.gov.cn/xinwen/2021-08/20/content_5632486.htm",
+      "anysearch": {
+        "query": "site:gov.cn \"个人信息保护法\" \"第三十八条\"",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "T04",
+      "category": "技术与精确检索",
+      "language": "en",
+      "query": "site:rfc-editor.org \"HTTP Semantics\" \"9110\"",
+      "scenario": "精确短语与站点",
+      "criteria": "rfc-editor.org的RFC9110原文/元数据。",
+      "anchor": "https://www.rfc-editor.org/rfc/rfc9110.html",
+      "anysearch": {
+        "query": "site:rfc-editor.org \"HTTP Semantics\" \"9110\"",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "T05",
+      "category": "技术与精确检索",
+      "language": "zh",
+      "query": "锂电池 回收 技术 综述 after:2024 before:2026 -site:zhihu.com",
+      "scenario": "日期与排除语法",
+      "criteria": "2025或2024后2026前相关回收综述；排除知乎；正文日期优于抓取日期。",
+      "anchor": "",
+      "anysearch": {
+        "query": "锂电池 回收 技术 综述 after:2024 before:2026 -site:zhihu.com",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "T06",
+      "category": "技术与精确检索",
+      "language": "en",
+      "query": "lithium ion battery recycling review after:2024 before:2026 -site:reddit.com",
+      "scenario": "日期与排除语法",
+      "criteria": "匹配时间窗与综述主题，不返回被排除站点。",
+      "anchor": "",
+      "anysearch": {
+        "query": "lithium ion battery recycling review after:2024 before:2026 -site:reddit.com",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S01",
+      "category": "来源质量与SEO",
+      "language": "zh",
+      "query": "VLC播放器 官方 下载 Windows",
+      "scenario": "官方下载污染",
+      "criteria": "videolan.org原始下载为高质量；捆绑下载站/假官方入口降低质量。",
+      "anchor": "https://www.videolan.org/vlc/",
+      "anysearch": {
+        "query": "VLC播放器 官方 下载 Windows",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S02",
+      "category": "来源质量与SEO",
+      "language": "en",
+      "query": "VLC media player official download Windows",
+      "scenario": "官方下载污染",
+      "criteria": "官方videolan.org优先；第三方下载页应有明确增量信息，否则是中转污染。",
+      "anchor": "https://www.videolan.org/vlc/",
+      "anysearch": {
+        "query": "VLC media player official download Windows",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S03",
+      "category": "来源质量与SEO",
+      "language": "zh",
+      "query": "排毒 护肝 保健品 真的有效吗 研究 证据",
+      "scenario": "健康营销污染",
+      "criteria": "独立卫生机构/研究证据，识别销售驱动的无依据疗效断言。",
+      "anchor": "https://www.nccih.nih.gov/health/detoxes-and-cleanses-what-you-need-to-know",
+      "anysearch": {
+        "query": "排毒 护肝 保健品 真的有效吗 研究 证据",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S04",
+      "category": "来源质量与SEO",
+      "language": "en",
+      "query": "liver detox supplements do they work scientific evidence",
+      "scenario": "健康营销污染",
+      "criteria": "独立医学证据和风险，不将产品推广当临床证据。",
+      "anchor": "https://www.nccih.nih.gov/health/detoxes-and-cleanses-what-you-need-to-know",
+      "anysearch": {
+        "query": "liver detox supplements do they work scientific evidence",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S05",
+      "category": "来源质量与SEO",
+      "language": "zh",
+      "query": "投资 保本 年化20% 收益 可信吗 官方风险提示",
+      "scenario": "金融承诺污染",
+      "criteria": "监管/执法证据支持识别不合理高收益承诺；不把引流投资项目当答案。",
+      "anchor": "",
+      "anysearch": {
+        "query": "投资 保本 年化20% 收益 可信吗 官方风险提示",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S06",
+      "category": "来源质量与SEO",
+      "language": "en",
+      "query": "guaranteed 20 percent investment returns safe regulator warning",
+      "scenario": "金融承诺污染",
+      "criteria": "SEC/FINRA/FCA等可靠证据，能识别无风险高收益欺诈话术。",
+      "anchor": "",
+      "anysearch": {
+        "query": "guaranteed 20 percent investment returns safe regulator warning",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S07",
+      "category": "来源质量与SEO",
+      "language": "zh",
+      "query": "空气净化器 选购 CADR HEPA 独立测试 标准",
+      "scenario": "导购与评测质量",
+      "criteria": "标准/原始实验方法与具体指标优于无测试细节的排行榜；商业来源不自动判低质。",
+      "anchor": "",
+      "anysearch": {
+        "query": "空气净化器 选购 CADR HEPA 独立测试 标准",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S08",
+      "category": "来源质量与SEO",
+      "language": "en",
+      "query": "best air purifier CADR HEPA independent test methodology",
+      "scenario": "导购与评测质量",
+      "criteria": "有可核对方法、测量值、利益披露的评测；缺乏测试证据的联盟营销榜单降低质量。",
+      "anchor": "",
+      "anysearch": {
+        "query": "best air purifier CADR HEPA independent test methodology",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S09",
+      "category": "来源质量与SEO",
+      "language": "zh",
+      "query": "LK-99 室温超导 复现 失败 论文 证据",
+      "scenario": "科研热点污染",
+      "criteria": "检出独立复现/反证与科学解释，不能只返回最早宣称成功的炒作报道。",
+      "anchor": "",
+      "anysearch": {
+        "query": "LK-99 室温超导 复现 失败 论文 证据",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "S10",
+      "category": "来源质量与SEO",
+      "language": "en",
+      "query": "LK-99 room temperature superconductor replication failed evidence papers",
+      "scenario": "科研热点污染",
+      "criteria": "独立复现/反证论文或可追溯报道，区分宣称与验证结论。",
+      "anchor": "",
+      "anysearch": {
+        "query": "LK-99 room temperature superconductor replication failed evidence papers",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N09",
+      "category": "新闻时效",
+      "language": "zh",
+      "query": "OpenAI DevDay 最新一届 日期 发布 更新 截至2026年10月17日",
+      "scenario": "DevDay日期核验",
+      "criteria": "找到最近实际举办的一届和官方日期，不预设2026年10月刚举办，也不能把旧届新闻说成今天。",
+      "anchor": "https://openai.com/devday/",
+      "anysearch": {
+        "query": "OpenAI DevDay 最新一届 日期 发布 更新 截至2026年10月17日",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N10",
+      "category": "新闻时效",
+      "language": "en",
+      "query": "latest OpenAI DevDay date announcements as of October 17 2026",
+      "scenario": "DevDay日期核验",
+      "criteria": "查明最近实际DevDay日期与对应官方公告；不得把网页抓取日期当活动日期。",
+      "anchor": "https://openai.com/devday/",
+      "anysearch": {
+        "query": "latest OpenAI DevDay date announcements as of October 17 2026",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N11",
+      "category": "新闻时效",
+      "language": "zh",
+      "query": "DeepSeek-V4.1-Flash-1017 checkpoint 模型权重 2026年10月17日 官方",
+      "scenario": "当天模型checkpoint",
+      "criteria": "找到1017新checkpoint的官方发布/权重仓库，区分旧Flash别名及旧checkpoint。",
+      "anchor": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "anysearch": {
+        "query": "DeepSeek-V4.1-Flash-1017 checkpoint 模型权重 2026年10月17日 官方",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N12",
+      "category": "新闻时效",
+      "language": "en",
+      "query": "DeepSeek-V4.1-Flash-1017 model checkpoint weights official October 17 2026",
+      "scenario": "当天模型checkpoint",
+      "criteria": "检出新checkpoint原始仓库或官方公告，正确版本日期。",
+      "anchor": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "anysearch": {
+        "query": "DeepSeek-V4.1-Flash-1017 model checkpoint weights official October 17 2026",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N13",
+      "category": "新闻时效",
+      "language": "zh",
+      "query": "DeepSeek 今天 2026年10月17日 Search Fetch API 发布 官方 接口",
+      "scenario": "当天新API",
+      "criteria": "找到新Search / Fetch API官方指南与端点，不能只返回聊天产品联网能力。",
+      "anchor": "https://api-docs.deepseek.com/guides/search/",
+      "anysearch": {
+        "query": "DeepSeek 今天 2026年10月17日 Search Fetch API 发布 官方 接口",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N14",
+      "category": "新闻时效",
+      "language": "en",
+      "query": "DeepSeek Search Fetch API launched October 17 2026 official endpoints",
+      "scenario": "当天新API",
+      "criteria": "找到官方search/fetch端点及发布日期线索，区分第三方搜索接入。",
+      "anchor": "https://api-docs.deepseek.com/guides/search/",
+      "anysearch": {
+        "query": "DeepSeek Search Fetch API launched October 17 2026 official endpoints",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N15",
+      "category": "新闻时效",
+      "language": "zh",
+      "query": "OpenAI 2026年10月15日 16日 17日 最新更新 官方公告",
+      "scenario": "近72小时公告",
+      "criteria": "检出时间窗内真实OpenAI公告；没有时不能靠旧公告或未来预告冒充。",
+      "anchor": "https://openai.com/news/",
+      "anysearch": {
+        "query": "OpenAI 2026年10月15日 16日 17日 最新更新 官方公告",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "N16",
+      "category": "新闻时效",
+      "language": "en",
+      "query": "OpenAI official updates October 15 16 17 2026",
+      "scenario": "近72小时公告",
+      "criteria": "核对真实发布日期与更新内容；只抓取日期新不算时效命中。",
+      "anchor": "https://openai.com/news/",
+      "anysearch": {
+        "query": "OpenAI official updates October 15 16 17 2026",
+        "max_results": 5
+      }
+    },
+    {
+      "id": "A25",
+      "category": "学术",
+      "language": "zh",
+      "query": "arXiv 2026年10月15日至17日 大语言模型 智能体 新论文",
+      "scenario": "最近72小时预印本",
+      "criteria": "结果应是明确在2026-10-15至17提交的相关新论文；区分首次提交和版本更新。",
+      "anchor": "https://arxiv.org/list/cs.CL/recent",
+      "anysearch": {
+        "query": "arXiv 2026年10月15日至17日 大语言模型 智能体 新论文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.preprint",
+        "sub_domain_params": {
+          "year_from": "2026",
+          "year_to": "2026"
+        }
+      }
+    },
+    {
+      "id": "A26",
+      "category": "学术",
+      "language": "en",
+      "query": "arXiv large language model agents new papers submitted October 15 16 17 2026",
+      "scenario": "最近72小时预印本",
+      "criteria": "相关论文可核对提交日期落在时间窗内；无匹配不能以旧文充数。",
+      "anchor": "https://arxiv.org/list/cs.CL/recent",
+      "anysearch": {
+        "query": "arXiv large language model agents new papers submitted October 15 16 17 2026",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.preprint",
+        "sub_domain_params": {
+          "year_from": "2026",
+          "year_to": "2026"
+        }
+      }
+    },
+    {
+      "id": "A27",
+      "category": "学术",
+      "language": "zh",
+      "query": "2026年10月 锂电池 回收 新发表 研究 论文 DOI",
+      "scenario": "当月学术文献",
+      "criteria": "2026年10月发表的电池回收研究，真实元数据与DOI；区分在线发表/印刷期次。",
+      "anchor": "",
+      "anysearch": {
+        "query": "2026年10月 锂电池 回收 新发表 研究 论文 DOI",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {
+          "year_from": "2026",
+          "year_to": "2026"
+        }
+      }
+    },
+    {
+      "id": "A28",
+      "category": "学术",
+      "language": "en",
+      "query": "lithium ion battery recycling research published October 2026 DOI",
+      "scenario": "当月学术文献",
+      "criteria": "检出2026年10月相关原始研究及可核验出版信息，不拿2025综述替代。",
+      "anchor": "",
+      "anysearch": {
+        "query": "lithium ion battery recycling research published October 2026 DOI",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {
+          "year_from": "2026",
+          "year_to": "2026"
+        }
+      }
+    },
+    {
+      "id": "A29",
+      "category": "学术",
+      "language": "zh",
+      "query": "Nature 2026年10月 人工智能 科学发现 研究 论文",
+      "scenario": "当月跨学科研究",
+      "criteria": "2026年10月Nature系列相关研究论文；辨别新闻介绍、评论与原始研究类型。",
+      "anchor": "https://www.nature.com/",
+      "anysearch": {
+        "query": "Nature 2026年10月 人工智能 科学发现 研究 论文",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {
+          "year_from": "2026",
+          "year_to": "2026"
+        }
+      }
+    },
+    {
+      "id": "A30",
+      "category": "学术",
+      "language": "en",
+      "query": "Nature October 2026 artificial intelligence scientific discovery research article",
+      "scenario": "当月跨学科研究",
+      "criteria": "Nature系列当月AI科学发现原始研究，日期与文献类型可核对。",
+      "anchor": "https://www.nature.com/",
+      "anysearch": {
+        "query": "Nature October 2026 artificial intelligence scientific discovery research article",
+        "max_results": 5,
+        "domain": "academic",
+        "sub_domain": "academic.search",
+        "sub_domain_params": {
+          "year_from": "2026",
+          "year_to": "2026"
+        }
+      }
+    }
+  ]
+}

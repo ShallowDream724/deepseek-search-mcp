@@ -4,11 +4,15 @@
 
 项目基于 [eggylan/deepseek-search-mcp](https://github.com/eggylan/deepseek-search-mcp)，使用 Python ≥ 3.10、FastMCP 4 和 httpx。调用搜索接口不需要指定语言模型，也不会额外调用模型生成答案。
 
+本分支补齐 MCP 错误标记、严格参数与返回结构、重试总预算和工具描述，并提供真实搜索/读取验证。详见 [2026-10-17 中英搜索基准测试](benchmarks/2026-10-17-agent-search/README.md)。
+
 ## 安装
 
 在项目目录中创建环境并安装：
 
 ```bash
+git clone https://github.com/ShallowDream724/deepseek-search-mcp.git
+cd deepseek-search-mcp
 python -m venv .venv
 # Linux/macOS
 .venv/bin/python -m pip install -e .
@@ -182,6 +186,8 @@ HTTP 客户端示例：
 | `server_error` | 其他 5xx | 是 |
 | `network_error` | 连接或传输错误 | 是 |
 | `invalid_response` | 200 响应不是合法 JSON，或内容结构不符合契约 | 否 |
+
+`not_found` 等状态描述 DeepSeek 上游接口的响应，不能据此断言目标网页已被删除。例如某些 PDF 或受访问限制的页面也可能触发上游 404。
 
 仅重试 408、429、5xx 和网络错误，默认最多重试 2 次。全部 HTTP 请求、响应正文读取和退避等待共用默认 45 秒的总预算，重试不会重置预算。退避从 0.5 秒开始翻倍；有效 `Retry-After` 优先。若要求等待超过 10 秒，或剩余总预算不足以完成等待，直接返回错误；有效的上游等待时长仍随错误返回，不会提前重试。总预算耗尽会取消当前请求或等待，外部取消调用也会停止请求和后续重试。网络超时可能发生在服务端已经处理请求之后，不承诺重试绝无额外计费。
 

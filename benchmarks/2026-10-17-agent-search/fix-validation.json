@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-17",
+  "configured_total_budget_seconds": 15,
+  "transport": "installed Codex stdio configuration; temporary budget override",
+  "calls": [
+    {
+      "tool": "search",
+      "args": {
+        "query": "DeepSeek Search API 官方文档",
+        "count": 1
+      },
+      "elapsed_ms": 1319,
+      "is_error": false,
+      "ok": true,
+      "error": null
+    },
+    {
+      "tool": "fetch",
+      "args": {
+        "url": "https://api-docs.deepseek.com/guides/search/",
+        "max_chars": 2000
+      },
+      "elapsed_ms": 289,
+      "is_error": false,
+      "ok": true,
+      "error": null
+    },
+    {
+      "tool": "fetch",
+      "args": {
+        "url": "https://www.britishmuseum.org/visit",
+        "max_chars": 1000
+      },
+      "elapsed_ms": 15013,
+      "is_error": true,
+      "ok": false,
+      "error": {
+        "status": "upstream_timeout",
+        "http_code": null,
+        "message": "The request exceeded the total timeout budget of 15s after 1 attempt(s). This budget includes all HTTP requests and retry delays; the per-operation timeout is 30s.",
+        "retryable": true,
+        "attempts": 1,
+        "elapsed_ms": 15000
+      }
+    }
+  ]
+}

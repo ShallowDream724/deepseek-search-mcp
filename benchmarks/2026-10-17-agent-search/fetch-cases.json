@@ -1,0 +1,72 @@
+[
+  {
+    "id": "F01",
+    "name": "英文论文摘要页",
+    "url": "https://arxiv.org/abs/1706.03762",
+    "expect": "Attention Is All You Need、作者与摘要",
+    "kind": "HTML"
+  },
+  {
+    "id": "F02",
+    "name": "论文 PDF",
+    "url": "https://arxiv.org/pdf/1706.03762",
+    "expect": "可读论文正文；不支持时须明确报错",
+    "kind": "PDF"
+  },
+  {
+    "id": "F03",
+    "name": "英文技术长文档",
+    "url": "https://docs.python.org/3/library/asyncio-task.html",
+    "expect": "asyncio文档、TaskGroup或可继续定位线索",
+    "kind": "HTML"
+  },
+  {
+    "id": "F04",
+    "name": "中文法律原文",
+    "url": "https://www.gov.cn/xinwen/2021-08/20/content_5632486.htm",
+    "expect": "个人信息保护法正文或明确访问失败",
+    "kind": "HTML"
+  },
+  {
+    "id": "F05",
+    "name": "当天 API 中文文档",
+    "url": "https://api-docs.deepseek.com/zh-cn/guides/search/",
+    "expect": "Search和Fetch端点、参数及计费",
+    "kind": "HTML"
+  },
+  {
+    "id": "F06",
+    "name": "当天 API 英文文档",
+    "url": "https://api-docs.deepseek.com/guides/search/",
+    "expect": "Search和Fetch端点、参数及计费",
+    "kind": "HTML"
+  },
+  {
+    "id": "F07",
+    "name": "英文博物馆访问页面",
+    "url": "https://www.britishmuseum.org/visit",
+    "expect": "开放时间、预约和免费入场信息",
+    "kind": "HTML"
+  },
+  {
+    "id": "F08",
+    "name": "不存在的页面",
+    "url": "https://example.com/benchmark-nonexistent-page-20261017",
+    "expect": "明确404或无内容；不得返回成功的空正文",
+    "kind": "error"
+  },
+  {
+    "id": "F09",
+    "name": "JSON 仓库元数据",
+    "url": "https://api.github.com/repos/python/cpython",
+    "expect": "python/cpython仓库元数据或明确不支持",
+    "kind": "JSON"
+  },
+  {
+    "id": "F10",
+    "name": "中文科学数据平台",
+    "url": "https://www.casdc.cn/",
+    "expect": "科学数据平台可读主内容或明确访问限制",
+    "kind": "HTML"
+  }
+]

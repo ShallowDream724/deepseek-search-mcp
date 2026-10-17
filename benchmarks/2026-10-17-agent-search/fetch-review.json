@@ -1,0 +1,222 @@
+[
+  {
+    "id": "F01",
+    "name": "英文论文摘要页",
+    "kind": "HTML",
+    "values": {
+      "native": {
+        "status": "可用",
+        "note": "标题、作者和摘要可见。",
+        "ms": 2025
+      },
+      "anysearch": {
+        "status": "可用",
+        "note": "标题、作者和摘要可见。",
+        "ms": 535
+      },
+      "deepseek": {
+        "status": "部分可用",
+        "note": "标题和摘要可见，正文未见作者名单。",
+        "ms": 1177
+      }
+    }
+  },
+  {
+    "id": "F02",
+    "name": "论文 PDF",
+    "kind": "PDF",
+    "values": {
+      "native": {
+        "status": "可用",
+        "note": "识别15页PDF，提供论文正文。",
+        "ms": 3114
+      },
+      "anysearch": {
+        "status": "不支持或失败",
+        "note": "extract_failed，未取得PDF正文。",
+        "ms": 1504
+      },
+      "deepseek": {
+        "status": "不支持或失败",
+        "note": "上游返回404，未取得正文；不能据此断言源站不存在。",
+        "ms": 313
+      }
+    }
+  },
+  {
+    "id": "F03",
+    "name": "英文技术长文档",
+    "kind": "HTML",
+    "values": {
+      "native": {
+        "status": "部分可用",
+        "note": "含TaskGroup，可继续定位；首轮只返回部分行。",
+        "ms": 3260
+      },
+      "anysearch": {
+        "status": "部分可用",
+        "note": "含TaskGroup，返回标记截断。",
+        "ms": 404
+      },
+      "deepseek": {
+        "status": "部分可用",
+        "note": "含TaskGroup；total_chars=47231、truncated=true。",
+        "ms": 3614
+      }
+    }
+  },
+  {
+    "id": "F04",
+    "name": "中文法律原文",
+    "kind": "HTML",
+    "values": {
+      "native": {
+        "status": "访问失败",
+        "note": "明确返回403 Forbidden。",
+        "ms": 1947
+      },
+      "anysearch": {
+        "status": "访问失败",
+        "note": "extract_failed，无正文。",
+        "ms": 2833
+      },
+      "deepseek": {
+        "status": "不支持或失败",
+        "note": "上游返回404；本次各工具的访问状态不同。",
+        "ms": 1778
+      }
+    }
+  },
+  {
+    "id": "F05",
+    "name": "当天 API 中文文档",
+    "kind": "HTML",
+    "values": {
+      "native": {
+        "status": "可用",
+        "note": "含Search、Fetch、鉴权和计费。",
+        "ms": 9142
+      },
+      "anysearch": {
+        "status": "可用",
+        "note": "含Search、Fetch、鉴权和计费。",
+        "ms": 237
+      },
+      "deepseek": {
+        "status": "可用",
+        "note": "文档完整返回，未截断。",
+        "ms": 273
+      }
+    }
+  },
+  {
+    "id": "F06",
+    "name": "当天 API 英文文档",
+    "kind": "HTML",
+    "values": {
+      "native": {
+        "status": "访问失败",
+        "note": "工具明确称该URL不可访问。",
+        "ms": 13145
+      },
+      "anysearch": {
+        "status": "可用",
+        "note": "含Search、Fetch及计费。",
+        "ms": 317
+      },
+      "deepseek": {
+        "status": "可用",
+        "note": "文档完整返回，未截断。",
+        "ms": 263
+      }
+    }
+  },
+  {
+    "id": "F07",
+    "name": "英文博物馆访问页面",
+    "kind": "HTML",
+    "values": {
+      "native": {
+        "status": "访问失败",
+        "note": "403 Forbidden。",
+        "ms": 4821
+      },
+      "anysearch": {
+        "status": "访问失败",
+        "note": "extract_failed，无正文。",
+        "ms": 7123
+      },
+      "deepseek": {
+        "status": "超时",
+        "note": "基线耗时92.1秒；总超时预算缺陷已另行修复。",
+        "ms": 92138
+      }
+    }
+  },
+  {
+    "id": "F08",
+    "name": "不存在的页面",
+    "kind": "error",
+    "values": {
+      "native": {
+        "status": "正确报错",
+        "note": "明确报告不可访问，没有伪成功正文。",
+        "ms": 5909
+      },
+      "anysearch": {
+        "status": "正确报错",
+        "note": "明确提取失败，未声称获得正文。",
+        "ms": 670
+      },
+      "deepseek": {
+        "status": "正确报错",
+        "note": "isError=true，not_found / HTTP 404。",
+        "ms": 3543
+      }
+    }
+  },
+  {
+    "id": "F09",
+    "name": "JSON 仓库元数据",
+    "kind": "JSON",
+    "values": {
+      "native": {
+        "status": "可用",
+        "note": "可见python/cpython元数据。",
+        "ms": 1941
+      },
+      "anysearch": {
+        "status": "可用",
+        "note": "可见python/cpython元数据。",
+        "ms": 1093
+      },
+      "deepseek": {
+        "status": "可用",
+        "note": "可见python/cpython元数据。",
+        "ms": 10460
+      }
+    }
+  },
+  {
+    "id": "F10",
+    "name": "中文科学数据平台",
+    "kind": "HTML",
+    "values": {
+      "native": {
+        "status": "访问失败",
+        "note": "只有站点名和需要JavaScript的提示，无主内容。",
+        "ms": 1679
+      },
+      "anysearch": {
+        "status": "访问失败",
+        "note": "extract_failed，无正文。",
+        "ms": 12734
+      },
+      "deepseek": {
+        "status": "可用",
+        "note": "可见平台导航和近期资讯，满足站点主内容要求。",
+        "ms": 7537
+      }
+    }
+  }
+]

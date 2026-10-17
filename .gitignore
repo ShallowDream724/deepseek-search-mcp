@@ -19,3 +19,10 @@ venv/
 .mypy_cache/
 .coverage
 htmlcov/
+
+# Local search evidence can contain copyrighted page text; publish metadata,
+# judgments and hashes, not copied pages or grading packets.
+benchmarks/*/raw/
+benchmarks/*/blind/
+benchmarks/*/normalized*.json
+benchmarks/*/*.log
