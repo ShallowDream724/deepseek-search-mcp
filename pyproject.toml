@@ -31,6 +31,9 @@ where = ["src"]
 asyncio_mode = "auto"
 pythonpath = ["src"]
 testpaths = ["tests"]
+# Live tests hit the paid API; keep the default run offline and deterministic.
+# Run them explicitly with: pytest -m live
+addopts = "-m 'not live'"
 markers = [
     "live: real calls against api.deepseek.com (requires an API key)",
 ]

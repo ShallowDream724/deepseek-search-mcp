@@ -14,11 +14,13 @@ DeepSeek 接口契约以官方文档为准：<https://api-docs.deepseek.com/zh-c
 
 ## 1. 安装
 
-推荐直接装进现有 conda 环境（例如 `mcp-dev`）：
+在 Conda 中安装：
 
 ```bash
-conda activate mcp-dev
-cd F:/Dev/deepseek-search-mcp
+conda create -n deepseek-search python=3.13
+conda activate deepseek-search
+git clone https://github.com/eggylan/deepseek-search-mcp.git
+cd deepseek-search-mcp
 pip install -e .
 ```
 
@@ -397,10 +399,18 @@ config.example.json
 - SSE 是 MCP 的旧传输，FastMCP 把它定位为兼容模式；新项目请用 Streamable HTTP。
 - 一次进程只服务一种传输（stdio / http / sse 三选一）。
 - 修改 `config.json` 后需要重启进程。
-- Windows 控制台若出现中文乱码，是终端代码页问题（`chcp 65001`），不影响 MCP 协议中的 UTF-8 内容。
 
 ---
 
 ## 12. 许可证
 
 MIT
+
+---
+
+## 13. 友情链接
+
+- [LINUX DO - 新的理想型社区](https://linux.do/)
+
+
+
