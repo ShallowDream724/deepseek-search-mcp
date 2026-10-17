@@ -1,0 +1,25 @@
+{
+  "tools": {
+    "search": {
+      "name": "web_search",
+      "enabled": true
+    },
+    "fetch": {
+      "name": "web_fetch",
+      "enabled": true
+    }
+  },
+  "api": {
+    "base_url": "https://api.deepseek.com",
+    "timeout_seconds": 30,
+    "max_retries": 2
+  },
+  "search": {
+    "default_count": 10,
+    "max_content_chars": 20000,
+    "localization": ""
+  },
+  "fetch": {
+    "max_content_chars": 30000
+  }
+}

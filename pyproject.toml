@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deepseek-search-mcp"
+version = "0.1.0"
+description = "MCP server exposing DeepSeek Web Search and Fetch as tools"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+keywords = ["mcp", "deepseek", "search", "fastmcp", "web-search"]
+dependencies = [
+    "fastmcp>=4.1,<5",
+    "httpx>=0.28",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9",
+    "pytest-asyncio>=1.4",
+]
+
+[project.scripts]
+deepseek-search-mcp = "deepseek_search_mcp.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+    "live: real calls against api.deepseek.com (requires an API key)",
+]
