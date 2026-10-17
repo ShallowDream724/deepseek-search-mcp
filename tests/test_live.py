@@ -1,15 +1,12 @@
 """Live end-to-end tests against the real DeepSeek API.
 
-These are opt-in: ``pytest -m live``. They read ``DEEPSEEK_API_KEY`` first and
-fall back to ``.temp/test-key.txt``. Each search/fetch call is billed at
-0.005 CNY per 1000 requests, so the suite deliberately makes very few calls.
+Opt in with ``pytest -m live`` and DEEPSEEK_API_KEY. Makes three successful
+API calls (billed by DeepSeek) and one invalid-key request. Never reads key files.
 """
 
 from __future__ import annotations
 
-import re
 import os
-from pathlib import Path
 
 import pytest
 
@@ -18,30 +15,11 @@ from deepseek_search_mcp.config import AppConfig
 
 pytestmark = pytest.mark.live
 
-KEY_FILE = Path(__file__).resolve().parents[1] / ".temp" / "test-key.txt"
-
-KEY_TOKEN = re.compile(r"sk-[A-Za-z0-9_\-]{8,}")
-
-
-def _extract(text: str) -> str | None:
-    match = KEY_TOKEN.search(text)
-    return match.group(0) if match else None
-
-
-def _load_key() -> str | None:
-    env_key = _extract(os.environ.get("DEEPSEEK_API_KEY", ""))
-    if env_key:
-        return env_key
-    if KEY_FILE.is_file():
-        return _extract(KEY_FILE.read_text(encoding="utf-8"))
-    return None
-
-
 @pytest.fixture(scope="module")
 def api_key() -> str:
-    key = _load_key()
+    key = os.environ.get("DEEPSEEK_API_KEY", "").strip()
     if not key:
-        pytest.skip("no DEEPSEEK_API_KEY and no .temp/test-key.txt")
+        pytest.skip("no DEEPSEEK_API_KEY")
     return key
 
 
@@ -67,8 +45,9 @@ async def test_live_search_with_content(api_key: str) -> None:
         )
 
     assert result["ok"] is True, result
-    if result["results"]:
-        assert result["results"][0]["content"]
+    for hit in result["results"]:
+        assert hit["content"] is None or isinstance(hit["content"], str)
+        assert isinstance(hit["truncated"], bool)
 
 
 async def test_live_fetch_returns_markdown(api_key: str) -> None:

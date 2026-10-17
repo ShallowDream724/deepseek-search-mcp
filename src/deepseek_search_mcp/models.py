@@ -1,14 +1,10 @@
-"""Typed result envelopes returned by the MCP tools.
-
-Every tool returns a plain ``dict`` so that FastMCP can expose it both as JSON
-text and as ``structuredContent``. These ``TypedDict`` definitions are used for
-static typing only: nothing is validated at runtime, so an unexpected upstream
-payload can never turn a successful search into an exception.
-"""
+"""Validated upstream payloads and the public MCP result contract."""
 
 from __future__ import annotations
 
-from typing import Any, Literal, TypedDict
+from typing import Any, Literal
+
+from pydantic import BaseModel, ConfigDict, Field
 
 ErrorStatus = Literal[
     "missing_api_key",
@@ -26,45 +22,63 @@ ErrorStatus = Literal[
 ]
 
 
-class ErrorInfo(TypedDict):
-    status: ErrorStatus
-    http_code: int | None
-    message: str
-    retryable: bool
+class UpstreamSearchHit(BaseModel):
+    """Keep documented fields; tolerate new upstream fields, not malformed values."""
+
+    model_config = ConfigDict(strict=True, extra="ignore", allow_inf_nan=False)
+
+    rerank_score: float
+    title: str
+    url: str = Field(min_length=1, pattern=r"\S")
+    snippet: str
+    summary: str
+    content: str = ""
+    site_name: str | None = None
+    site_icon: str | None = None
+    date: str | None = None
+    authority: int
 
 
-class ErrorResponse(TypedDict):
-    ok: Literal[False]
-    error: ErrorInfo
+class UpstreamFetch(BaseModel):
+    model_config = ConfigDict(strict=True, extra="ignore")
+
+    title: str
+    content: str = Field(min_length=1, pattern=r"\S")
 
 
-class SearchHit(TypedDict):
-    rank: int
-    score: float | None
+class ResultModel(BaseModel):
+    model_config = ConfigDict(strict=True, extra="forbid", allow_inf_nan=False)
+
+
+class SearchHit(ResultModel):
+    rank: int = Field(ge=1)
+    rerank_score: float = Field(description="Relevance score reported by DeepSeek (0–3).")
     title: str
     url: str
     snippet: str
     summary: str
-    site: str | None
+    site_name: str | None
+    site_icon: str | None
     date: str | None
-    authority: int | None
-    content: str | None
-    truncated: bool
+    authority: int = Field(description="Source authority reported by DeepSeek (0–4; -1 unknown).")
+    content: str | None = Field(description="Page text if requested and available; otherwise null.")
+    truncated: bool = Field(description="Whether content was cut at the character limit.")
 
 
-class SearchResponse(TypedDict):
+class SearchResponse(ResultModel):
     ok: Literal[True]
     query: str
-    count: int
+    count: int = Field(ge=0, description="Number of results returned.")
     results: list[SearchHit]
 
 
-class FetchResponse(TypedDict):
+class FetchResponse(ResultModel):
     ok: Literal[True]
     url: str
     title: str
     content: str
     truncated: bool
+    total_chars: int = Field(ge=1, description="Content length before truncation.")
 
 
 def error_response(
@@ -73,23 +87,23 @@ def error_response(
     *,
     http_code: int | None = None,
     retryable: bool = False,
+    retry_after_seconds: float | None = None,
 ) -> dict[str, Any]:
     """Build the structured error envelope used by every failure path."""
-    return {
-        "ok": False,
-        "error": {
-            "status": status,
-            "http_code": http_code,
-            "message": message,
-            "retryable": retryable,
-        },
+    error: dict[str, Any] = {
+        "status": status,
+        "http_code": http_code,
+        "message": message,
+        "retryable": retryable,
     }
+    if retry_after_seconds is not None:
+        error["retry_after_seconds"] = retry_after_seconds
+    return {"ok": False, "error": error}
 
 
 MISSING_API_KEY_MESSAGE = (
-    "No API key provided. On HTTP transports send "
-    "'Authorization: Bearer <key>' with the request; when running over stdio, set the "
-    "server's API key environment variable."
+    "No API key provided. Set DEEPSEEK_API_KEY in the server environment, "
+    "or send Authorization: Bearer <key> with HTTP requests."
 )
 
 

@@ -32,8 +32,8 @@ def test_defaults_without_any_config(tmp_path: Path) -> None:
 
     assert path is None
     assert config == AppConfig()
-    assert config.tools.search.name == "web_search"
-    assert config.tools.fetch.name == "web_fetch"
+    assert config.tools.search.name == "search"
+    assert config.tools.fetch.name == "fetch"
     assert config.api.base_url == "https://api.deepseek.com"
     assert config.api.timeout_seconds == 30.0
     assert config.api.max_retries == 2
@@ -47,7 +47,7 @@ def test_cwd_config_is_picked_up(tmp_path: Path) -> None:
 
     assert path == tmp_path / "config.json"
     assert config.tools.search.name == "ds_search"
-    assert config.tools.fetch.name == "web_fetch"
+    assert config.tools.fetch.name == "fetch"
 
 
 def test_env_var_beats_cwd(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
@@ -161,7 +161,7 @@ def test_base_url_trailing_slash_is_stripped(tmp_path: Path) -> None:
     assert config.api.base_url == "https://example.com/v1"
 
 
-@pytest.mark.parametrize("base_url", ["ftp://example.com", "example.com", "https://"])
+@pytest.mark.parametrize("base_url", ["ftp://example.com", "example.com", "https://", "http://[", "https://user:pass@example.com", "https://example.com?token=secret", "https://example.com:abc"])
 def test_invalid_base_url_is_rejected(tmp_path: Path, base_url: str) -> None:
     path = write_json(tmp_path / "config.json", {"api": {"base_url": base_url}})
 
@@ -221,10 +221,10 @@ def test_zero_max_content_chars_means_no_truncation(tmp_path: Path) -> None:
 
 
 def test_describe_enabled_tools() -> None:
-    assert describe_enabled_tools(AppConfig()) == "web_search, web_fetch"
+    assert describe_enabled_tools(AppConfig()) == "search, fetch"
 
     config = AppConfig.model_validate({"tools": {"fetch": {"enabled": False}}})
-    assert describe_enabled_tools(config) == "web_search"
+    assert describe_enabled_tools(config) == "search"
 
     config = AppConfig.model_validate(
         {"tools": {"search": {"enabled": False}, "fetch": {"enabled": False}}}

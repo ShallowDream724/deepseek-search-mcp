@@ -64,13 +64,13 @@ class ToolConfig(BaseModel):
 class SearchToolConfig(ToolConfig):
     """``tools.search``; keeps the default name so partial overrides work."""
 
-    name: str = "web_search"
+    name: str = "search"
 
 
 class FetchToolConfig(ToolConfig):
     """``tools.fetch``; keeps the default name so partial overrides work."""
 
-    name: str = "web_fetch"
+    name: str = "fetch"
 
 class ToolsConfig(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -101,9 +101,17 @@ class ApiConfig(BaseModel):
         value = value.strip().rstrip("/")
         if not value:
             raise ValueError("api.base_url must not be empty")
-        parts = urlsplit(value)
-        if parts.scheme not in {"http", "https"} or not parts.netloc:
-            raise ValueError(f"api.base_url must be an absolute http(s) URL, got {value!r}")
+        try:
+            parts = urlsplit(value)
+            _ = parts.port
+        except ValueError as exc:
+            raise ValueError("api.base_url must be a valid absolute http(s) URL") from exc
+        if parts.scheme not in {"http", "https"} or not parts.hostname:
+            raise ValueError("api.base_url must be an absolute http(s) URL")
+        if parts.username is not None or parts.password is not None or parts.query or parts.fragment:
+            raise ValueError("api.base_url must not contain credentials, a query or a fragment")
+        if any(char.isspace() or ord(char) < 32 for char in value):
+            raise ValueError("api.base_url must not contain whitespace or control characters")
         return value
 
 

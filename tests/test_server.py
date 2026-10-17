@@ -42,7 +42,7 @@ def _handler(scripted: tuple[httpx.Response, ...]):
 
 async def test_default_tool_names() -> None:
     tools = await list_tools(AppConfig())
-    assert [tool.name for tool in tools] == ["web_search", "web_fetch"]
+    assert [tool.name for tool in tools] == ["search", "fetch"]
 
 
 async def test_tools_can_be_renamed_via_config() -> None:
@@ -57,11 +57,11 @@ async def test_tools_can_be_renamed_via_config() -> None:
 
 
 async def test_disabled_tool_is_not_registered() -> None:
-    config = config_with(tools__fetch={"name": "web_fetch", "enabled": False})
+    config = config_with(tools__fetch={"name": "fetch", "enabled": False})
 
     tools = await list_tools(config)
 
-    assert [tool.name for tool in tools] == ["web_search"]
+    assert [tool.name for tool in tools] == ["search"]
 
 
 async def test_both_tools_can_be_disabled() -> None:
@@ -75,7 +75,7 @@ async def test_both_tools_can_be_disabled() -> None:
 
 async def test_search_schema_exposes_curated_parameters() -> None:
     tools = await list_tools(AppConfig())
-    search = next(tool for tool in tools if tool.name == "web_search")
+    search = next(tool for tool in tools if tool.name == "search")
     schema = search.input_schema
     properties = schema["properties"]
 
@@ -91,7 +91,7 @@ async def test_search_schema_exposes_curated_parameters() -> None:
 
 async def test_fetch_schema_exposes_url_and_max_chars() -> None:
     tools = await list_tools(AppConfig())
-    fetch = next(tool for tool in tools if tool.name == "web_fetch")
+    fetch = next(tool for tool in tools if tool.name == "fetch")
 
     assert list(fetch.input_schema["properties"]) == ["url", "max_chars"]
     assert fetch.input_schema["required"] == ["url"]
@@ -110,7 +110,7 @@ async def test_search_tool_returns_structured_result(monkeypatch: pytest.MonkeyP
     mcp = build_server(AppConfig(), transport=httpx.MockTransport(_handler((search_ok(item()),))))
 
     async with Client(mcp) as client:
-        result = await client.call_tool("web_search", {"query": "DeepSeek V4"})
+        result = await client.call_tool("search", {"query": "DeepSeek V4"})
 
     assert result.is_error is False
     assert result.structured_content["ok"] is True
@@ -123,7 +123,7 @@ async def test_fetch_tool_returns_structured_result(monkeypatch: pytest.MonkeyPa
     mcp = build_server(AppConfig(), transport=httpx.MockTransport(_handler((body,))))
 
     async with Client(mcp) as client:
-        result = await client.call_tool("web_fetch", {"url": "https://example.com/a"})
+        result = await client.call_tool("fetch", {"url": "https://example.com/a"})
 
     assert result.structured_content == {
         "ok": True,
@@ -131,6 +131,7 @@ async def test_fetch_tool_returns_structured_result(monkeypatch: pytest.MonkeyPa
         "title": "Example",
         "content": "# Body",
         "truncated": False,
+        "total_chars": 6,
     }
 
 
@@ -141,9 +142,9 @@ async def test_tool_without_api_key_returns_structured_error(
     mcp = build_server(AppConfig(), transport=httpx.MockTransport(_handler(())))
 
     async with Client(mcp) as client:
-        result = await client.call_tool("web_search", {"query": "q"})
+        result = await client.call_tool("search", {"query": "q"}, raise_on_error=False)
 
-    assert result.is_error is False
+    assert result.is_error is True
     assert result.structured_content["ok"] is False
     assert result.structured_content["error"]["status"] == "missing_api_key"
 
@@ -153,9 +154,52 @@ async def test_tool_validation_error_is_structured(monkeypatch: pytest.MonkeyPat
     mcp = build_server(AppConfig(), transport=httpx.MockTransport(_handler(())))
 
     async with Client(mcp) as client:
-        result = await client.call_tool("web_search", {"query": "   "})
+        result = await client.call_tool("search", {"query": "   "}, raise_on_error=False)
 
     assert result.structured_content["error"]["status"] == "invalid_request"
+    assert result.is_error is True
+
+
+@pytest.mark.parametrize("tool,arguments", [
+    ("search", {"query": "x" * 129}),
+    ("search", {"query": "q", "count": True}),
+    ("search", {"query": "q", "count": 1.5}),
+    ("search", {"query": "q", "need_content": "false"}),
+    ("search", {"query": "q", "ori_question": ""}),
+    ("search", {"query": "q", "unexpected": "value"}),
+    ("fetch", {"url": "http://["}),
+    ("fetch", {"url": "https://example.com", "max_chars": True}),
+])
+async def test_invalid_arguments_never_reach_upstream(tool, arguments, monkeypatch):
+    monkeypatch.setenv(API_KEY_ENV, API_KEY)
+    mcp = build_server(AppConfig(), transport=httpx.MockTransport(_handler(())))
+    async with Client(mcp) as client:
+        result = await client.call_tool(tool, arguments, raise_on_error=False)
+    assert result.is_error is True
+    assert result.structured_content["error"]["status"] == "invalid_request"
+
+
+async def test_empty_search_is_a_success(monkeypatch):
+    monkeypatch.setenv(API_KEY_ENV, API_KEY)
+    mcp = build_server(AppConfig(), transport=httpx.MockTransport(_handler((search_ok(),))))
+    async with Client(mcp) as client:
+        result = await client.call_tool("search", {"query": "q"})
+    assert result.is_error is False
+    assert result.structured_content["count"] == 0
+
+
+@pytest.mark.parametrize("response,status", [
+    (httpx.Response(429), "rate_limited"),
+    (httpx.Response(504), "upstream_timeout"),
+    (httpx.Response(200, json={"results": [None]}), "invalid_response"),
+])
+async def test_upstream_errors_reach_mcp_error_flag(response, status, monkeypatch):
+    monkeypatch.setenv(API_KEY_ENV, API_KEY)
+    mcp = build_server(config_with(api__max_retries=0), transport=httpx.MockTransport(_handler((response,))))
+    async with Client(mcp) as client:
+        result = await client.call_tool("search", {"query": "q"}, raise_on_error=False)
+    assert result.is_error is True
+    assert result.structured_content["error"]["status"] == status
 
 
 async def test_server_instructions_are_exposed() -> None:
@@ -165,11 +209,11 @@ async def test_server_instructions_are_exposed() -> None:
         instructions = client.instructions
         server_name = client.server_info.name
 
-    assert server_name == "Web Search"
+    assert server_name == "DeepSeek Search"
     assert "retryable" in (instructions or "")
 
 
-async def test_agent_visible_text_does_not_name_the_upstream_provider() -> None:
+async def test_discovery_has_output_schemas_and_compact_instructions() -> None:
     mcp = build_server(AppConfig(), transport=httpx.MockTransport(_handler(())))
 
     async with Client(mcp) as client:
@@ -191,6 +235,6 @@ async def test_agent_visible_text_does_not_name_the_upstream_provider() -> None:
             ]
         )
 
-    joined = "\n".join(visible).lower()
-    assert "deepseek" not in joined
-    assert "sk-" not in joined
+    assert len(instructions) <= 512
+    assert all(tool.output_schema["properties"]["ok"]["const"] is True for tool in tools)
+    assert API_KEY not in "\n".join(visible)

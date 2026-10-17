@@ -63,7 +63,9 @@ def resolve_api_key() -> str | None:
     return env_key or None
 
 
-def redact(text: str) -> str:
+def redact(text: str, secret: str | None = None) -> str:
     """Mask anything that looks like an API key or bearer token."""
+    if secret:
+        text = text.replace(secret, "sk-***" if secret.startswith("sk-") else "***")
     redacted = _SECRET_PATTERNS[0].sub("sk-***", text)
     return _SECRET_PATTERNS[1].sub(r"\1***", redacted)

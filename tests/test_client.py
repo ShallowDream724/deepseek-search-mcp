@@ -66,10 +66,9 @@ async def test_search_includes_ori_question_when_provided() -> None:
     assert json.loads(h.upstream.requests[0].content)["ori_question"] == "why is the sky blue"
 
 
-@pytest.mark.parametrize("ori_question", [None, "", "   "])
-async def test_search_omits_blank_ori_question(ori_question: str | None) -> None:
+async def test_search_omits_null_ori_question() -> None:
     async with harness(AppConfig(), search_ok()) as h:
-        await h.client.search(api_key=API_KEY, query="q", ori_question=ori_question)
+        await h.client.search(api_key=API_KEY, query="q", ori_question=None)
 
     assert "ori_question" not in json.loads(h.upstream.requests[0].content)
 
@@ -98,7 +97,7 @@ async def test_base_url_prefix_is_preserved() -> None:
 # ---------------------------------------------------------------------- mapping
 
 
-async def test_search_maps_results_and_drops_unused_fields() -> None:
+async def test_search_preserves_documented_metadata() -> None:
     async with harness(AppConfig(), search_ok(item())) as h:
         result = await h.client.search(api_key=API_KEY, query="q")
 
@@ -108,19 +107,18 @@ async def test_search_maps_results_and_drops_unused_fields() -> None:
     hit = result["results"][0]
     assert hit == {
         "rank": 1,
-        "score": 2.4,
+        "rerank_score": 2.4,
         "title": "DeepSeek V4 released",
         "url": "https://example.com/a",
         "snippet": "short snippet",
         "summary": "long summary",
-        "site": "Example News",
+        "site_name": "Example News",
+        "site_icon": "https://example.com/favicon.ico",
         "date": "2026-06-01T00:00:00+00:00",
         "authority": 3,
         "content": None,
         "truncated": False,
     }
-    assert "site_icon" not in hit
-    assert "rerank_score" not in hit
 
 
 async def test_search_ranks_results_in_order() -> None:
@@ -170,31 +168,27 @@ async def test_empty_content_becomes_null() -> None:
     assert result["results"][0]["content"] is None
 
 
-async def test_items_without_url_are_skipped_and_ranks_stay_dense() -> None:
+async def test_malformed_hit_is_not_silently_discarded() -> None:
     async with harness(
         AppConfig(),
         search_ok(item(url=""), item(url="https://ok.example")),
     ) as h:
         result = await h.client.search(api_key=API_KEY, query="q")
 
-    assert result["count"] == 1
-    assert result["results"][0]["rank"] == 1
-    assert result["results"][0]["url"] == "https://ok.example"
+    assert result["error"]["status"] == "invalid_response"
 
 
 async def test_missing_optional_fields_degrade_to_null() -> None:
     async with harness(
         AppConfig(),
-        search_ok({"url": "https://only-url.example"}),
+        search_ok({key: value for key, value in item().items() if key not in {"site_name", "site_icon", "date"}}),
     ) as h:
         result = await h.client.search(api_key=API_KEY, query="q")
 
     hit = result["results"][0]
-    assert hit["score"] is None
-    assert hit["title"] == ""
-    assert hit["site"] is None
+    assert hit["site_name"] is None
+    assert hit["site_icon"] is None
     assert hit["date"] is None
-    assert hit["authority"] is None
 
 
 async def test_empty_result_list_is_ok() -> None:
@@ -231,15 +225,17 @@ async def test_retry_uses_retry_after_header() -> None:
     assert h.sleeps == [2.0]
 
 
-async def test_retry_after_is_capped() -> None:
+async def test_long_retry_after_returns_without_retrying_early() -> None:
     async with harness(
         AppConfig(),
         httpx.Response(503, headers={"retry-after": "3600"}),
         search_ok(item()),
     ) as h:
-        await h.client.search(api_key=API_KEY, query="q")
+        result = await h.client.search(api_key=API_KEY, query="q")
 
-    assert h.sleeps == [10.0]
+    assert h.sleeps == []
+    assert len(h.upstream.requests) == 1
+    assert result["error"]["retry_after_seconds"] == 3600
 
 
 async def test_backoff_doubles_and_respects_max_retries() -> None:
@@ -304,7 +300,7 @@ async def test_network_error_is_retried_then_reported() -> None:
         (404, "not_found"),
         (413, "payload_too_large"),
         (500, "server_error"),
-        (504, "server_error"),
+        (504, "upstream_timeout"),
     ],
 )
 async def test_http_status_maps_to_error_status(status_code: int, expected_status: str) -> None:
@@ -343,7 +339,7 @@ async def test_fetch_404_maps_to_not_found_with_hint() -> None:
     assert result["error"]["status"] == "not_found"
     assert "page content" in result["error"]["message"]
 
-async def test_all_error_text_is_provider_neutral() -> None:
+async def test_error_messages_do_not_contain_credentials() -> None:
     messages = [MISSING_API_KEY_MESSAGE]
     no_retry = config_with(api__max_retries=0)
 
@@ -373,9 +369,7 @@ async def test_all_error_text_is_provider_neutral() -> None:
     messages.append(bad_shape["error"]["message"])
 
     for message in messages:
-        lowered = message.lower()
-        assert "deepseek" not in lowered, message
-        assert "sk-" not in lowered, message
+        assert API_KEY not in message
 
 
 async def test_error_message_never_contains_the_api_key() -> None:
@@ -439,6 +433,9 @@ async def test_missing_api_key_short_circuits_without_request() -> None:
         ({"query": "q", "count": 0}, "count must be between 1 and 50"),
         ({"query": "q", "count": 51}, "count must be between 1 and 50"),
         ({"query": "q", "ori_question": "y" * 129}, "ori_question must be at most 128"),
+        ({"query": "q", "ori_question": " "}, "non-empty"),
+        ({"query": "q", "need_content": "false"}, "boolean"),
+        ({"query": "q", "count": True}, "integer"),
     ],
 )
 async def test_invalid_search_arguments_fail_before_any_request(
@@ -460,6 +457,10 @@ async def test_invalid_search_arguments_fail_before_any_request(
         ("https:///nohost", "must include a host"),
         ("https://user:pass@example.com/x", "username or password"),
         ("https://example.com/" + "x" * 9000, "at most 8192 characters"),
+        ("http://[", "valid absolute"),
+        ("https://example.com:abc", "valid absolute"),
+        ("https://@example.com", "username or password"),
+        ("https://example.com/a b", "whitespace"),
     ],
 )
 async def test_invalid_fetch_urls_fail_before_any_request(url: str, fragment: str) -> None:
@@ -490,6 +491,7 @@ async def test_fetch_sends_url_and_returns_content() -> None:
         "title": "Example",
         "content": "# Example\n\nBody",
         "truncated": False,
+        "total_chars": len("# Example\n\nBody"),
     }
 
 
@@ -537,16 +539,49 @@ async def test_fetch_rejects_invalid_max_chars(max_chars: object) -> None:
     assert result["error"]["status"] == "invalid_request"
 
 
-async def test_fetch_missing_content_becomes_empty_string() -> None:
-    async with harness(AppConfig(), httpx.Response(200, json={"title": None})) as h:
+@pytest.mark.parametrize("body", [{"title": None}, {"title": "t", "content": ""}, {"title": "t", "content": []}, {"title": "t", "content": "  "}])
+async def test_malformed_fetch_is_an_error(body: dict) -> None:
+    async with harness(AppConfig(), httpx.Response(200, json=body)) as h:
         result = await h.client.fetch(api_key=API_KEY, url="https://example.com/a")
 
-    assert result["title"] == ""
-    assert result["content"] == ""
-    assert result["truncated"] is False
+    assert result["error"]["status"] == "invalid_response"
 
 
 async def test_client_closes_underlying_http_client() -> None:
     client = DeepSeekClient(AppConfig(), transport=httpx.MockTransport(lambda r: httpx.Response(200)))
     await client.aclose()
     assert client._http.is_closed
+
+
+@pytest.mark.parametrize("bad_hit", [None, {}, item(rerank_score=True), item(authority="3"), item(summary=None)])
+async def test_malformed_search_results_are_errors(bad_hit):
+    async with harness(AppConfig(), search_ok(bad_hit)) as h:
+        result = await h.client.search(api_key=API_KEY, query="q")
+    assert result["error"]["status"] == "invalid_response"
+
+
+@pytest.mark.parametrize("retry_after", ["NaN", "inf", "not a date"])
+async def test_bad_retry_after_uses_backoff(retry_after):
+    async with harness(AppConfig(), httpx.Response(429, headers={"Retry-After": retry_after}), search_ok()) as h:
+        result = await h.client.search(api_key=API_KEY, query="q")
+    assert result["ok"] is True
+    assert h.sleeps == [0.5]
+
+
+async def test_nonstandard_key_is_redacted_before_message_truncation():
+    secret = "custom-token-123456789"
+    async with harness(AppConfig(), httpx.Response(401, text="x" * 290 + secret)) as h:
+        result = await h.client.search(api_key=secret, query="q")
+    assert secret not in str(result)
+    assert "custom-token" not in str(result)
+
+
+async def test_cancellation_is_not_retried():
+    import asyncio
+
+    async def cancelled(request):
+        raise asyncio.CancelledError
+
+    async with DeepSeekClient(AppConfig(), transport=httpx.MockTransport(cancelled)) as client:
+        with pytest.raises(asyncio.CancelledError):
+            await client.search(api_key=API_KEY, query="q")

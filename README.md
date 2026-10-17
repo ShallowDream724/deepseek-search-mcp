@@ -1,105 +1,201 @@
 # deepseek-search-mcp
 
-把 DeepSeek 的 **网页搜索（Search）** 和 **网页抓取（Fetch）** 包装成 MCP 工具，供 Claude Desktop、Cursor、VS Code、Cline 等任意 MCP 客户端调用。
+将 DeepSeek 官方 Search / Fetch API 接入 MCP 客户端。提供 `search` 和 `fetch` 两个工具，支持 stdio 与 Streamable HTTP，保留旧客户端的 SSE 接入。
 
-- 基于 [FastMCP 4](https://gofastmcp.com) 构建，Python ≥ 3.10
-- 同时支持 **stdio**、**Streamable HTTP**、**SSE** 三种传输
-- DeepSeek API Key 由**客户端逐请求传入**，服务器原样转发，不存储、不落盘、不写日志
-- 工具名可在 `config.json` 中自定义，避免与其他 MCP 服务器的工具重名
-- 所有返回都是结构化 JSON：成功 `{"ok": true, ...}`，失败 `{"ok": false, "error": {...}}`
+项目基于 [eggylan/deepseek-search-mcp](https://github.com/eggylan/deepseek-search-mcp)，使用 Python ≥ 3.10、FastMCP 4 和 httpx。调用搜索接口不需要指定语言模型，也不会额外调用模型生成答案。
 
-DeepSeek 接口契约以官方文档为准：<https://api-docs.deepseek.com/zh-cn/guides/search>
+## 安装
 
----
-
-## 1. 安装
-
-## Conda
+在项目目录中创建环境并安装：
 
 ```bash
-conda create -n deepseek-search python=3.13
-conda activate deepseek-search
-git clone https://github.com/eggylan/deepseek-search-mcp.git
-cd deepseek-search-mcp
-pip install -e .
+python -m venv .venv
+# Linux/macOS
+.venv/bin/python -m pip install -e .
+# Windows
+.venv/Scripts/python.exe -m pip install -e .
 ```
 
-## uv
+下文的 `python` 应使用安装本项目的环境。密钥通过服务器环境变量 `DEEPSEEK_API_KEY` 或 HTTP 请求头传入，不放入工具参数和项目配置文件。
+
+## 启动
 
 ```bash
-git clone https://github.com/eggylan/deepseek-search-mcp.git
-cd deepseek-search-mcp
-uv venv --python 3.13
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-uv pip install -e .
+# stdio：由 MCP 客户端启动进程
+python -m deepseek_search_mcp
+
+# Streamable HTTP：http://127.0.0.1:8000/mcp
+python -m deepseek_search_mcp --transport http --port 8000
+
+# SSE：兼容旧客户端
+python -m deepseek_search_mcp --transport sse --port 8000
 ```
 
-安装完成后会得到两个等价入口：
+`streamable-http` 是 `http` 的别名；一次进程使用一种传输。HTTP 默认监听 `127.0.0.1`，可用 `--host`、`--port` 和 `--path` 修改。SSE 不使用 `--path`，入口为 `/sse`。日志只写 stderr；stdio 的 stdout 用于 MCP 协议。
 
-```bash
-deepseek-search-mcp --help
-python -m deepseek_search_mcp --help
+## 接入 Codex
+
+在 `~/.codex/config.toml` 中添加下面的配置，将路径换成自己的项目位置。Codex 桌面应用与 CLI 共用此文件。
+
+```toml
+[mcp_servers.deepseek]
+command = "/absolute/path/deepseek-search-mcp/.venv/bin/python"
+args = ["-m", "deepseek_search_mcp"]
+cwd = "/absolute/path/deepseek-search-mcp"
+env_vars = ["DEEPSEEK_API_KEY"]
+startup_timeout_sec = 30
+tool_timeout_sec = 120
 ```
 
-依赖：`fastmcp>=4.1,<5`、`httpx>=0.28`。
+Windows 使用 `.venv/Scripts/python.exe`。如果密钥保存为 Windows 用户级环境变量，而已运行的 Codex 尚未继承它，可使用本项目的启动脚本：
 
----
+```toml
+[mcp_servers.deepseek]
+command = "C:/path/deepseek-search-mcp/.venv/Scripts/python.exe"
+args = ["C:/path/deepseek-search-mcp/scripts/run-local.py"]
+cwd = "C:/path/deepseek-search-mcp"
+env_vars = ["DEEPSEEK_API_KEY"]
+startup_timeout_sec = 30
+tool_timeout_sec = 120
+```
 
-## 2. 启动与传输
+脚本优先使用进程环境变量；缺失时只读取 Windows 用户环境中的 `DEEPSEEK_API_KEY`，临时注入当前服务器进程。它不打印或写入密钥。修改配置后重新连接 MCP 或新开会话。配置方式见 [Codex MCP 文档](https://learn.chatgpt.com/docs/extend/mcp)。
 
-| 传输 | 启动命令 | 端点 |
+HTTP 客户端示例：
+
+```json
+{
+  "mcpServers": {
+    "deepseek": {
+      "url": "http://127.0.0.1:8000/mcp",
+      "headers": { "Authorization": "Bearer <your-key>" }
+    }
+  }
+}
+```
+
+请求头优先级为 `Authorization: Bearer …`、`X-DeepSeek-API-Key`，之后才使用服务器环境变量。因此，设置了服务器环境密钥的 HTTP 实例会为未传入密钥的请求使用该密钥。SSE 客户端须在发送工具调用的 POST 请求上也带请求头。
+
+## 工具与参数
+
+工具名称默认为 `search`、`fetch`。描述只说明用途、输入和返回内容；不要求模型固定采用某种写作风格或把结果评分当成事实依据。
+
+### `search`
+
+搜索网页，返回按上游顺序排列的来源、摘要和元数据。
+
+| 参数 | 类型 | 说明 |
 |---|---|---|
-| stdio（默认） | `deepseek-search-mcp` | 标准输入输出 |
-| Streamable HTTP | `deepseek-search-mcp --transport http --port 8000` | `http://127.0.0.1:8000/mcp` |
-| SSE（兼容旧客户端） | `deepseek-search-mcp --transport sse --port 8000` | `http://127.0.0.1:8000/sse` |
+| `query` | string，必填 | 1–128 个字符，不能全为空白 |
+| `count` | integer 或 null | 最多返回多少条，1–50；省略或 null 使用配置值，默认 10 |
+| `ori_question` | string 或 null | 原始问题，供搜索引擎理解查询意图；提供时为 1–128 个字符且不能全为空白 |
+| `need_content` | boolean | 默认 false；true 时附带可用正文，可能明显增大响应 |
 
-`--transport streamable-http` 是 `http` 的同义词。一次进程只服务一种传输。
+`query` 支持 `site:`、`-site:`、`-keyword`、`"exact phrase"`、`-"excluded phrase"`、`lang:zh,en`、`after:`、`before:`。日期接受年份或 `YYYY-MM-DD`；多个站点用 OR 连接。示例：
 
-常用参数：
+```json
+{"query":"DeepSeek site:github.com OR site:huggingface.co after:2026","count":5}
+```
 
-| 参数 | 默认值 | 说明 |
+成功返回示例：
+
+```json
+{
+  "ok": true,
+  "query": "example",
+  "count": 1,
+  "results": [{
+    "rank": 1,
+    "rerank_score": 2.4,
+    "title": "Example article",
+    "url": "https://example.com/article",
+    "snippet": "Short excerpt.",
+    "summary": "Page summary.",
+    "site_name": "Example",
+    "site_icon": null,
+    "date": null,
+    "authority": 3,
+    "content": null,
+    "truncated": false
+  }]
+}
+```
+
+保留官方的 `rerank_score`、`site_name`、`site_icon` 等字段名，增加从 1 开始的 `rank` 和正文截断标志 `truncated`。`count` 是实际返回条数。`rerank_score` 是上游相关性评分（0–3），`authority` 是上游来源评级（0–4，-1 表示未知）。站点名称、图标与日期可能为 null。`content` 未请求或不可用时为 null；可用时按配置截断。
+
+空结果是正常成功：`{"ok":true,"query":"…","count":0,"results":[]}`。结构损坏的结果会返回 `invalid_response`，不会静默丢弃后冒充空结果。
+
+### `fetch`
+
+读取指定网页，返回标题和 Markdown 正文。
+
+| 参数 | 类型 | 说明 |
 |---|---|---|
-| `--transport` | `stdio` | `stdio` / `http` / `streamable-http` / `sse` |
-| `--host` | `127.0.0.1` | HTTP/SSE 监听地址，对外提供服务用 `0.0.0.0` |
-| `--port` | `8000` | HTTP/SSE 监听端口 |
-| `--path` | `/mcp` | Streamable HTTP 端点路径（SSE 不适用） |
-| `--config` | 见第 3 节 | 配置文件路径 |
-| `--log-level` | `INFO` | 日志级别，只写 stderr |
+| `url` | string，必填 | 最长 8192 字符的 HTTP(S) 绝对地址，须含主机名，不能含用户名、密码、空格或控制字符 |
+| `max_chars` | integer 或 null | 返回正文字符上限；省略或 null 使用配置值，默认 30000；0 返回完整正文 |
 
-> stdio 模式下 stdout 是 MCP 协议通道，本项目的所有提示和日志都只写 stderr，不会污染协议。
-
----
-
-## 3. 配置
-
-### 3.1 查找顺序
-
-从高到低：
-
-1. `--config /path/to/config.json`
-2. 环境变量 `DEEPSEEK_SEARCH_CONFIG`
-3. 当前工作目录下的 `./config.json`
-4. 代码内置默认值（无需任何文件即可启动）
-
-- 只缺 `./config.json` 不算错误：直接用默认值，适合 stdio 零配置启动。
-- 显式指定的路径不存在、JSON 语法错误、字段类型/取值非法：**启动即失败，退出码 2**。
-- 未知字段会报错（防拼写错误），不会静默忽略。
-
-启动时 stderr 会打一行来源说明：
-
-```
-[config] loaded ./config.json (tools: web_search, web_fetch)
+```json
+{
+  "ok": true,
+  "url": "https://example.com/article",
+  "title": "Example article",
+  "content": "# Example article\n\nArticle content.",
+  "truncated": false,
+  "total_chars": 35
+}
 ```
 
-### 3.2 示例
+`total_chars` 是截断前的正文长度。`truncated=true` 时，可增大 `max_chars` 或设为 0 重新读取。上游用 `title: ""` 表示无标题；标题字段缺失或类型错误、缺少正文、正文类型错误或空白正文均视为异常响应。
 
-复制 `config.example.json` 为 `config.json` 后修改（`config.json` 已被 `.gitignore` 忽略）：
+## MCP 返回与错误
+
+两个工具均声明 `inputSchema` 与成功响应的 `outputSchema`。成功内容同时返回 JSON 文本和 `structuredContent`；参数、鉴权、上游或网络错误均设置 MCP `isError: true`。预期错误也同时提供 JSON 文本和以下结构化内容：
+
+```json
+{
+  "ok": false,
+  "error": {
+    "status": "rate_limited",
+    "http_code": 429,
+    "message": "The service returned HTTP 429. …",
+    "retryable": true,
+    "retry_after_seconds": 30
+  }
+}
+```
+
+`http_code` 在无上游 HTTP 状态时为 null。`retry_after_seconds` 只在上游返回有效 `Retry-After` 时出现。`retryable` 表示相同请求稍后可能成功。错误结果不要求匹配成功响应的 `outputSchema`；未知工具、协议错误及意外内部异常由 MCP 框架处理，内部异常详情对客户端隐藏。
+
+| status | 原因 | 可重试 |
+|---|---|---|
+| `missing_api_key` | 无可用密钥 | 否 |
+| `invalid_request` | 参数校验失败或上游 400 | 否 |
+| `unauthorized` | 401，密钥无效 | 否 |
+| `insufficient_balance` | 402，余额不足 | 否 |
+| `forbidden` | 403，抓取被策略拒绝 | 否 |
+| `not_found` | 404，无可用页面内容 | 否 |
+| `upstream_timeout` | 408、504 或请求超时 | 是 |
+| `payload_too_large` | 413，请求过大 | 否 |
+| `rate_limited` | 429，限流 | 是 |
+| `server_error` | 其他 5xx | 是 |
+| `network_error` | 连接或传输错误 | 是 |
+| `invalid_response` | 200 响应不是合法 JSON，或内容结构不符合契约 | 否 |
+
+仅重试 408、429、5xx 和网络错误，默认最多重试 2 次。退避从 0.5 秒开始翻倍；有效 `Retry-After` 优先。若要求等待超过 10 秒，直接返回错误及等待时长，避免过早重试。取消调用会停止请求和后续重试。网络超时可能发生在服务端已经处理请求之后，不承诺重试绝无额外计费。
+
+参数类型严格校验：例如 `need_content: "false"`、`count: true`、`max_chars: 1.5` 都会报错。密钥不作为参数暴露；上游错误中的当前密钥、`sk-…` 和 Bearer token 会被脱敏。参数校验错误不会回显输入值。
+
+## 服务器配置
+
+配置查找顺序：`--config` → `DEEPSEEK_SEARCH_CONFIG` → 工作目录的 `config.json` → 内置默认值。显式指定但不存在的路径、无效 JSON、未知配置字段均使启动失败（退出码 2）。更改配置后需重启服务器。
+
+复制 `config.example.json` 后按需修改：
 
 ```json
 {
   "tools": {
-    "search": { "name": "web_search", "enabled": true },
-    "fetch":  { "name": "web_fetch",  "enabled": true }
+    "search": { "name": "search", "enabled": true },
+    "fetch": { "name": "fetch", "enabled": true }
   },
   "api": {
     "base_url": "https://api.deepseek.com",
@@ -111,316 +207,35 @@ python -m deepseek_search_mcp --help
     "max_content_chars": 20000,
     "localization": ""
   },
-  "fetch": {
-    "max_content_chars": 30000
-  }
+  "fetch": { "max_content_chars": 30000 }
 }
 ```
 
-### 3.3 字段说明
+工具可单独改名或禁用，名称为 1–64 位字母、数字、下划线或连字符；启用的工具不能重名。`api.base_url` 可含网关路径前缀，不接受凭据、查询串或 fragment。`timeout_seconds` 是单次 HTTP 操作超时，大于 0 且不超过 300；`max_retries` 为 0–5。增加它们后，应相应提高客户端的工具超时。
 
-| 字段 | 默认值 | 说明 |
-|---|---|---|
-| `tools.search.name` | `web_search` | 搜索工具的 MCP 名称，`[A-Za-z0-9_-]`，1–64 字符 |
-| `tools.search.enabled` | `true` | 为 `false` 时完全不注册该工具 |
-| `tools.fetch.name` | `web_fetch` | 抓取工具的 MCP 名称；两个工具名不可相同 |
-| `tools.fetch.enabled` | `true` | 同上 |
-| `api.base_url` | `https://api.deepseek.com` | 可指向代理/网关；允许带路径前缀，如 `https://gw.example.com/deepseek` |
-| `api.timeout_seconds` | `30` | 单次 HTTP 请求超时（1–300） |
-| `api.max_retries` | `2` | 瞬时错误的最大重试次数（0–5） |
-| `search.default_count` | `10` | `count` 未传时的默认条数（1–50） |
-| `search.max_content_chars` | `20000` | 搜索返回正文的截断长度，`0` 表示不截断 |
-| `search.localization` | `""` | 用于本地化结果的出口 IP（IPv4/IPv6），空表示不传；**不暴露给模型** |
-| `fetch.max_content_chars` | `30000` | 抓取正文的默认截断长度，`0` 表示不截断 |
+`search.localization` 为 IPv4/IPv6 地址或空字符串，只用于部署配置，不交给模型猜测。两个 `max_content_chars` 均为非负整数，0 不截断。
 
-改配置需要重启服务器。
+旧版迁移：默认名称由 `web_search` / `web_fetch` 改为 `search` / `fetch`，可通过上述配置恢复旧名；结果中的 `score`、`site` 改回官方 `rerank_score`、`site_name`；调用失败现在会设置 `isError=true`。解析旧格式的客户端需要同步调整。
 
----
-
-## 4. 鉴权：Key 怎么传
-
-服务器**不保存密钥**，每次工具调用都重新解析，并原样作为 `Authorization: Bearer <key>` 转发给 DeepSeek。解析顺序：
-
-1. HTTP 请求头 `Authorization: Bearer <key>`（HTTP / SSE 传输）
-2. HTTP 请求头 `X-DeepSeek-API-Key: <key>`（无法设置 Authorization 的客户端）
-3. 环境变量 `DEEPSEEK_API_KEY`（stdio 传输，或给 HTTP 服务器做兜底）
-
-都没有时不会抛异常，而是返回：
-
-```json
-{
-  "ok": false,
-  "error": {
-    "status": "missing_api_key",
-    "http_code": null,
-    "message": "No API key provided. On HTTP transports send 'Authorization: Bearer <key>' with the request; when running over stdio, set the server's API key environment variable.",
-    "retryable": false
-  }
-}
-```
-
-安全约定：
-
-- 密钥只存在于请求头字典中，不写入磁盘、不缓存、不进入日志。
-- 错误信息经过脱敏，`sk-...` 与 `Bearer ...` 会变成 `sk-***` / `Bearer ***`。
-- `.temp/`、`config.json` 已在 `.gitignore` 中。
-
----
-
-## 5. 工具
-
-> 工具名、标题、描述、参数说明与服务器 instructions 均为中性表述，不含上游厂商名称——agent 看到的只是一个普通的网页搜索 / 抓取工具。上游厂商仅在错误诊断信息和本文档中出现。
-
-### 5.1 `web_search`（名称可改）
-
-```python
-web_search(
-    query: str,                    # 必填，1–128 字符，不能全空白
-    count: int | None = None,      # 1–50，缺省用 search.default_count
-    ori_question: str | None = None,  # 用户原始问题，帮助理解搜索意图，≤128 字符
-    need_content: bool = False     # true 时返回网页正文（响应会大很多）
-) -> dict
-```
-
-成功返回：
-
-```json
-{
-  "ok": true,
-  "query": "DeepSeek V4 发布",
-  "count": 2,
-  "results": [
-    {
-      "rank": 1,
-      "score": 2.4,
-      "title": "DeepSeek V4 模型发布",
-      "url": "https://example.com/deepseek-v4",
-      "snippet": "DeepSeek V4 已上线，支持工具调用与长上下文。",
-      "summary": "DeepSeek 发布了 V4 模型。此次发布改进了工具调用与长上下文能力……",
-      "site": "Example News",
-      "date": "2026-06-01T00:00:00+00:00",
-      "authority": 3,
-      "content": null,
-      "truncated": false
-    }
-  ]
-}
-```
-
-字段映射：`rerank_score → score`、`site_name → site`，新增 `rank`（从 1 开始）与 `truncated`，丢弃对模型无用的 `site_icon`。`score ∈ [0, 3]`，`≥ 1.5` 为优质结果；`authority ∈ [0, 4]`（`-1` 未知），`≥ 3` 为极权威。`content` 仅在 `need_content=true` 时有值，超过 `search.max_content_chars` 会截断并置 `truncated: true`。
-
-#### 搜索语法（原样透传给 DeepSeek）
-
-| 操作符 | 示例 | 作用 |
-|---|---|---|
-| `site:` | `DeepSeek site:github.com` | 限定站点；多个用空格 + OR：`site:github.com OR site:huggingface.co` |
-| `-site:` | `DeepSeek -site:example.com` | 排除站点 |
-| `-` | `DeepSeek -广告` | 排除含关键词的页面 |
-| `"..."` | `DeepSeek "精确短语"` | 精确短语匹配 |
-| `-"..."` | `DeepSeek -"release notes"` | 排除精确短语 |
-| `lang:` | `DeepSeek lang:zh,en` | 限定语言，逗号分隔 |
-| `after:` / `before:` | `DeepSeek after:2025` | 限定发布时间，支持 `2025` 或 `2025-01-01` |
-
-示例：`DeepSeek 模型 site:github.com OR site:huggingface.co lang:zh after:2025`
-
-### 5.2 `web_fetch`（名称可改）
-
-```python
-web_fetch(
-    url: str,                  # 必填，http/https，≤8192 字符，不能带用户名密码
-    max_chars: int | None = None  # 正文字符上限，缺省用 fetch.max_content_chars
-) -> dict
-```
-
-成功返回：
-
-```json
-{
-  "ok": true,
-  "url": "https://example.com/article",
-  "title": "Example article",
-  "content": "# Example article\n\nArticle content.",
-  "truncated": false
-}
-```
-
-抓取结果受目标站点的可用性与访问策略影响：站点拒绝、无正文、类型不支持等会返回 `not_found`。
-
----
-
-## 6. 返回与错误
-
-所有失败都是**结构化对象**，不会把 MCP 工具调用标记为异常：
-
-```json
-{
-  "ok": false,
-  "error": {
-    "status": "rate_limited",
-    "http_code": 429,
-    "message": "… The service limits Search and Fetch to 5 QPS per account; wait a moment and retry.",
-    "retryable": true
-  }
-}
-```
-
-`message` 会保留 DeepSeek 原文并追加可操作提示。`retryable: true` 表示同样的调用稍后重试可能成功。
-
-| `status` | 触发条件 | `retryable` |
-|---|---|---|
-| `missing_api_key` | 请求头与环境变量都没有 Key | false |
-| `invalid_request` | 本地参数校验失败，或上游 400 | false |
-| `unauthorized` | 401，Key 缺失/无效 | false |
-| `insufficient_balance` | 402，账号余额不足 | false |
-| `forbidden` | 403，Fetch 被安全策略拒绝 | false |
-| `not_found` | 404，抓不到可用网页正文 | false |
-| `upstream_timeout` | 408，或本地连接/读取超时 | true |
-| `payload_too_large` | 413 | false |
-| `rate_limited` | 429，超过 QPS | true |
-| `server_error` | 5xx | true |
-| `network_error` | DNS/连接失败等传输层错误 | true |
-| `invalid_response` | 上游 200 但 JSON 非法或结构异常 | false |
-
-**重试策略**：仅对 `408/429/5xx` 和网络错误重试，最多 `api.max_retries` 次，指数退避 `0.5s → 1s …`，若响应带 `Retry-After` 则优先采用，单次等待封顶 10 秒。
-
----
-
-## 7. 客户端配置示例
-
-### 7.1 Claude Desktop（stdio）
-
-`claude_desktop_config.json`：
-
-```json
-{
-  "mcpServers": {
-    "deepseek-search": {
-      "command": "deepseek-search-mcp",
-      "args": [],
-      "env": { "DEEPSEEK_API_KEY": "sk-你的密钥" }
-    }
-  }
-}
-```
-
-如果 `deepseek-search-mcp` 不在 PATH 上，把 `command` 换成绝对路径，例如
-`H:\\AnaConda\\envs\\mcp-dev\\Scripts\\deepseek-search-mcp.exe`。
-
-### 7.2 Cursor / VS Code（Streamable HTTP）
-
-先启动服务器：
+## 验证
 
 ```bash
-deepseek-search-mcp --transport http --host 127.0.0.1 --port 8000
+python -m pip install -e '.[dev]'
+python -m pytest -q
+# 真实 API 测试；需要 DEEPSEEK_API_KEY，会产生少量请求费用
+python -m pytest -m live -v
 ```
 
-客户端 `mcp.json`：
+默认测试不访问公网，覆盖输入校验、响应映射、错误码、重试、密钥脱敏，以及真实子进程 stdio / Streamable HTTP 的工具发现与调用。HTTP 测试使用本机模拟上游，也验证逐请求传入密钥。live 测试仅从环境读取密钥，不读取密钥文件。
 
-```json
-{
-  "mcpServers": {
-    "deepseek-search": {
-      "url": "http://127.0.0.1:8000/mcp",
-      "headers": { "Authorization": "Bearer sk-你的密钥" }
-    }
-  }
-}
-```
+## 官方接口与计费
 
-### 7.3 SSE（旧客户端兼容）
+- [Search / Fetch 指南](https://api-docs.deepseek.com/guides/search/)
+- [Search 参数与响应](https://api-docs.deepseek.com/api/search/)
+- [Fetch 参数与响应](https://api-docs.deepseek.com/api/fetch/)
 
-```bash
-deepseek-search-mcp --transport sse --port 8000
-```
+截至 2026-10-17，英文文档列价为 Search、Fetch 各 **US$0.75 / 1000 次成功请求**；搜索结果条数不改变单价。空搜索结果、失败与超时按官方说明不计费。Search、Fetch 各自按账号限流 5 QPS，多个密钥共享额度；Fetch 另有站点限流。实际价格及计费规则以官方最新文档为准。
 
-```json
-{
-  "mcpServers": {
-    "deepseek-search": {
-      "url": "http://127.0.0.1:8000/sse",
-      "headers": { "Authorization": "Bearer sk-你的密钥" }
-    }
-  }
-}
-```
+## 许可证
 
-> SSE 的工具调用走 `POST /messages/`，客户端必须在这条请求上也带 `Authorization`（主流客户端会把配置的头应用到所有请求）。若你的客户端只在首个 `GET /sse` 上带头，请改用 Streamable HTTP，或给服务器进程设置 `DEEPSEEK_API_KEY` 兜底。
-
-### 7.4 改名避免工具冲突
-
-同时接入多个搜索类 MCP 服务器时，在 `config.json` 里改名：
-
-```json
-{
-  "tools": {
-    "search": { "name": "deepseek_search", "enabled": true },
-    "fetch":  { "name": "deepseek_fetch",  "enabled": true }
-  }
-}
-```
-
-重启后客户端看到的工具名即为 `deepseek_search` / `deepseek_fetch`。
-
----
-
-## 8. 测试
-
-```bash
-# 全部单元测试：全 mock，无网络，秒级
-pytest -q
-
-# 真实调用 DeepSeek（需要 Key）
-pytest -m live -v
-```
-
-真实测试的 Key 来源：优先 `DEEPSEEK_API_KEY`，否则读 `.temp/test-key.txt`（文件里任意位置匹配 `sk-...` 即可，`.temp/` 已被忽略）。
-
-当前覆盖：配置发现与校验、参数构造、结果映射与截断、重试与退避、全部错误码映射、密钥脱敏、工具注册/改名/禁用、三种传输的真实端到端。
-
----
-
-## 9. 计费与限速
-
-- Search、Fetch 均按**请求次数**计费：每 1000 次成功请求 5 元；`count` 不影响单价。
-- 只有 HTTP 200 且产生结果的请求才计费；失败、无结果、超时不计费，因此本项目对 `429/5xx` 的自动重试不会额外花钱。
-- 每个账号 Search 与 Fetch **各自** 5 QPS，与使用哪个 Key 无关；超过返回 429。
-- 遇到 402 请先充值；其它 4xx 在未修改请求前不要重试（本项目已按此处理）。
-
----
-
-## 10. 项目结构
-
-```
-src/deepseek_search_mcp/
-├─ config.py     配置加载、查找顺序、Pydantic 校验
-├─ models.py     返回信封与错误对象的 TypedDict 定义
-├─ auth.py       Key 解析（请求头 → 别名头 → 环境变量）与脱敏
-├─ client.py     httpx 客户端、重试退避、错误映射、结果映射与截断
-├─ server.py     FastMCP 服务器与两个工具的注册（动态工具名）
-└─ cli.py        命令行参数 → mcp.run(transport=...)
-tests/           133 个单元测试 + 4 个 live 测试
-config.example.json
-```
-
----
-
-## 11. 已知限制
-
-- SSE 是 MCP 的旧传输，FastMCP 把它定位为兼容模式；新项目请用 Streamable HTTP。
-- 一次进程只服务一种传输（stdio / http / sse 三选一）。
-- 修改 `config.json` 后需要重启进程。
-
----
-
-## 12. 许可证
-
-MIT
-
----
-
-## 13. 友情链接
-
-- [LINUX DO - 新的理想型社区](https://linux.do/)
-
-
-
+MIT，保留上游 LICENSE。

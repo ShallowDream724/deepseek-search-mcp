@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import asyncio
 import logging
+import math
 from collections.abc import Awaitable, Callable
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
@@ -21,11 +22,12 @@ from typing import Any
 from urllib.parse import urlsplit
 
 import httpx
+from pydantic import ValidationError
 
 from . import __version__
 from .auth import redact
 from .config import AppConfig
-from .models import ErrorStatus, error_response, missing_api_key_error
+from .models import ErrorStatus, UpstreamFetch, UpstreamSearchHit, error_response, missing_api_key_error
 
 logger = logging.getLogger(__name__)
 
@@ -36,7 +38,7 @@ MAX_QUERY_CHARS = 128
 MAX_ORI_QUESTION_CHARS = 128
 MAX_URL_CHARS = 8192
 
-RETRYABLE_STATUS_CODES = frozenset({408, 429, 500, 502, 503, 504})
+RETRYABLE_STATUS_CODES = frozenset({408, 429, *range(500, 600)})
 BASE_BACKOFF_SECONDS = 0.5
 MAX_BACKOFF_SECONDS = 10.0
 
@@ -49,6 +51,7 @@ STATUS_BY_CODE: dict[int, ErrorStatus] = {
     408: "upstream_timeout",
     413: "payload_too_large",
     429: "rate_limited",
+    504: "upstream_timeout",
 }
 
 STATUS_HINTS: dict[ErrorStatus, str] = {
@@ -75,21 +78,21 @@ def _status_for_code(code: int) -> ErrorStatus:
     return "server_error" if code >= 500 else "invalid_request"
 
 
-def _upstream_error_message(response: httpx.Response) -> str | None:
+def _upstream_error_message(response: httpx.Response, api_key: str) -> str | None:
     try:
         payload = response.json()
     except ValueError:
         text = (response.text or "").strip()
-        return redact(text[:300]) if text else None
+        return redact(text, api_key)[:300] if text else None
     if isinstance(payload, dict):
         error = payload.get("error")
         if isinstance(error, dict):
             message = error.get("message")
             if isinstance(message, str) and message.strip():
-                return redact(message.strip())
+                return redact(message.strip(), api_key)[:500]
         message = payload.get("message")
         if isinstance(message, str) and message.strip():
-            return redact(message.strip())
+            return redact(message.strip(), api_key)[:500]
     return None
 
 
@@ -107,12 +110,13 @@ def _retry_after_seconds(response: httpx.Response) -> float | None:
         return None
     raw = raw.strip()
     try:
-        return max(0.0, float(raw))
+        seconds = float(raw)
+        return max(0.0, seconds) if math.isfinite(seconds) else None
     except ValueError:
         pass
     try:
         moment = parsedate_to_datetime(raw)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         return None
     if moment.tzinfo is None:
         moment = moment.replace(tzinfo=timezone.utc)
@@ -129,42 +133,22 @@ def _truncate(text: str, max_chars: int) -> tuple[str, bool]:
     return text[:max_chars], True
 
 
-def _as_str(value: object) -> str:
-    return value if isinstance(value, str) else ""
-
-
-def _as_optional_str(value: object) -> str | None:
-    if isinstance(value, str) and value.strip():
-        return value
-    return None
-
-
-def _as_float(value: object) -> float | None:
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
-        return None
-    return float(value)
-
-
-def _as_int(value: object) -> int | None:
-    if isinstance(value, bool) or not isinstance(value, int):
-        return None
-    return value
-
-
-def _search_problem(query: object, count: object, ori_question: object) -> str | None:
+def _search_problem(query: object, count: object, ori_question: object, need_content: object) -> str | None:
     if not isinstance(query, str) or not query.strip():
         return "query must be a non-empty string."
-    if len(query.strip()) > MAX_QUERY_CHARS:
+    if len(query) > MAX_QUERY_CHARS:
         return f"query must be at most {MAX_QUERY_CHARS} characters."
     if isinstance(count, bool) or not isinstance(count, int):
         return "count must be an integer between 1 and 50."
     if not 1 <= count <= 50:
         return "count must be between 1 and 50."
     if ori_question is not None:
-        if not isinstance(ori_question, str):
-            return "ori_question must be a string when provided."
-        if len(ori_question.strip()) > MAX_ORI_QUESTION_CHARS:
+        if not isinstance(ori_question, str) or not ori_question.strip():
+            return "ori_question must be a non-empty string when provided."
+        if len(ori_question) > MAX_ORI_QUESTION_CHARS:
             return f"ori_question must be at most {MAX_ORI_QUESTION_CHARS} characters."
+    if not isinstance(need_content, bool):
+        return "need_content must be a boolean."
     return None
 
 
@@ -172,15 +156,21 @@ def _url_problem(url: object) -> str | None:
     if not isinstance(url, str) or not url.strip():
         return "url must be a non-empty string."
     value = url.strip()
-    if len(value) > MAX_URL_CHARS:
+    if len(url) > MAX_URL_CHARS:
         return f"url must be at most {MAX_URL_CHARS} characters."
-    parts = urlsplit(value)
+    try:
+        parts = urlsplit(value)
+        _ = parts.port
+    except ValueError:
+        return "url must be a valid absolute HTTP(S) URL."
     if parts.scheme not in {"http", "https"}:
         return "url must use the http or https scheme."
     if not parts.hostname:
         return "url must include a host."
-    if parts.username or parts.password:
+    if parts.username is not None or parts.password is not None:
         return "url must not contain a username or password."
+    if any(char.isspace() or ord(char) < 32 for char in value):
+        return "url must not contain whitespace or control characters."
     return None
 
 
@@ -190,30 +180,17 @@ def _map_search_hit(
     *,
     need_content: bool,
     max_chars: int,
-) -> dict[str, Any] | None:
-    if not isinstance(item, dict):
-        return None
-    url = item.get("url")
-    if not isinstance(url, str) or not url.strip():
-        return None
+) -> dict[str, Any]:
+    source = UpstreamSearchHit.model_validate(item)
 
     content: str | None = None
     truncated = False
-    if need_content:
-        raw_content = item.get("content")
-        if isinstance(raw_content, str) and raw_content:
-            content, truncated = _truncate(raw_content, max_chars)
+    if need_content and source.content:
+        content, truncated = _truncate(source.content, max_chars)
 
     return {
+        **source.model_dump(exclude={"content"}),
         "rank": rank,
-        "score": _as_float(item.get("rerank_score")),
-        "title": _as_str(item.get("title")),
-        "url": url.strip(),
-        "snippet": _as_str(item.get("snippet")),
-        "summary": _as_str(item.get("summary")),
-        "site": _as_optional_str(item.get("site_name")),
-        "date": _as_optional_str(item.get("date")),
-        "authority": _as_int(item.get("authority")),
         "content": content,
         "truncated": truncated,
     }
@@ -259,13 +236,13 @@ class DeepSeekClient:
         query: object,
         count: object = None,
         ori_question: object = None,
-        need_content: bool = False,
+        need_content: object = False,
     ) -> dict[str, Any]:
         if api_key is None:
             return missing_api_key_error()
 
         resolved_count: Any = self.config.search.default_count if count is None else count
-        problem = _search_problem(query, resolved_count, ori_question)
+        problem = _search_problem(query, resolved_count, ori_question, need_content)
         if problem is not None:
             return error_response("invalid_request", problem)
 
@@ -273,7 +250,7 @@ class DeepSeekClient:
         payload: dict[str, Any] = {
             "query": cleaned_query,
             "count": resolved_count,
-            "need_content": bool(need_content),
+            "need_content": need_content,
         }
         if isinstance(ori_question, str) and ori_question.strip():
             payload["ori_question"] = ori_question.strip()
@@ -297,16 +274,14 @@ class DeepSeekClient:
                 "The search response did not contain a 'results' array.",
             )
 
-        results: list[dict[str, Any]] = []
-        for item in items:
-            hit = _map_search_hit(
-                len(results) + 1,
-                item,
-                need_content=bool(need_content),
-                max_chars=self.config.search.max_content_chars,
-            )
-            if hit is not None:
-                results.append(hit)
+        try:
+            results = [
+                _map_search_hit(index, item, need_content=need_content,
+                                max_chars=self.config.search.max_content_chars)
+                for index, item in enumerate(items, start=1)
+            ]
+        except ValidationError:
+            return error_response("invalid_response", "The search response contained a malformed result.")
 
         return {
             "ok": True,
@@ -346,16 +321,19 @@ class DeepSeekClient:
         if failure is not None:
             return failure
 
-        raw_content = body.get("content")
-        content = raw_content if isinstance(raw_content, str) else ""
-        content, truncated = _truncate(content, limit)
+        try:
+            source = UpstreamFetch.model_validate(body)
+        except ValidationError:
+            return error_response("invalid_response", "The fetch response did not contain a valid title and non-empty content.")
+        content, truncated = _truncate(source.content, limit)
 
         return {
             "ok": True,
             "url": cleaned_url,
-            "title": _as_str(body.get("title")),
+            "title": source.title,
             "content": content,
             "truncated": truncated,
+            "total_chars": len(source.content),
         }
 
     # ----------------------------------------------------------------- helpers
@@ -378,20 +356,20 @@ class DeepSeekClient:
             except httpx.TimeoutException as exc:
                 last_failure = error_response(
                     "upstream_timeout",
-                    redact(f"Request timed out: {exc}"),
+                    redact(f"Request timed out: {exc}", api_key),
                     retryable=True,
                 )
             except httpx.HTTPError as exc:
                 last_failure = error_response(
                     "network_error",
-                    redact(f"Could not reach the search service: {exc}"),
+                    redact(f"Could not reach the search service: {exc}", api_key),
                     retryable=True,
                 )
             else:
                 if response.status_code == 200:
                     return response, None
 
-                failure = self._failure_from_response(response)
+                failure = self._failure_from_response(response, api_key)
                 if response.status_code not in RETRYABLE_STATUS_CODES:
                     return None, failure
                 last_failure = failure
@@ -400,16 +378,19 @@ class DeepSeekClient:
             if attempt + 1 >= attempts:
                 break
             delay = retry_after if retry_after is not None else _backoff_seconds(attempt)
+            if delay > MAX_BACKOFF_SECONDS:
+                # Do not retry earlier than allowed, or hold a tool call for hours.
+                break
             logger.debug("retrying %s after %.2fs (attempt %s)", path, delay, attempt + 1)
-            await self._sleep(min(delay, MAX_BACKOFF_SECONDS))
+            await self._sleep(delay)
 
         return None, last_failure
 
-    def _failure_from_response(self, response: httpx.Response) -> dict[str, Any]:
+    def _failure_from_response(self, response: httpx.Response, api_key: str) -> dict[str, Any]:
         status = _status_for_code(response.status_code)
         message = _compose_message(
             status,
-            _upstream_error_message(response),
+            _upstream_error_message(response, api_key),
             response.status_code,
         )
         return error_response(
@@ -417,6 +398,7 @@ class DeepSeekClient:
             message,
             http_code=response.status_code,
             retryable=response.status_code in RETRYABLE_STATUS_CODES,
+            retry_after_seconds=_retry_after_seconds(response),
         )
 
     def _json_body(

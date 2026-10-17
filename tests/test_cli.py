@@ -149,4 +149,4 @@ def test_built_in_defaults_are_logged_when_no_config(
 
     err = capsys.readouterr().err
     assert "built-in defaults" in err
-    assert "web_search, web_fetch" in err
+    assert "search, fetch" in err

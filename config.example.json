@@ -1,11 +1,11 @@
 {
   "tools": {
     "search": {
-      "name": "web_search",
+      "name": "search",
       "enabled": true
     },
     "fetch": {
-      "name": "web_fetch",
+      "name": "fetch",
       "enabled": true
     }
   },
