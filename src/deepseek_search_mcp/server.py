@@ -24,7 +24,7 @@ from .models import FetchResponse, SearchResponse, error_response
 
 logger = logging.getLogger(__name__)
 
-SERVER_NAME = "DeepSeek Search"
+SERVER_NAME = "DeepSeek Web Search"
 
 INSTRUCTIONS = (
     "Search returns ranked web sources and summaries. Fetch reads a URL as Markdown. "

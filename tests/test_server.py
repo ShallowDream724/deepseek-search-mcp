@@ -209,7 +209,7 @@ async def test_server_instructions_are_exposed() -> None:
         instructions = client.instructions
         server_name = client.server_info.name
 
-    assert server_name == "DeepSeek Search"
+    assert server_name == "DeepSeek Web Search"
     assert "retryable" in (instructions or "")
 
 

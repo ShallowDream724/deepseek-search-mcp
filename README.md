@@ -38,7 +38,7 @@ python -m deepseek_search_mcp --transport sse --port 8000
 在 `~/.codex/config.toml` 中添加下面的配置，将路径换成自己的项目位置。Codex 桌面应用与 CLI 共用此文件。
 
 ```toml
-[mcp_servers.deepseek]
+[mcp_servers.deepseek-search]
 command = "/absolute/path/deepseek-search-mcp/.venv/bin/python"
 args = ["-m", "deepseek_search_mcp"]
 cwd = "/absolute/path/deepseek-search-mcp"
@@ -50,7 +50,7 @@ tool_timeout_sec = 120
 Windows 使用 `.venv/Scripts/python.exe`。如果密钥保存为 Windows 用户级环境变量，而已运行的 Codex 尚未继承它，可使用本项目的启动脚本：
 
 ```toml
-[mcp_servers.deepseek]
+[mcp_servers.deepseek-search]
 command = "C:/path/deepseek-search-mcp/.venv/Scripts/python.exe"
 args = ["C:/path/deepseek-search-mcp/scripts/run-local.py"]
 cwd = "C:/path/deepseek-search-mcp"
@@ -66,7 +66,7 @@ HTTP 客户端示例：
 ```json
 {
   "mcpServers": {
-    "deepseek": {
+    "deepseek-search": {
       "url": "http://127.0.0.1:8000/mcp",
       "headers": { "Authorization": "Bearer <your-key>" }
     }
